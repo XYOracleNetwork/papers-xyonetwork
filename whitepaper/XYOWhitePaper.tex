@@ -38,7 +38,7 @@
 \newglossaryentry{diviner}
 {
     name={Diviner},
-    description={A Diviner answers a given question by analyzing historical data that has been stored by the XY Oracle Network. Heuristics stored in the XY Oracle Network must have a high level of Proof of Origin to determine the validity and accuracy of the heuristic. A Diviner obtains and delivers an answer by judging the witness based on its Proof of Origin. Given that the XY Oracle Network is a trustless system, Diviners must be incentivized to provide honest analyses of heuristics. Unlike Sentinels and Bridges, Diviners use Proof of Work to add answers to the blockchain}
+    description={A Diviner answers a given question by analyzing historical data that has been stored by the XYO Network. Heuristics stored in the XYO Network must have a high level of Proof of Origin to determine the validity and accuracy of the heuristic. A Diviner obtains and delivers an answer by judging the witness based on its Proof of Origin. Given that the XYO Network is a trustless system, Diviners must be incentivized to provide honest analyses of heuristics. Unlike Sentinels and Bridges, Diviners use Proof of Work to add answers to the blockchain}
 }
 
 \newglossaryentry{gas}
@@ -50,7 +50,7 @@
 \newglossaryentry{proof-of-origin}
 {
     name={Proof of Origin},
-    description={Proof of Origin is the key to verifying that ledgers flowing into the XY Oracle Network are valid. A unique ID for source of data is not practical since it can be forged. Private Key signing is not practical since most parts of the XY Oracle Network are difficult or impossible to physically secure, thus the potential for a bad actor to steal a Private Key is too feasible. To solve this, XY Oracle Network uses Transient Key Chaining. The benefit of this is that it is impossible to falsify the chain of origin for data. However, once the chain is broken, it is broken forever and cannot be continued, rendering it an island}
+    description={Proof of Origin is the key to verifying that ledgers flowing into the XYO Network are valid. A unique ID for source of data is not practical since it can be forged. Private Key signing is not practical since most parts of the XYO Network are difficult or impossible to physically secure, thus the potential for a bad actor to steal a Private Key is too feasible. To solve this, XYO Network uses Transient Key Chaining. The benefit of this is that it is impossible to falsify the chain of origin for data. However, once the chain is broken, it is broken forever and cannot be continued, rendering it an island}
 }
 
 \newglossaryentry{proof-of-work}
@@ -77,10 +77,10 @@
     description={A formal discipline that studies protocols that govern the production, distribution, and consumption of goods and services in a decentralized digital economy. Cryptoeconomics is a practical science that focuses on the design and characterization of these protocols}
 }
 
-\newglossaryentry{xy-oracle-network}
+\newglossaryentry{xyo-network}
 {
-    name={XY Oracle Network},
-    description={The entire system of XYO enabled components/nodes that include Sentinels, Bridges, Archivists, and Diviners}
+    name={XYO Network},
+    description={XYO Network stands for ``XY Oracle Network.'' It is comprised of the entire system of XYO enabled components/nodes that include Sentinels, Bridges, Archivists, and Diviners. The primary function of the XYO Network is to act as a portal by which digital smart contracts can be executed through real world geolocation confirmations}
 }
 
 \newglossaryentry{certainty}
@@ -122,7 +122,7 @@
 \newglossaryentry{best-answer-algorithm}
 {
     name={Best Answer Algorithm},
-    description={An algorithm used to generate Best Answer Scores when a Diviner chooses an answer.  The XY Oracle Network permits the addition of specialized algorithms and allows the customer to specify which algorithm to use.  It is required that this algorithm will result in the same score when run on any Diviner given the same data set}
+    description={An algorithm used to generate Best Answer Scores when a Diviner chooses an answer.  The XYO Network permits the addition of specialized algorithms and allows the customer to specify which algorithm to use.  It is required that this algorithm will result in the same score when run on any Diviner given the same data set}
 }
 
 \newglossaryentry{origin-chain-score}
@@ -147,11 +147,11 @@
 
 \newacronym{poo}{PoO}{Proof of Origin}
 
-\newacronym{xyo-network}{XYO Network}{XY Oracle Network}
+\newacronym{xy-oracle-network}{XY Oracle Network}{XYO Network}
 
 \makeglossary
 
-\title {XY Oracle Network}
+\title {XYO Network}
 \author{Arie Trouw, Markus Levin, Scott Scheper}
 \date{January 2018}
 
@@ -164,7 +164,7 @@
 \end{center}
 
 \begin{abstract}
-Today, \glspl{smart-contract} are increasingly being used to execute contracts automatically, transparently and trustlessly. This, in effect, means lawyers, middlemen and escrow are unnecessary and may someday become obsolete. However, smart contracts have one key limitation: they rely in most cases on centralized data sources for data input. Additionally, there is often a limited offline application for them. To solve this limitation, we have developed the world's first location \gls{oracle} network which connects offline, trustless and decentralized location data with the blockchain and its smart contracts. We call this network the XY Oracle Network. Since its founding in 2012, the company behind the XY Oracle Network has been steadily building a location network. The XY Oracle Network makes it possible for smart contracts to plug into the real world by calling XY's network of devices that include not only XY's own devices but also other devices and products which are connected to the internet that can detect, record and/or relay location data. These connected elements, called \Glspl{sentinel}, are among other IoT devices like doorbells, cars, light bulbs, refrigerators, wireless routers, garage door openers, etc. as well as mobile apps,  phone and video cameras, etc. This network of devices can determine if an object is at a specific XY-coordinate at a given time. The use-cases and profound impact of such a technology are infinite.
+Today, \glspl{smart-contract} are increasingly being used to execute contracts automatically, transparently and trustlessly. This, in effect, means lawyers, middlemen and escrow are unnecessary and may someday become obsolete. However, smart contracts have one key limitation: they rely in most cases on centralized data sources for data input. Additionally, there is often a limited offline application for them. To solve this limitation, we have developed the world's first location \gls{oracle} network which connects offline, trustless and decentralized location data with the blockchain and its smart contracts. We call this network the \Gls{xy-oracle-network}. Since its founding in 2012, the company behind the \Gls{xyo-network} has been steadily building a location network. The XYO Network makes it possible for smart contracts to plug into the real world by calling XY's network of devices that include not only XY's own devices but also other devices and products which are connected to the internet that can detect, record and/or relay location data. These connected elements, called \Glspl{sentinel}, are among other IoT devices like doorbells, cars, light bulbs, refrigerators, wireless routers, garage door openers, etc. as well as mobile apps,  phone and video cameras, etc. This network of devices can determine if an object is at a specific XY-coordinate at a given time. The use-cases and profound impact of such a technology are infinite.
 
 The development of decentralized trustless applications has been gaining substantial momentum in recent years, and has now become generally accepted as an area for development and research in the field of Computer Science. Oracles are a significant portion of the power and infrastructure needs for decentralized applications, with most of the work revolving around the connectivity and aggregation of authoritative oracles. We believe that the need for a full featured, fully decentralized and trustless system of oracles is needed for decentralized applications to reach their full potential.
 
@@ -175,9 +175,9 @@ The development of decentralized trustless applications has been gaining substan
 \end{abstract}
 \addcontentsline{toc}{section}{Application}
 \section*{Application}
-From straightforward to complex, the XY Oracle Network's usage  has vast applications that span a multitude of industries. Take for example an eCommerce Company that could offer its premium customers payment-upon-delivery services. To be able to offer this service, the eCommerce company would leverage the XY Oracle Network and XY Platform (which uses XYO Tokens) to write a \gls{smart-contract} (i.e. on Ethereum's platform). The XY Oracle Network could then track the location of the package being sent to the consumer along every single step of fulfillment; from the warehouse shelf to the the shipping courier, all the way into the consumer's house and every location in between. This could enable eCommerce retailers and websites to verify, in a trustless way, that the package not only appeared on the customer's doorstep, but also safely inside their home. Once the package has arrived in the customer's home (defined and verified by a specific XY-Coordinate), the shipment is considered complete and the payment to the vendor gets released. The eCommerce integration of the XYO Oracle Network thusly enables the ability to protect the merchant from fraud and ensure consumers only pay for goods that arrive in their home.
+From straightforward to complex, the \Gls{xyo-network}'s usage  has vast applications that span a multitude of industries. Take for example an eCommerce Company that could offer its premium customers payment-upon-delivery services. To be able to offer this service, the eCommerce company would leverage the XYO Network and XY Platform (which uses XYO Tokens) to write a \gls{smart-contract} (i.e. on Ethereum's platform). The XYO Network could then track the location of the package being sent to the consumer along every single step of fulfillment; from the warehouse shelf to the the shipping courier, all the way into the consumer's house and every location in between. This could enable eCommerce retailers and websites to verify, in a trustless way, that the package not only appeared on the customer's doorstep, but also safely inside their home. Once the package has arrived in the customer's home (defined and verified by a specific XY-Coordinate), the shipment is considered complete and the payment to the vendor gets released. The eCommerce integration of the XYO Oracle Network thusly enables the ability to protect the merchant from fraud and ensure consumers only pay for goods that arrive in their home.
 
-Consider an entirely different integration of the XY Oracle Network with a hotel review site, whose current problem is that their reviews are often not trusted. Naturally, hotel owners are incentivized to improve their reviews at any cost. What if one could say with extremely high \gls{certainty} that someone was in San Diego, flew to a hotel in Bali and stayed there for two weeks, returned to San Diego, and then wrote a review about their hotel stay in Bali? The review would have a very high reputation, especially if it was written by a serial reviewer who has written many reviews with verified location data. The solutions the XY Oracle Network can provide are infinite and the potential is unlimited.
+Consider an entirely different integration of the XYO Network with a hotel review site, whose current problem is that their reviews are often not trusted. Naturally, hotel owners are incentivized to improve their reviews at any cost. What if one could say with extremely high \gls{certainty} that someone was in San Diego, flew to a hotel in Bali and stayed there for two weeks, returned to San Diego, and then wrote a review about their hotel stay in Bali? The review would have a very high reputation, especially if it was written by a serial reviewer who has written many reviews with verified location data. The solutions the XYO Network can provide are infinite and the potential is unlimited.
 
 \begin{center}
 \line(1,0){50}
@@ -194,33 +194,33 @@ Location oracles fall into this category. The divination of the location of a ph
 Both \gls{certainty} and \gls{accuracy} of the location are negatively impacted by the lack of a trustless decentralized location oracle.
 
 \subsection {Architecture}
-The XY Oracle Network has four primary components: \Glspl{sentinel}, \Glspl{bridge}, \Glspl{archivist}, and \Glspl{diviner}. Sentinels gather location \glspl{heuristic} via sensors, radios, and other means. Bridges take heuristics from Sentinels and provide them to Archivists. Archivists store heuristics for Diviners to analyze. Diviners analyze heuristics to generate answers to questions. This is accomplished using established advanced encryption and blockchain techniques and introduces the novel concept, \Gls{proof-of-origin}.
+The \Gls{xyo-network} has four primary components: \Glspl{sentinel}, \Glspl{bridge}, \Glspl{archivist}, and \Glspl{diviner}. Sentinels gather location \glspl{heuristic} via sensors, radios, and other means. Bridges take heuristics from Sentinels and provide them to Archivists. Archivists store heuristics for Diviners to analyze. Diviners analyze heuristics to generate answers to questions. This is accomplished using established advanced encryption and blockchain techniques and introduces the novel concept, \Gls{proof-of-origin}.
 
-A single device may act as one or more of these four components of the system. Since topography, type of device and device optimization will impact the efficiency of each component, it would be rare, especially in a large XY Oracle Network, that devices would be more than two of these components. Furthermore, a blockchain ledger that has more independent Proof of Origin will hold higher regard, so there is a natural penalty for a device acting as multiple components.
+A single device may act as one or more of these four components of the system. Since topography, type of device and device optimization will impact the efficiency of each component, it would be rare, especially in a large XYO Network, that devices would be more than two of these components. Furthermore, a blockchain ledger that has more independent Proof of Origin will hold higher regard, so there is a natural penalty for a device acting as multiple components.
 
 
-\subsection {Addressed by XY Oracle Network}
-XY Oracle Network provides location data and verification by addressing the following issues: trustlessness, accuracy, \gls{certainty}, cost, virtual security, and performance.
+\subsection {Addressed by XYO Network}
+The \Gls{xyo-network} provides location data and verification by addressing the following issues: trustlessness, accuracy, \gls{certainty}, cost, virtual security, and performance.
 
-\subsection {Not Addressed by XY Oracle Network}
-XY Oracle Network does not address privacy, physical security, decentralized data storage, or network bridging. However, these are important to consider and will affect the implementation considerations when integrating or using XY Oracle Network.
+\subsection {Not Addressed by XYO Network}
+The \Gls{xyo-network} does not address privacy, physical security, decentralized data storage, or network bridging. However, these are important to consider and will affect the implementation considerations when integrating or using XYO Network.
 
 \subsection {Assumptions}
-Edge devices on the XY Oracle Network that produce and relay the needed location data are not physically secure, can be produced and added to the system at low cost, and are highly resource constrained.
+Edge devices on the \Gls{xyo-network} that produce and relay the needed location data are not physically secure, can be produced and added to the system at low cost, and are highly resource constrained.
 
-\subsection {XY Oracle Network's Four Components}
+\subsection {XYO Network's Four Components}
 
 \subsubsection {Sentinels}
 \Glspl{sentinel} are \gls{heuristic} witnesses. They observe heuristics and vouch for the \gls{certainty} and \gls{accuracy} of the heuristic by producing temporal ledgers. The most important aspect of a Sentinel is that it produces ledgers that \Glspl{diviner} can be certain came from the same source by adding \Gls{proof-of-origin} to them.
 
-Given that XY Oracle Network is a trustless system, Sentinels must be incentivized to provide honest heuristic ledgers. This is done by combining a reputation component with a payment component. A Sentinel is rewarded with XY Oracle Network Tokens (XYO) when their heuristics are used to answer a question. To increase their odds of being rewarded, they must create heuristic ledgers that are consistent with their peers and provide Proof of Origin to identify themselves as the source of the heuristic.
+Given that \Gls{xyo-network} is a trustless system, Sentinels must be incentivized to provide honest heuristic ledgers. This is done by combining a reputation component with a payment component. A Sentinel is rewarded with XYO Network Tokens (XYO) when their heuristics are used to answer a question. To increase their odds of being rewarded, they must create heuristic ledgers that are consistent with their peers and provide Proof of Origin to identify themselves as the source of the heuristic.
 
 Sentinels are usually off-line devices which either periodically go online or require \Glspl{bridge} to have their ledgers be part of the system.
 
 \subsubsection {Bridges}
 \Glspl{bridge} are \gls{heuristic} transcribers. They securely relay heuristic ledgers from \Glspl{sentinel} to \Glspl{diviner}. The most important aspect of a Bridge is that a Diviner can be sure that the heuristic ledgers that are received from a Bridge has not been altered in any way. The second most important aspect of a Bridge is that they add an additional \Gls{proof-of-origin}.
 
-Given that XY Oracle Network is a trustless system, Bridges must be incentivized to provide honest relaying of heuristics. This is done by combining a reputation component with a payment component. A Bridge is rewarded with XY Oracle Network Tokens (XYO) when the heuristics that they relayed are used to answer a question. To increase their odds of being rewarded, they must create heuristic ledgers that are consistent with their peers and provide Proof of Origin to identify itself as the relay of the heuristic.
+Given that \Gls{xyo-network} is a trustless system, Bridges must be incentivized to provide honest relaying of heuristics. This is done by combining a reputation component with a payment component. A Bridge is rewarded with XYO Network Tokens (XYO) when the heuristics that they relayed are used to answer a question. To increase their odds of being rewarded, they must create heuristic ledgers that are consistent with their peers and provide Proof of Origin to identify itself as the relay of the heuristic.
 
 \subsubsection {Archivists}
 \Glspl{archivist} store \glspl{heuristic} in a decentralized form with the goal of having all historical ledgers stored, but without that requirement. Even if some data is lost or becomes temporarily unavailable, the system continues to function, just with reduced \gls{accuracy}.
@@ -234,9 +234,9 @@ Archivists are networked, so asking one Archivist will result in that Archivist 
 The interests of \Glspl{sentinel}, \Glspl{bridge}, and Archivists must be aligned to prevent data bloat.
 
 \subsubsection {Diviners}
-\Glspl{diviner} answer a given question by analyzing historical data that has been stored by the XY Oracle Network. \Glspl{heuristic} stored in the XY Oracle Network must have a high level of \Gls{proof-of-origin} to determine the validity and \gls{accuracy} of the heuristic. A Diviner obtains and delivers an answer by judging the witness based on its Proof of Origin.
+\Glspl{diviner} answer a given question by analyzing historical data that has been stored by the \Gls{xyo-network}. \Glspl{heuristic} stored in the XYO Network must have a high level of \Gls{proof-of-origin} to determine the validity and \gls{accuracy} of the heuristic. A Diviner obtains and delivers an answer by judging the witness based on its Proof of Origin.
 
-Given that the XY Oracle Network is a trustless system, Diviners must be incentivized to provide honest analysis of heuristics. Unlike \Glspl{sentinel} and \Glspl{bridge}, Diviners use \Gls{proof-of-work} to add answers to the blockchain. Naturally, answers are prioritized by reward size, so the more XYO that is offered for an answer, the higher in priority the question would be.
+Given that the XYO Network is a trustless system, Diviners must be incentivized to provide honest analysis of heuristics. Unlike \Glspl{sentinel} and \Glspl{bridge}, Diviners use \Gls{proof-of-work} to add answers to the blockchain. Naturally, answers are prioritized by reward size, so the more XYO that is offered for an answer, the higher in priority the question would be.
 
 In the case that the same question is asked more than once, more than one answer may be produced since the answer that is produced at a given moment is based on the available heuristics that the system can offer at that time.
 
@@ -245,16 +245,16 @@ Submitting an answer to the blockchain takes two steps. First, an analysis must 
 \subsection {Choosing the Better Answer}
 The Best Answer is the answer that has the highest validity score and has a higher \gls{accuracy} score than the minimum required accuracy. The validity score is based on the \Gls{origin-chain-score}. This does not provide absolute validity, only relative validity. The system will know what the highest record Origin Score was and that would be the 100 percent until a higher score is achieved, which then becomes the new 100 percent.
 
-XY Oracle Network allows selection of the \Gls{best-answer-algorithm} for determining the Best Answer. This creates expansion for future research into alternative algorithms.
+The \Gls{xyo-network} allows selection of the \Gls{best-answer-algorithm} for determining the Best Answer. This creates expansion for future research into alternative algorithms.
 
 \begin{center}
 \line(1,0){50}
 \end{center}
 
 \section {Origin Chains}
-\Glspl{origin-chain} are the key to verifying that ledgers flowing into the XY Oracle Network are valid. A unique ID for source of data is not practical since it can be forged. Private Key signing is not practical since most parts of the XY Oracle Network are difficult or impossible to physically secure, thus the ability for a bad actor to steal a Private Key is too feasible. To solve this, XY Oracle Network uses \Glspl{transient-key-chain}. The benefit of this is that it is impossible to falsify the chain of origin for data. However, once the chain is broken, it is broken forever and cannot be continued, rendering it an island. 
+\Glspl{origin-chain} are the key to verifying that ledgers flowing into the \Gls{xyo-network} are valid. A unique ID for source of data is not practical since it can be forged. Private Key signing is not practical since most parts of the XYO Network are difficult or impossible to physically secure, thus the ability for a bad actor to steal a Private Key is too feasible. To solve this, XYO Network uses \Glspl{transient-key-chain}. The benefit of this is that it is impossible to falsify the chain of origin for data. However, once the chain is broken, it is broken forever and cannot be continued, rendering it an island. 
 
-Every time a \gls{heuristic} ledger is handed off in XY Oracle Network, the receiver appends their own \Gls{proof-of-origin}, which makes the Proof of Origin Ball bigger and generates a Proof of Origin Intersection. Proof of Origin Chains and Proof of Origin Intersections are the primary indicators used by \Glspl{diviner} to verify validity of ledgers. The equation for a Ledger Reputation is effectively what percent of the XY Oracle Network was involved in making the Proof of Origin Ball associated with it. In theory, if 100 percent of the XY Oracle Network records are linked with Proof of Origin and then fully analyzed, the odds of it being valid is 100 percent. If 0 percent of XY Oracle Network records are available for analysis, then validity drops to 0 percent.
+Every time a \gls{heuristic} ledger is handed off in XYO Network, the receiver appends their own \Gls{proof-of-origin}, which makes the Proof of Origin Ball bigger and generates a Proof of Origin Intersection. Proof of Origin Chains and Proof of Origin Intersections are the primary indicators used by \Glspl{diviner} to verify validity of ledgers. The equation for a Ledger Reputation is effectively what percent of the XYO Network was involved in making the Proof of Origin Ball associated with it. In theory, if 100 percent of the XYO Network records are linked with Proof of Origin and then fully analyzed, the odds of it being valid is 100 percent. If 0 percent of XYO Network records are available for analysis, then validity drops to 0 percent.
 
 For added security, the Public Key for a Chain Link is not provided until the second entry for it is made available. This allows for the time interval between entries or other data to be added to the link.
 
@@ -277,10 +277,10 @@ An \Gls{origin-tree} is used to calculate the approximate validity of an answer.
 The asserted answer that has the highest: [Difficulty * (1 - percent error)], is the Best Answer. Using the Proof of Origin Tree, we can identify and prune impossible branches.
 
 \subsection {Reward for Diversity}
-The XY Oracle Network's natural defense against team play is that it holds higher regard for a ledger with a more diverse \Gls{proof-of-origin}. For example, multiple \glspl{heuristic} that have Proof of Origin from the same sources are penalized while multiple heuristics that have diverse Proof of Origin are rewarded. This forces an attacker to have a number of devices so large that is is not economically viable.
+The \Gls{xyo-network}'s natural defense against team play is that it holds higher regard for a ledger with a more diverse \Gls{proof-of-origin}. For example, multiple \glspl{heuristic} that have Proof of Origin from the same sources are penalized while multiple heuristics that have diverse Proof of Origin are rewarded. This forces an attacker to have a number of devices so large that is is not economically viable.
 
 \subsection {Privacy}
-XY Oracle Network stores all the Ledger Chains as public data in the \Glspl{archivist}. This creates the possibility of inferred data that is associated with people or things to be used nefariously.
+\Gls{xyo-network} stores all the Ledger Chains as public data in the \Glspl{archivist}. This creates the possibility of inferred data that is associated with people or things to be used nefariously.
 
 \begin{center}
 \line(1,0){50}
@@ -292,21 +292,21 @@ The development of decentralized trustless applications has been gaining substan
 \end{abstract}
 
 \subsection {Economy of the Token}
-The most fascinating notion at the center of cryptocurrency rests the concept of ``\gls{cryptoeconomics}.'' By implementing a Token or currency in one's platform, one can use cryptography to definitively prove past transactions. Then, through game theory and economics incorporated into the design of blockchain protocols, the system incentivizes actors to take the desired human behavior. Similar to how the Ethereum Platform's currency, Ether (ETH), is used as utility to compute and execute transactions, called ``\gls{gas},'' the XY Oracle Network has its own currency, called the XYO Token (XYO). Using XYO, the XY Oracle Network leverages cryptoeconomics to incentivize the desired behavior of providing accurate, reliable location \glspl{heuristic}. XYO Tokens can be thought of as``gas'' needed for one's smart contract to call out and travel through the real world in order to verify the XY-coordinate of a specified object.
+The most fascinating notion at the center of cryptocurrency rests the concept of ``\gls{cryptoeconomics}.'' By implementing a Token or currency in one's platform, one can use cryptography to definitively prove past transactions. Then, through game theory and economics incorporated into the design of blockchain protocols, the system incentivizes actors to take the desired human behavior. Similar to how the Ethereum Platform's currency, Ether (ETH), is used as utility to compute and execute transactions, called ``\gls{gas},'' the \Gls{xyo-network} has its own currency, called the XYO Token (XYO). Using XYO, the XYO Network leverages cryptoeconomics to incentivize the desired behavior of providing accurate, reliable location \glspl{heuristic}. XYO Tokens can be thought of as``gas'' needed for one's smart contract to call out and travel through the real world in order to verify the XY-coordinate of a specified object.
 
-The process works like this: A token holder queries the XY Oracle Network by asking a question, (e.g.``Where is my Amazon package with XYO Address 0xe0EbD...e34a''). The question gets sent into a queue, where it waits to be processed and answered. Similar to how in Ethereum, one sets their Gas Limit and Gas Price, one can set their own XYO Gas Limit and XYO Gas Price. The higher one sets their XYO Gas Limit and XYO Gas Price, the higher priority their question will have in the queue. The XY Component that answers the query is the \Gls{diviner}. The cost of a question (in XYO tokens) is determined by the amount of data required to provide an answer to the query.  The more data needed, the more expensive the question and higher the XYO Gas Price. Potential queries to the XY Oracle Network are infinite. For instance, a trucking and logistics company could query the XY Oracle Network to ask, ``What is the location of every single car in our fleet?''
+The process works like this: A token holder queries the XYO Network by asking a question, (e.g.``Where is my Amazon package with XYO Address 0xe0EbD...e34a''). The question gets sent into a queue, where it waits to be processed and answered. Similar to how in Ethereum, one sets their Gas Limit and Gas Price, one can set their own XYO Gas Limit and XYO Gas Price. The higher one sets their XYO Gas Limit and XYO Gas Price, the higher priority their question will have in the queue. The XY Component that answers the query is the \Gls{diviner}. The cost of a question (in XYO tokens) is determined by the amount of data required to provide an answer to the query.  The more data needed, the more expensive the question and higher the XYO Gas Price. Potential queries to the XYO Network are infinite. For instance, a trucking and logistics company could query the XYO Network to ask, ``What is the location of every single car in our fleet?''
 
-Once the XYO Token holder queries the XY Oracle Network and pays the requested gas, the Diviner calls out to the relevant \Gls{archivist} to retrieve the pertinent data needed to answer the query. The data returned is derived from the \Glspl{bridge}, who originally gathered the data from the \Glspl{sentinel}. Sentinels are essentially devices or signals that verify the location of objects. These include devices like Bluetooth trackers, GPS trackers, geo-location tracking built into IoT devices, satellite tracking technology, QR-code scanners, RFID scanning and many others. XY Findables has pioneered and launched its consumer business, XY Find It, which has allowed it to test and process real-world location heuristics. All efforts of XY Find It have served to help significantly in designing the XY Oracle Network Blockchain Protocol.
+Once the XYO Token holder queries the XYO Network and pays the requested gas, the Diviner calls out to the relevant \Gls{archivist} to retrieve the pertinent data needed to answer the query. The data returned is derived from the \Glspl{bridge}, who originally gathered the data from the \Glspl{sentinel}. Sentinels are essentially devices or signals that verify the location of objects. These include devices like Bluetooth trackers, GPS trackers, geo-location tracking built into IoT devices, satellite tracking technology, QR-code scanners, RFID scanning and many others. XY Findables has pioneered and launched its consumer business, XY Find It, which has allowed it to test and process real-world location heuristics. All efforts of XY Find It have served to help significantly in designing the XYO Network Blockchain Protocol.
 
-If the data provided by a Sentinel device (i.e. XY Find It Beacon) is used to answer a query, then all four Components involved in the transaction receive a part of the XYO Gas paid by the token holder: the Diviner (who searched for the answer), the Archiver (who stored the data), the Bridge (who transmitted the data) and the Sentinel (who recorded the location data)receive a part of the XYO Gas paid by the token holder. The distribution of the gas between the 4 components of the XY Oracle Network always happens in the same proportion.  Within each component, gas gets distributed evenly.
+If the data provided by a Sentinel device (i.e. XY Find It Beacon) is used to answer a query, then all four Components involved in the transaction receive a part of the XYO Gas paid by the token holder: the Diviner (who searched for the answer), the Archiver (who stored the data), the Bridge (who transmitted the data) and the Sentinel (who recorded the location data)receive a part of the XYO Gas paid by the token holder. The distribution of the gas between the 4 components of the XYO Network always happens in the same proportion.  Within each component, gas gets distributed evenly.
 
 \subsection {Beyond XY Find It Bluetooth \& GPS Tracking Sentinels}
-The XY Oracle Network is engaging with businesses to expand its network of \Glspl{sentinel} beyond its own network of XY Find It beacons, which total to over 800,000 globally as of January 2018. A variety of devices can act as Sentinels. Generally, the greater the Sentinel cardinality in the XY Oracle Network, the more reliable the network. To broaden and strengthen the XY Oracle Network, we are currently engaging mobile app companies, IoT companies and hardware companies to add Sentinels to the XY Oracle Network. The XY Oracle Network is providing solutions to a plethora of industries including eCommerce, government, automotive, healthcare, pharmaceutical, construction, insurance, utilities, oil \& gas, supply chain \& logistics, as well as businesses specializing in goods \& services reviews and traditional brick \& mortar retail. XY is working with a vast array of companies in order to create strategic partnerships that leverage \gls{cryptoeconomics} and economic incentives that are beneficial to both the Partner and end-user (which ultimately provide a cheaper product or service for the consumer).
+The \Gls{xyo-network} is engaging with businesses to expand its network of \Glspl{sentinel} beyond its own network of XY Find It beacons, which total to over 800,000 globally as of January 2018. A variety of devices can act as Sentinels. Generally, the greater the Sentinel cardinality in the XYO Network, the more reliable the network. To broaden and strengthen the XYO Network, we are currently engaging mobile app companies, IoT companies and hardware companies to add Sentinels to the XYO Network. The XYO Network is providing solutions to a plethora of industries including eCommerce, government, automotive, healthcare, pharmaceutical, construction, insurance, utilities, oil \& gas, supply chain \& logistics, as well as businesses specializing in goods \& services reviews and traditional brick \& mortar retail. XY is working with a vast array of companies in order to create strategic partnerships that leverage \gls{cryptoeconomics} and economic incentives that are beneficial to both the Partner and end-user (which ultimately provide a cheaper product or service for the consumer).
 
 \subsection {Token Generation Event - Main Sale}
-The amount of XYO Tokens is finite and capped at the amount reached after the Token Generation Event Main Sale. When companies or individuals transmit a question to the XY Oracle Network, they must be in possession of XYO Tokens to pay for the answer. Increased company participation in the network will call for a higher volume of XYO Tokens purchased to fulfill the increased query requests. Though the XY Oracle Network economy would grow, the token amount is finite. After the conclusion of the Token Generation Event Main Sale, XY will aggressively pursue exchange listings at the largest and most liquid token exchanges to facilitate the XY Oracle Network economy.
+The amount of XYO Tokens is finite and capped at the amount reached after the Token Generation Event Main Sale. When companies or individuals transmit a question to the \Gls{xyo-network}, they must be in possession of XYO Tokens to pay for the answer. Increased company participation in the network will call for a higher volume of XYO Tokens purchased to fulfill the increased query requests. Though the XYO Network economy would grow, the token amount is finite. After the conclusion of the Token Generation Event Main Sale, XY will aggressively pursue exchange listings at the largest and most liquid token exchanges to facilitate the XYO Network economy.
 
-Please keep in mind that XYO Tokens do not represent equity. They are utility tokens used in blockchain-based \glspl{smart-contract} in order to access and transact with the XY Oracle Network. If you are interested in buying equity in XY Findables, the company that has developed the XY Oracle Network and operates both its blockchain business and its consumer Bluetooth and GPS tracking business (XY Find It), please refer to our SEC qualified and regulated Reg A+ equity sale.
+Please keep in mind that XYO Tokens do not represent equity. They are utility tokens used in blockchain-based \glspl{smart-contract} in order to access and transact with the XYO Network. If you are interested in buying equity in XY Findables, the company that has developed the XYO Network and operates both its blockchain business and its consumer Bluetooth and GPS tracking business (XY Find It), please refer to our SEC qualified and regulated Reg A+ equity sale.
 
 
 \subsection {XYO Token Specifications}
@@ -314,7 +314,7 @@ Please keep in mind that XYO Tokens do not represent equity. They are utility to
 \item Smart contract platform: Blockchain Ethereum
 \item Contract Type: ERC-20
 \item Token: XYO
-\item Token Name: XY Oracle Network Utility Token
+\item Token Name: \Gls{xyo-network} Utility Token
 \item Token Address: 0x55296f69f40ea6d20e478533c15a6b08b654e758
 \item Add the token to your ERC-20 compatible wallet (e.g. myEtherWallet, MetaMask, etc.) to view your XYO balance.
 \item Total issuance: Finite and capped at the amount reached after the Token Main Sale
@@ -323,7 +323,7 @@ Please keep in mind that XYO Tokens do not represent equity. They are utility to
 \end{itemize}
 
 \subsection {Token Allocation}
-For every token sold to the public, one token will be generated for the company XY Findables in order to ensure the development of the XY Oracle Network platform and incentivize the company to grow the value of its network using traditional economics and \gls{cryptoeconomics}.
+For every token sold to the public, one token will be generated for the company XY Findables in order to ensure the development of the \Gls{xyo-network} platform and incentivize the company to grow the value of its network using traditional economics and \gls{cryptoeconomics}.
 Initially, 3.2 billion tokens will be pre-generated for the company and team. See Fund Allocation (Figure 1.) for details.
 \clearpage
 
@@ -428,7 +428,7 @@ Given a series of data packets that are signed in sequential pairs with temporar
 \clearpage
 
 \section {XY Team}
-XY's team is comprised of seasoned engineers, business development professionals and marketing experts. Arie Trouw solely founded XY Findables in 2012. Scott Scheper and Markus Levin joined as co-founders of the blockchain initiative in 2017 to assist in building the XY Oracle Network.
+XY's team is comprised of seasoned engineers, business development professionals and marketing experts. Arie Trouw solely founded XY Findables in 2012. Scott Scheper and Markus Levin joined as co-founders of the blockchain initiative in 2017 to assist in building the \Gls{xyo-network}.
 
 \begin {framed}
 \begin {center}
@@ -531,7 +531,7 @@ He received his Bachelor of Science in Electrical Engineering from Northrop Univ
 \end{center}
 
 \section {Advisors}
-The XY Oracle Network is fortunate to count a varied group of advisors to its roster of experts.
+The \Gls{xyo-network} is fortunate to count a varied group of advisors to its roster of experts.
 
 \begin{center}
 \line(1,0){50}
