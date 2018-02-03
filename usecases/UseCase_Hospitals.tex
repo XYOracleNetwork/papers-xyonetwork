@@ -12,6 +12,14 @@
 \usepackage{framed} % Source code formatting and highlighting
 \usepackage{appendix} % Source code formatting and highlighting
 \usepackage[automake]{glossaries}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=blue,
+}
 
 \usepackage[letterpaper, portrait, margin=1.5in]{geometry}
 
@@ -98,7 +106,7 @@
 \newglossaryentry{oracle}
 {
     name={oracle},
-    description={A part of a DApp (decentralized application) system that is responsible for resolving a digital contract by providing an answer with accuracy and certainty. The term ``oracle'' originates from cryptography where it signifies a truly random source (e.g. of a random number). This provides the necessary gate from a crypto equation to the world beyond. Oracles feed smart contracts information from beyond the chain (the real world, or off-chain). Oracles are interfaces from the digital world to the real world. As a morbid example, consider a contract for a Last Will \& Testament. A Will''s terms are executed upon confirmation that the testator is deceased. An oracle service could be built to trigger a Will by compiling and aggregating relevant data from official sources. The oracle could then be used as a feed or end-point for a smart contract to call out to in order to check whether or not the person is deceased}
+    description={A part of a DApp (decentralized application) system that is responsible for resolving a digital contract by providing an answer with accuracy and certainty. The term ``oracle'' originates from cryptography where it signifies a truly random source (e.g. of a random number). This provides the necessary gate from a crypto equation to the world beyond. Oracles feed smart contracts information from beyond the chain (the real world, or off-chain). Oracles are interfaces from the digital world to the real world. As a morbid example, consider a contract for a Last Will \& Testament. A Will's terms are executed upon confirmation that the testator is deceased. An oracle service could be built to trigger a Will by compiling and aggregating relevant data from official sources. The oracle could then be used as a feed or end-point for a smart contract to call out to in order to check whether or not the person is deceased}
 }
 
 \newglossaryentry{heuristic}
@@ -152,7 +160,7 @@
 
 \makeglossary
 
-\title {XYO Network in eCommerce}
+\title {XYO Network in Hospitals}
 \author{Johnny Kolasinski, Christine Sako}
 \date{January 2018}
 
@@ -165,7 +173,7 @@
 \end{center}
 
 \begin{abstract}
-The \Gls{xy-oracle-network} incentivizes the reporting of locations and archiving of ledgers by awarding XYO Tokens to nodes within the web. For example, when a last-mile courier like a UPS driver encounters an XYO Network node on their route, the node will record their XYO Network ledger to be archived. Leveraging \gls{cryptoeconomics} in this way takes advantage of a key feature of blockchain technology - it's a trustless, decentralized system. This means it can offer third-party verification and a degree of reliability that current tracking systems simply can't provide. 
+Hospitals are among the most demanding and perilous establishments in the medical field. From medical equipment to identification of both patient and staff, a single misplacement or mistake could mean the difference between life and death. The \Gls{xy-oracle-network} can provide trustless, verified location reporting that is critical in such a sensitive environment. The feasibility of error reduction and increased efficiency in hospitals is made possible with the \Gls{xy-oracle-network}'s unique blockchain technology. The implications could reduce prescription dosage errors, prevent unnecessary procedures, and ultimately, save lives.
 
 \end{abstract}
 
@@ -174,16 +182,24 @@ The \Gls{xy-oracle-network} incentivizes the reporting of locations and archivin
 \end{center}
 
 \section {Problem}
-According to a recent study released by Comcast, more than 30\% of Americans have had a package stolen from their porch or doorstep. As the market share of eCommerce continues to grow, this problem will only become more prevalent. Megasites like Amazon are experimenting with different solutions to offer confirmed secure delivery as a premium service to their customers. 
+Medical errors are the third leading cause of death in the United States, according to \href{https://www.usnews.com/news/articles/2016-05-03/medical-errors-are-third-leading-cause-of-death-in-the-us}{a study released by the Johns Hopkins School of Medicine}. Many of these preventable deaths are a result of operational or record-keeping errors, including adverse drug interactions, improper medical records, and even unnecessary surgeries. The study?s author, Dr. Martin Makary, said in a letter to the Centers for Disease Control and Prevention that ``it is time for the country to invest in medical quality and patient safety proportional to the mortality burden it bears. This would [include] research in technology that reduces harmful and unwarranted variation in medical care.''
+
+\begin{displayquote}\textit{``It is time for the country to invest in medical quality and patient safety proportional to the mortality burden it bears. This would [include] research in technology that reduces harmful and unwarranted variation in medical care.''}
+
+\vspace{2mm}
+---Dr. Martin Makary
+\end{displayquote}
+
 
 \section {Solution}
-By utilizing the \Gls{xyo-network} and XYO Tokens, companies like Amazon and UPS can offer, as a premium service, an independently confirmed ledger to track every step of a shipment's progress, starting at the fulfillment center and ending with the package's secure delivery within the customer's home. As a trustless and decentralized system, the XYO Network provides independent confirmation not only of a package's delivery, but of its entire shipping history. This also allows a retailer or eCommerce site to offer payment on delivery, utilizing an Ethereum smart contract to protect the merchant from fraud or loss.
+By tying the \Gls{xyo-network} into Hospitals' operational frameworks that are already in place, care providers can significantly reduce failures in communication and record keeping that result in patient injury and death. Utilizing the XYO Network and XYO Tokens can provide a trustless, decentralized, and independently verifiable record of all patient interactions with any staff as well as a log of relevant patient data such as the patient?s vitals, treatment details, and test results for the duration of their stay.
 
 \section {How it Works}
-When a customer finalizes an order, an Ethereum \gls{smart-contract} is created which will release payment to the merchant upon successful delivery of the purchased product. The shipment will include an \Gls{xyo-network} \Gls{sentinel}, a low-cost electronic device that records its interactions with other devices on the XYO Network on its blockchain ledger. Other XYO Network devices will likewise record their interactions with packages being shipped. Every one of these interactions will be independently verifiable, asserting a web of locational certainty that stretches all the way back to the shipment's point of origin. When the shipment reaches its destination, as confirmed by its interaction with XYO Network devices within the buyer's home, the smart contract will be fulfilled, and payment will be released. Should there be a dispute, the ledger will provide a history that can confirm the delivery of the shipment or show where it went off track.
+The \Gls{xyo-network} is a web of devices that record and archive \gls{heuristic} data using a blockchain ledger. Whenever a device on the XYO Network interacts with another XY device, it logs this interaction. By reviewing this ledger of interactions and the additional data it  provides, it?s possible to verify with a high degree of \gls{certainty} that a specific interaction happened at a specific time in a specific location.
 
-The terminal point of the transaction - the point where the package is delivered and payment is released - will be determined at the time the order is placed. Amazon has experimented with multiple secure delivery systems, including lockers in public places like convenience stores and even electronic locks that give their delivery team access to customers' homes. XYO Network devices within these secure locations will confirm delivery. In an Amazon locker, the shipped package will interact not just with its locker, but with XYO Network devices in other lockers and the customers that use them. In the customer's home, the XYO Network nodes could include the customer's phone, IoT devices, and even the Amazon Echo that was used to place the order.
+For example, imagine a patient, John Doe, who is admitted to the E.R. John is given an identifying bracelet that is also an \Gls{xyo-network} \Gls{sentinel}, which keeps a record of any XY devices John interacts with. The monitor that reads John?s vital signs is also an XY Sentinel. It logs John?s vitals as heuristic data, and the communication between the two devices eliminates the potential for human error in record keeping. The monitor also serves as an XYO Network \Gls{bridge}, reporting and archiving the blockchain ledgers of any XY Sentinels it interacts with.
 
+When John is treated by a doctor or nurse, these interactions are recorded on John?s ledger, the monitor?s ledger, and the ledger of an XY \Gls{sentinel} embedded in the staff member?s hospital ID. The XYO Network could even keep a log of medications John receives, and because a Sentinel could be linked to the medication itself, it could provide confirmation that the correct dosage of the correct medication was administered, confirming the accuracy of John?s medical record.
 
 \begin{center}
 \line(1,0){50}

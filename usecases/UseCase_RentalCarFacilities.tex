@@ -12,6 +12,14 @@
 \usepackage{framed} % Source code formatting and highlighting
 \usepackage{appendix} % Source code formatting and highlighting
 \usepackage[automake]{glossaries}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=blue,
+}
 
 \usepackage[letterpaper, portrait, margin=1.5in]{geometry}
 
@@ -98,7 +106,7 @@
 \newglossaryentry{oracle}
 {
     name={oracle},
-    description={A part of a DApp (decentralized application) system that is responsible for resolving a digital contract by providing an answer with accuracy and certainty. The term ``oracle'' originates from cryptography where it signifies a truly random source (e.g. of a random number). This provides the necessary gate from a crypto equation to the world beyond. Oracles feed smart contracts information from beyond the chain (the real world, or off-chain). Oracles are interfaces from the digital world to the real world. As a morbid example, consider a contract for a Last Will \& Testament. A Will''s terms are executed upon confirmation that the testator is deceased. An oracle service could be built to trigger a Will by compiling and aggregating relevant data from official sources. The oracle could then be used as a feed or end-point for a smart contract to call out to in order to check whether or not the person is deceased}
+    description={A part of a DApp (decentralized application) system that is responsible for resolving a digital contract by providing an answer with accuracy and certainty. The term ``oracle'' originates from cryptography where it signifies a truly random source (e.g. of a random number). This provides the necessary gate from a crypto equation to the world beyond. Oracles feed smart contracts information from beyond the chain (the real world, or off-chain). Oracles are interfaces from the digital world to the real world. As a morbid example, consider a contract for a Last Will \& Testament. A Will's terms are executed upon confirmation that the testator is deceased. An oracle service could be built to trigger a Will by compiling and aggregating relevant data from official sources. The oracle could then be used as a feed or end-point for a smart contract to call out to in order to check whether or not the person is deceased}
 }
 
 \newglossaryentry{heuristic}
@@ -152,7 +160,7 @@
 
 \makeglossary
 
-\title {XYO Network in eCommerce}
+\title {XYO Network in Rental Car Facilities}
 \author{Johnny Kolasinski, Christine Sako}
 \date{January 2018}
 
@@ -165,7 +173,7 @@
 \end{center}
 
 \begin{abstract}
-The \Gls{xy-oracle-network} incentivizes the reporting of locations and archiving of ledgers by awarding XYO Tokens to nodes within the web. For example, when a last-mile courier like a UPS driver encounters an XYO Network node on their route, the node will record their XYO Network ledger to be archived. Leveraging \gls{cryptoeconomics} in this way takes advantage of a key feature of blockchain technology - it's a trustless, decentralized system. This means it can offer third-party verification and a degree of reliability that current tracking systems simply can't provide. 
+There are many businesses whose main source of revenue comes from offering the rental of goods. Being able to track the location of rented goods is especially important in order to reduce replacement costs of lost or stolen goods. The \Gls{xy-oracle-network} can provide independently verified location data that can help minimize loss of goods and ultimately save the rental industry millions of dollars each year. The integration of the \Gls{xyo-network}'s unique blockchain technology also increases rental companies' overall efficiency, as time spent on loss-procedures is reduced. Utilizing the \Gls{xyo-network}'s technology to improve performance and proficiency have long-term benefits which include increased customer satisfaction, higher business volume, and larger profits.
 
 \end{abstract}
 
@@ -174,16 +182,14 @@ The \Gls{xy-oracle-network} incentivizes the reporting of locations and archivin
 \end{center}
 
 \section {Problem}
-According to a recent study released by Comcast, more than 30\% of Americans have had a package stolen from their porch or doorstep. As the market share of eCommerce continues to grow, this problem will only become more prevalent. Megasites like Amazon are experimenting with different solutions to offer confirmed secure delivery as a premium service to their customers. 
+The number one problem that rental car agencies face are logistical ones. Simple events, such as the customer losing their keys, results in millions upon millions of dollars in lost opportunity cost for car rental companies each year. And the issue continues to get worse; not better. The most common issue rental car companies have revolves around loss of rental vehicle keys. Most often, this is because the customer fails to return the keys when they return the car. Each misplaced key costs the company hundreds of dollars, not only in replacement costs, but in lost revenue. 
+
 
 \section {Solution}
-By utilizing the \Gls{xyo-network} and XYO Tokens, companies like Amazon and UPS can offer, as a premium service, an independently confirmed ledger to track every step of a shipment's progress, starting at the fulfillment center and ending with the package's secure delivery within the customer's home. As a trustless and decentralized system, the XYO Network provides independent confirmation not only of a package's delivery, but of its entire shipping history. This also allows a retailer or eCommerce site to offer payment on delivery, utilizing an Ethereum smart contract to protect the merchant from fraud or loss.
+XY has already implemented a pilot program with one of the largest US rental car agencies to help cut down on the number of keys that aren?t returned at major airports. By expanding the program to make use of the \Gls{xyo-network}, the rental car company and its customers can reduce the number of lost keys. In the event of a dispute, both the company and the customer will have access to an independently verifiable, trustless location ledger that has logged the location of the keys during and after the time of the return.
 
 \section {How it Works}
-When a customer finalizes an order, an Ethereum \gls{smart-contract} is created which will release payment to the merchant upon successful delivery of the purchased product. The shipment will include an \Gls{xyo-network} \Gls{sentinel}, a low-cost electronic device that records its interactions with other devices on the XYO Network on its blockchain ledger. Other XYO Network devices will likewise record their interactions with packages being shipped. Every one of these interactions will be independently verifiable, asserting a web of locational certainty that stretches all the way back to the shipment's point of origin. When the shipment reaches its destination, as confirmed by its interaction with XYO Network devices within the buyer's home, the smart contract will be fulfilled, and payment will be released. Should there be a dispute, the ledger will provide a history that can confirm the delivery of the shipment or show where it went off track.
-
-The terminal point of the transaction - the point where the package is delivered and payment is released - will be determined at the time the order is placed. Amazon has experimented with multiple secure delivery systems, including lockers in public places like convenience stores and even electronic locks that give their delivery team access to customers' homes. XYO Network devices within these secure locations will confirm delivery. In an Amazon locker, the shipped package will interact not just with its locker, but with XYO Network devices in other lockers and the customers that use them. In the customer's home, the XYO Network nodes could include the customer's phone, IoT devices, and even the Amazon Echo that was used to place the order.
-
+The \Gls{xyo-network} has already experimented with the implementation of their location network at airports in order to prevent customers from accidentally leaving without returning the keys to their rental car. By adding XYO Network \Glspl{bridge} to the system, rental car companies can have trustless, independent confirmation that keys are returned.  An accessible ledger will not only help prevent loss, but help locate lost keys more efficiently in the case of misplacement. It's easy to imagine the larger scope of such a technology. The instillation of XYO Network \Glspl{sentinel} and Bridges in vehicles also serves as an excellent fleet management tool.
 
 \begin{center}
 \line(1,0){50}
