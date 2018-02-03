@@ -7,3 +7,6 @@
 *.pdf
 *.synctex(busy)
 *.toc
+*.gz
+*.glg
+*.gls
