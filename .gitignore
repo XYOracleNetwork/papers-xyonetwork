@@ -10,3 +10,8 @@
 *.gz
 *.glg
 *.gls
+whitepaper/original/.DS_Store
+.DS_Store
+usecases/.DS_Store
+whitepaper/.DS_Store
+whitepaper/original/.DS_Store
