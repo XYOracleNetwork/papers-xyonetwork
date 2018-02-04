@@ -208,6 +208,36 @@ parent={},%
 %
 }%
 }%
+\ifglsentryexists{proof-of-location}{}%
+{%
+\gls@defglossaryentry{proof-of-location}%
+{%
+name={Proof of Location},%
+sort={Proof of Location},%
+type={main},%
+first={Proof of Location},%
+firstplural={Proof of Locations},%
+text={Proof of Location},%
+plural={Proof of Locations},%
+description={Proof of Work is a piece of data that satisfies certain requirements, is difficult to produce (i.e. costly, time-consuming), but easy for others to verify. Producing a Proof of Work can be a random process with a low probability of generation so that rigorous trial and error is required on average before a valid Proof of Work is created},%
+descriptionplural={Proof of Work is a piece of data that satisfies certain requirements, is difficult to produce (i.e. costly, time-consuming), but easy for others to verify. Producing a Proof of Work can be a random process with a low probability of generation so that rigorous trial and error is required on average before a valid Proof of Work is created},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
 \ifglsentryexists{bound-witness}{}%
 {%
 \gls@defglossaryentry{bound-witness}%
