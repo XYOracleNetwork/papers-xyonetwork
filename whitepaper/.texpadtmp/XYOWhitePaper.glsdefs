@@ -298,19 +298,19 @@ parent={},%
 %
 }%
 }%
-\ifglsentryexists{XYO}{}%
+\ifglsentryexists{xyo-network}{}%
 {%
-\gls@defglossaryentry{XYO}%
+\gls@defglossaryentry{xyo-network}%
 {%
-name={XYO},%
-sort={XYO},%
+name={XYO Network},%
+sort={XYO Network},%
 type={main},%
-first={XYO},%
-firstplural={XYOs},%
-text={XYO},%
-plural={XYOs},%
-description={XYO stands for "XY Oracle Network." It is comprised of the entire system of XYO enabled components/nodes that include Sentinels, Bridges, Archivists, and Diviners. The primary function of the XYO Network is to act as a portal by which digital smart contracts can be executed through real world geo-location confirmations},%
-descriptionplural={XYO stands for "XY Oracle Network." It is comprised of the entire system of XYO enabled components/nodes that include Sentinels, Bridges, Archivists, and Diviners. The primary function of the XYO Network is to act as a portal by which digital smart contracts can be executed through real world geo-location confirmations},%
+first={XYO Network},%
+firstplural={XYO Networks},%
+text={XYO Network},%
+plural={XYO Networks},%
+description={XYO Network stands for "XY Oracle Network." It is comprised of the entire system of XYO enabled components/nodes that include Sentinels, Bridges, Archivists, and Diviners. The primary function of the XYO Network is to act as a portal by which digital smart contracts can be executed through real world geo-location confirmations},%
+descriptionplural={XYO Network stands for "XY Oracle Network." It is comprised of the entire system of XYO enabled components/nodes that include Sentinels, Bridges, Archivists, and Diviners. The primary function of the XYO Network is to act as a portal by which digital smart contracts can be executed through real world geo-location confirmations},%
 symbol={\relax },%
 symbolplural={\relax },%
 user1={},%
