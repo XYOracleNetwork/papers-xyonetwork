@@ -160,7 +160,7 @@
 
 \makeglossary
 
-\title {XYO Network in Airports}
+\title {XYO Network in Insurance}
 \author{Johnny Kolasinski, Christine Sako}
 \date{January 2018}
 
@@ -173,7 +173,7 @@
 \end{center}
 
 \begin{abstract}
-One of the largest fears an airline traveler faces is having their luggage lost or stolen. Accounting for all baggage moving through TSA checkpoints, gates, and airplanes is important not only for travelers' piece of mind, but to the overall safety and security of airports as a whole. The \Gls{xy-oracle-network} can provide independently verified location data that can help minimize luggage mishandling and can ultimately save travelers and airport staff time and money spent trying to track down missing baggage. Due to its decentralized nature, the integration of the \Gls{xyo-network}'s unique blockchain technology also allows different airlines to access the same data without needing to implement of a unifying system. Usage of the XYO Network's technology to improve efficiency and safety for airlines has long-term benefits which include increased cost reduction, customer loyalty, and better business reputation.
+Loss and theft protection is a major feature that many insurance companies offer. From mobile phones to sports cars, owned assets that roam around on a regular basis are prime candidates to be covered under this type of insurance. The \Gls{xy-oracle-network} can report an insured item's location by providing independently verified and trustless location data. The ability to recover an item that has been reported as lost or stolen satisfies the insured party, and the ability to locate such an item in the case of a falsely reported claim protects the insurer from fraud.  The \Gls{xyo-network}'s decentralized blockchain technology thusly gives both the insurer and the insuree access to the same verified data and ultimately establishes unprecedented accountability for both parties.
 
 \end{abstract}
 
@@ -182,16 +182,17 @@ One of the largest fears an airline traveler faces is having their luggage lost 
 \end{center}
 
 \section {Problem}
-Lost and mishandled luggage costed airlines \$2.1 billion dollars in 2016, according to \href{http://www.foxnews.com/travel/2017/05/05/this-is-how-much-luggage-airlines-lost-last-year.html}{a study by SITA}. While systems are improving, the complexities of air travel still result in millions of angry passengers with lost bags each year. The baggage-handling and tracking systems currently used by airlines is not only error-prone, but also lacks transparency and the proper infrastructure needed to track and verify the location of their passengers' items.
+Insurance for vehicles, modular homes, and other high-value, high-mobility objects can reimburse for theft, but can?t inherently assist in locating the original good. The insurance industry is also susceptible to fraud, especially in the case of insured items that are highly mobile.
 
 
 \section {Solution}
-The \Gls{xyo-network} has implemented a decentralized, trustless system for tracking and locating luggage. Its decentralized nature even allows airlines to utilize each other?s networks without compromising the airlines? network security or needing to coordinate system updates - this means that if you?re at the United desk in Dallas, but your bag is at the Delta desk at SFO, the bag can still be instantly located by accessing the \Gls{xyo-network} Ledger. Should a bag be permanently lost and a passenger file a claim with the airline, the decentralized and trustless nature of the blockchain ledger allows both parties (the airline and the passenger) to independently verify who had possession of it last.
+XY is already working with an insurance company that covers high value, high mobility goods to help them process claims and recover insured goods. Using the \Gls{xy-oracle-network}, a decentralized and trustless location-based blockchain ledger, the company and its customers have access to an independently verifiable location history in the event of a claim. Additionally, police investigators can access this location history in their attempt to recover stolen goods.
 
 \section {How it Works}
-The XY Oracle Network makes use of affordable hardware devices called ``\Glspl{sentinel},'' which  record \gls{heuristic} data like location, temperature, motion and other signals. Each of these Sentinel also share and record the activity of other nearby Sentinel creating a blockchain (decentralized ledger). For example, every bag in a cargo hold would be able to communicate with other bags in the hold, sharing information like when they were checked in, when they were moved, and what baggage handlers or TSA staff handled them. IoT devices called \Glspl{bridge} hand off all of this heuristic data to decentralized nodes. These nodes will be rewarded with XYO Tokens for relaying and archiving the information. This way, a cryptoeconomics-based incentive aggregates within the system to provide accurate and trustless historical data.
+Each insured good is equipped with an \Gls{xyo-network} device that serves as both a ?\Gls{sentinel}? and a ?\Gls{bridge}.? Sentinels record \gls{heuristic} data like location, temperature, speed, and other situationally appropriate information. They also record their connection with other nearby Sentinels along with the history of those Sentinels, building a distributed ledger or blockchain. Bridges are IoT devices that report data received from Sentinels to decentralized nodes, creating a decentralized ledger (blockchain). The interaction history between Sentinels and Bridges, combined with the heuristic data that is recorded, allows for a high degree of both \gls{accuracy} and \gls{certainty} for each individual Sentinel?s record. Nodes which report and archive highly accurate and certain data will be rewarded with XYO Tokens, which provides a \gls{cryptoeconomics}-based incentive to expand and grow the \Gls{xyo-network}.
 
-The decentralized nature of the \Gls{xyo-network} means that the tracking systems put in place by the different airlines can support each other without the need for the airlines themselves to implement a unified baggage handling system. As in the example above, a Delta-owned \Gls{bridge} will be able to report the history reported by a United-owned \Gls{sentinel}, and vice versa. Since the location and tracking information is communicated via a decentralized ledger, there will be no need for Delta and United (nor any other airline) to waste resources building out systems that need to communicate directly.
+When a claim is made on an insured item that is connected to the XYO Network, the owner and the company can access its Sentinel?s historical data on the blockchain. The decentralized and trustless nature of the blockchain helps prevent insurance fraud, as data archived in the blockchain cannot be altered and can be accessed by either the company or the insured party. The installed XYO Network Sentinel/Bridge will also continue actively reporting, aiding in the recovery of the insured item. Unlike systems like the Lojack, XYO Network devices record location history and can be accessed by the devices? owners, not just law enforcement.
+
 
 \begin{center}
 \line(1,0){50}
