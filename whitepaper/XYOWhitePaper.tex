@@ -12,11 +12,8 @@
 \usepackage{framed} % Source code formatting and highlighting
 \usepackage{appendix} % Source code formatting and highlighting
 \usepackage{csquotes} % Pretty quotes
-
 \usepackage[automake]{glossaries}
 \usepackage[letterpaper, portrait, margin=1.5in]{geometry}
-
-
 
 \graphicspath{ {images/} }
 
@@ -49,7 +46,7 @@
 
 %Abstract Section
 \begin{abstract}
-Location data sits quietly at the cornerstone of every part of our daily lives. Its use has increased dramatically over the last decade and now it is so ubiquitously depended on that its disappearance would be catastrophic. The reliance on location data will increase even more in the future. Tomorrow's reliance on location data will, without question, eclipse our current levels of reliance with the emergence of self-driving vehicles, package delivering drones and human-carrying Hyperloops. With the emergence of these location-reliant technologies, our lives will be in the hands of machines, and our safety will sit in direct proportion to the accuracy and validity of the location the systems contain. Securing and creating a trustless source of location information will be crucial to transitioning to the world of tomorrow.
+Location data sits quietly at the cornerstone of every part of our daily lives. Its use has increased dramatically over the last decade and now it is so ubiquitously depended on that its disappearance would be catastrophic. The reliance on location data will increase even more in the future. Tomorrow's reliance on location data will, without question, eclipse our current levels of reliance with the emergence of self-driving vehicles, package delivering drones and smart cities that develop themselves. With the emergence of these location-reliant technologies, our lives will be in the hands of machines, and our safety will sit in direct proportion to the accuracy and validity of the location the systems contain. Securing and creating a trustless source of location information will be crucial to transitioning to the world of tomorrow.
 
 Location data has, for the most part, been provided by centralized sources of truth. History shows that such sources are susceptible to interference, vulnerable to attack and, with human-carrying technologies, can soon be fatal. Blockchain technologies, with their decentralized foundations, play a critical role in creating location-secure systems necessary for these technologies. Decentralizing location determination using a network of interconnected devices allows for a significant paradigm change in how we can source location data. Using blockchain technology to record these location transactions makes the system secure, transparent, and reliable. 
 
@@ -71,8 +68,6 @@ On January 3, 2009, the world changed forever. The Bitcoin network was born afte
 Yet, in 2013 a new cryptographic technology was introduced to the world which caused even more excitement: a platform called \textit{Ethereum}. Ethereum introduced a Turing-complete programming language into blockchain technology. It's somewhat helpful to think of Ethereum like this: Imagine Bitcoin as a payment app on your phone. Think of Ethereum as the phone's entire operating system which enables one to create apps that can do virtually anything.
 A core component of Ethereum is a concept called a \gls{smart-contract}, which essentially collapses a payment and an agreement into the same thing. Imagine if a contract wasn't written on a piece of paper and signed by hand, but instead was written in computer code and executed when certain conditions were met. Smart contracts enable the world to make a leap from "wet code" on pieces of paper, to "dry code" that get deterministically executed by Ethereum computer nodes that are decentralized and are running around the world.
 
-
-%TODO: site ludic fallacy / define it in foot note
 Let us turn to games, but in part to avoid \textit{Ludic fallacy} we will not look to games of cards or dice, but instead look to the world of sports wagering, which serves as a nice illustration of how smart contracts can be deployed. Take for instance, the following wager between two agents: \textit{Agent A} wishes to wager with \textit{Agent B} that \textit{Team A} will beat \textit{Team B} in a game. Currently, one is given no other choice but to employ a trusted third party to intermediate the transaction (in exchange for a fee). This is precisely how the eCommerce world worked before the introduction of Bitcoin. With the introduction of Ethereum, one can now program a smart contract wherein funds from the agent who bet on the losing team, are deposited automatically to the agent who bet on the winning team. One can do this by developing a smart contract to deterministically execute at a timestamp in the future (\texttt{block.timestamp}) after the game concludes. In order to determine whether \textit{Team A} or \textit{Team B} won, the contract must call out to a data source (such as a \textit{website} that lists the outcome of the game). In Ethereum, this external data source is known as an \gls{oracle}. The oracle sits as the weak point in the system, as external data sources can be hacked (for instance if \textit{Agent A} secretly works for the single data source that the smart contract relied upon, thus having access to tamper with the results, he or she could manipulate the data source in order to win the game, even if the results were different in reality. This makes sense when a party is financially incentivized to do so, which is why cryptoeconomics are typically utilized in cryptographic platforms. But this example does not rely on cryptoeconomics for security; rather, to protect against this weak point, a concept called \textit{consensus} is deployed for oracles, wherein the smart contract does not rely on one data source, but multiple sources of data, all of which must agree and achieve consensus on the winner in order for the contract to execute. Creating such a contract enables two parties to transact in a peer-to-peer manner with their agreement and without having to use a trusted third party. It is astonishingly simple, yet up until this point in history, this was not possible. Indeed, the implications of this are profound, and though not quite noticeable today, decentralized deterministic contracts will be omnipresent in the world of tomorrow.
 
 Now that smart contracts have been illustrated, it is important to note another component that Ethereum introduced to the world: decentralized applications, referred to as \textit{DApps}. DApps enable developers to create applications that do not rely on centralized sources. They run exactly as programmed without any possibility of downtime, censorship, fraud or third-party interference. DApps run on a custom-built blockchain: an enormously powerful, globally shared infrastructure that can move value around and represent ownership of property.
@@ -90,7 +85,7 @@ The first tranche centered on developing in-house hardware and firmware technolo
 
 \subsection{Tranche 2: Creating a Real-world Location Network}
 %TODO: ARIE? is it called signal bouncing
-% TODO: Currency Conversions
+%TODO: Currency Conversions
 The hardware component of creating a fully reliant location network actually is not the most difficult piece. Rather, the more challenging piece is in how to go about creating a robust real-world network of location devices (i.e. over 500,000 devices), without spending the  significant capital (i.e. USD 20,000,000; EUR ; ) to do so.
 
 XY has gone about this by taking on the extraordinarily difficult task of creating a location-based consumer business that aims to offset the significant capital investment in the location hardware business with a break-even, and ideally profitable, consumer business. It took XY three years to build such an infrastructure; and in three years have manufactured and brought over 1 million XY Bluetooth and GPS devices into the world.
@@ -128,8 +123,7 @@ Before we turn to the specifics of the XYO Network, let us first look at the his
 \section{Proof of Location: It's History and Shortfalls}
 
 \subsection {Proof of Location: History}
-%TODO: Site LORAN SOURCE
-% Site Platonic black swan
+%TODO(Christine / Johnny): Site LORAN SOURCE and Location History; Do research
 The concept of provable location has been around since the 1960's, and can even be dated back to the 1940's with ground-based radio-navigation systems, such as LORAN. Today there are location services that stack multiple mediums of verification on top of one another to create a Proof of Location. The only difference today is that we see the definition take on a  blockchain flavor, by marrying the term of "Proof of Work" from Bitcoin, with the field of \textit{Location} to yield ``Proof of Location''. Yet, with this term arises a natural \textit{platonic fallacy}, creating a tendency to focus on model representations of reality at the expense of ignoring the messier and less tractable problems. Yet important problems exist in provable location today, and they are ripe for solutions built on blockchain technologies. But the focus should not be on Proof of Location; it should be on creating Trustless Location by focusing on the origin of the signals. Focusing exclusively on location, leads one to confusing the map with the territory. Essentially, Proof of Location sounds novel, but it comes at a serious cost. That is, the term focuses on a problem that has already been solved, not the most important one that still needs a solution. Thus we innovation around Proof of Location overlooks the most critical component we face in location technologies today: designing a system that detect fraudulent signals and creates cryptoeconomic incentives to disincentivize the spoofing of location data. For this reason, we propose that the most important crypto-location platform today will be the one that focuses the most on proving the origin of the location signals. Thus, the core innovation surrounding the XYO Network centers around its focus on creating trustless, identityless verification protocols, a concept we call, \Gls{proof-of-origin}, which we will go into detail later on.
 
 %todo reference (http://sikorka.io/)
@@ -150,7 +144,7 @@ A proper implementation of this requires so much fallback and so many different 
 More recently, open-standard projects that use the Proof of Location term, will be gaining popularity as they seek to standardize cryptographic location protocols. Many of these initiatives will rely on encouraging individuals to set up beacons, which serve to triangulate and prove location, and in return for operating a radio beacon, one will receive financial value. One of the core goals of such systems rests on displacing GPS, as some view GPS as problematic because they are centralized. The reason GPS remains centralized is because it relies on the significant capital currently necessary for operating a satellite network. Naturally, only large organizations such as governments can afford to operate such networks. One can only hope that we'll continue to see more projects in the crypto-location space introduce blockchain-specific protocols.
 
 
-\subsection {Proof of Location: Shortfalls and Limitations}
+\subsection {Proof of Location: Shortfalls}
 % The Importance of Location Being Platform-agnostic:  
 The importance that crypto-location technologies make their way to multiple platforms should be highlighted before moving on. Thus far, all crypto-location protocols have focused on the Ethereum platform. Yet there are other compelling blockchain platforms that make strong arguments for their use, especially in specific applications. For this reason, we have built the XYO Network to be platform-agnostic from the very beginning. Our open-ended architecture ensures that the XYO Network of today will support the blockchain platforms of tomorrow. Right out of the gate, the XYO Network supports all blockchain platforms that possess smart contract execution\footnote{This includes Ethereum, Bitcoin + RSK, EOS, IOTA, NEO, Stellar, Counterparty, Monax, Dragonchain, Cardano, RChain, Lisk and others}.
 
@@ -174,7 +168,7 @@ In summary, Proof of Location can be understood as leveraging the blockchain's p
 ---Dana Goward, President, RNT Foundation
 \end{displayquote}
 
-We propose that the most important advancement necessary to bridging the present with the future rests on our ability to trust machines. This trust is best achieved through innovations in blockchain technology, and must be made available through the creation of a crypto-location \gls{oracle} network that is resistant to attack and achieves unprecedented \gls{accuracy} and \gls{certainty} with the given restraints of the system. Once a location oracle network is established, all other real-world \glspl{heuristic} can be accessed as oracle data, creating a full oracle network that provides the highest confidence and accuracy possible for the technologies of tomorrow (self-driving cars, package-carrying drones and human-carrying Hyperloops, as well as others).
+We propose that the most important advancement necessary to bridging the present with the future rests on our ability to trust machines. This trust is best achieved through innovations in blockchain technology, and must be made available through the creation of a crypto-location \gls{oracle} network that is resistant to attack and achieves unprecedented \gls{accuracy} and \gls{certainty} with the given restraints of the system. Once a location oracle network is established, all other real-world \glspl{heuristic} can be accessed as oracle data, creating a full oracle network that provides the highest confidence and accuracy possible for the technologies of tomorrow (self-driving cars, package-carrying drones, as well as others).
 
 \subsection {Meet The Only Cryptographic Location Protocol Built For The World of Tomorrow}
 With the advent of blockchain-based, trustless \glspl{smart-contract}, the need for \gls{oracle} services that arbitrate the outcome of a contract grows proportionately. Most current implementations of smart contracts rely on a single or aggregated set of authoritative oracles to settle the outcome of the contract. In cases where both parties can agree on the authority and incorruptibility of the specified oracle, this is sufficient. \textbf{However, in many cases, either an appropriate oracle does not exist or the oracle cannot be considered authoritative because of the possibility of error or corruption.}
@@ -189,7 +183,6 @@ A single device may act as one or more of these four components of the system. S
 \subsection {XYO Network: Core Issues}
 The \Gls{xyo-network} provides location data and verification by addressing the following issues: security, accuracy, \gls{certainty}, cost, verifiable trustlesslness and performance.
 
-% STOPPED HERE
 \subsection {XYO Network: Tertiary Issues}
 \subsubsection{Privacy}
 
@@ -216,7 +209,6 @@ Physical device security remains an important, yet tertiary focus of the XYO Net
 \subsubsection {Decentralized Data Storage}
 TODO(Arie): Describe how running a decentralized data storage business is outside the scope of the XYO Network, and how the system is built to support current solutions in the space.
 
-% STOPPED HERE
 \subsubsection {Replacing Location Protocol Standards}
 TODO: We are interested in the most important location problems in our world tomorrow: secure, accurate and certain location signals. We are not interested in replacing protocol standards (such as Latitude, Longitude Coordinates); yet we will be inclusive of the new location protocols that will likely be released in the years to come. We intend to build upon Proof of Location protocols and contribute to them, as they are a useful spoke in the wheel of the XYO Network because they provide additional signals to be analyzed for truthiness.
 
@@ -372,11 +364,11 @@ Given a network of edge nodes that can collect signed, time-sequenced, bidirecti
 \line(1,0){50}
 \end{center}
 
-\section {XYO Network Token Economy}
+\section {XYO Token Economy}
 
 The development of decentralized trustless applications has been gaining substantial momentum in recent years, and has now been established as an area for development and research in the field of Computer Science. \Glspl{oracle} stand as a significant portion of the power and infrastructure needs for decentralized applications, with most of the focus revolving around the connectivity and aggregation of authoritative oracles. We believe that the need for a full featured, fully decentralized and trustless system of oracles is needed for decentralized applications to reach their maximum potential.
 
-\subsection {XYO Cryptoeconomics}
+\subsection {XYO Network Cryptoeconomics}
 The most fascinating notion at the center of cryptocurrency rests the concept of ``\gls{cryptoeconomics}.'' By implementing a Token or currency in one's platform, one can use cryptography to definitively prove past transactions. Then, through game theory and economics incorporated into the design of blockchain protocols, the system incentivizes actors to take the desired human behavior. Similar to how the Ethereum Platform's currency, Ether (\texttt{ETH}), is used as utility to compute and execute transactions, called ``\gls{gas},'' the \Gls{xyo-network} has its own currency, called the XYO Token (\texttt{XYO}). Using XYO, the XYO Network leverages cryptoeconomics to incentivize the desired behavior of providing accurate, reliable location \glspl{heuristic}. XYO Tokens can be thought of as``gas'' needed for one's smart contract to call out and travel through the real world in order to verify the XY-coordinate of a specified object.
 
 The process works like this: A token holder queries the XYO Network with a query, (e.g.
@@ -387,13 +379,9 @@ Once the XYO Token holder queries the XYO Network and pays the requested gas, th
 If the data provided by a Sentinel device (i.e. XY Find It Beacon) is used to answer a query, then all four Components involved in the transaction receive a part of the XYO Gas paid by the token holder: the Diviner (who searched for the answer), the Archiver (who stored the data), the Bridge (who transmitted the data) and the Sentinel (who recorded the location data)receive a part of the XYO Gas paid by the token holder. The distribution of the gas between the 4 components of the XYO Network always happens in the same proportion.  Within each component, gas gets distributed evenly.
 
 % TODO: 
-\subsection {Cryptoeconomics: Intent-testing and Ideal-state Intelligence}
+\subsection {Ideal-state Awareness}
 
-XYO Token: Cryptoeconomics A Proposal for Intenctive Cybernetics Towards a Highly-elastic Token Economy
-
-Proof of Transaction: A Proposal For Transaction-driven Token Rewards
-
-The elephant in the room with cryptoeconomics today is that it has become more useless than the assets it was trying to displace (Fiat currencies); and even worse, it has become an arguably worse asset than items it did not even bother to display, such as gold.
+The elephant in the room with cryptoeconomics today is that it has become more useless than the assets it was trying to displace (fiat currencies); and even worse, it has become an arguably worse asset than items it did not even bother to displace, such as gold.
 
 The value of a coin lays within direct proportion to its utility, which to some degree relies on the number of transactions it experiences. A currency founded on scarcity and only rewarded to miners and with the burden taken on by the user in paying fees (in terms of gas), with enough time, creates a less than ideal ecosystem for every economic participant involved (miners, token holders and tertiary entities who build upon its platform).
 
@@ -403,8 +391,7 @@ An ideal token economy is one in which there are rewards and incentives built in
 
 The system we propose counters centralized mining collusion that have surfaced in \textit{winner-take-all} systems (Proof of Work). An inttriguing concept for how to counteract the frozen pendulum example, revolves around not just creating incentives for nodes to solve problems faster than its competitors (Proof of Work), but to also have the in-memory capability to know when its best to \textit{not} solve problems fastest. The Sentinels can achieve this state (i.e. acting with the best \textit{intent} of the system) through a concept we introduce as crypto-cybernetics. 
 
-% <!-- TODO: Cite This: http://www.pangaro.com/definition-cybernetics.html -->
-\subsection{Cryptographic Cybernetics}
+\subsection{Cryptoeconomic Cybernetics}
 The term \textit{cybernetics} comes from a Greek term that translates to \textit{the art of steering}. The term more recently surfaced when it was applied to the field of warfare in missiles and torpedoes. Cybernetics centers first around having a clearly defined {state}, and constantly self-adjusting ones actions in order to achieve that desired state (\textit{feedback}).
 
 It becomes rather simple to misconstrue cybernetics and Artificial Intelligence as the same thing; yet many of their subtler properties make them very different. Cybernetics' origins derive from a world of system design, whereas artificial intelligence arose from the idea of making computers smart. Yet intelligence of systems is not as critical as knowing the desired state of a system. Cybernetics is most concerned with achieving the goals it is given; rather than computation and cryptographic computation goals, cybernetics concerns itself more with systems. An example of a cybernetic system would be maintaining the temperature of a room. 
@@ -413,11 +400,13 @@ Because the miners also have a deterministic mapping of the healthy state of the
 
 We have designed the XYO Token economy to create incentives for Sentinels to know when they \textit{should} solve a problem but also knowing when it should \textit{not} solve a problem, if it creates a more centralized ecosystem. 
 
-\subsection{Addressing The Token Hoarder Dilemma}
-Furthermore, a system in which the user is encouraged to hoard their tokens instead of transacting with their tokens, creates a similar problem. It creates an ecosystem with more scarce stores of value and triggers a human need to think of ways to \textit{not} use the coin instead of using the coin in the first place (\textit{utility}).
+\subsection{Long-term Token Value}
+A system in which the holder is encouraged to \textit{not} use their tokens rather than transacting with their tokens creates a long-term problem for the underlying token.  It creates an ecosystem with more scarce stores of value and triggers a natural impulse to invent reasons for \textit{not} using the coin instead of creating utility and liquidity. Lack of token liquidity is often ignored by token holders because the artificial scarcity created by reticent token-spending creates short-term spikes, but the question is: at what cost? As we have seen at this point, the \textit{winner-take-all} cryptoeconomic approaches have caused volatility (extreme highs, and extreme crashes) that may produce feelings of euphoria when token prices rise, yet end up coming at serious costs. 
 
-\subsection{XYO Token Liquidity Incentives and Crypto-loctation Miner Voting}
-For this reason, the XYO Token is the first currency of its kind to reward consumers in tokens for transacting during certain points in the system's state. The in-memory cybernetic vision of the system are voted on by miners themselves. Thus, in a XYO crypto-location mining pool (\textit{cl-miners})  where the majority of cl-miners are low quality, the entire pool of cl-miners can vote to set the bar low; however as soon as more and more cheaper machines are introduced to the pool, with just as much (if not more power than the previous ones), the system votes to increase its cybernetic vision and standards for the system. Thus the progression of the system lays in direct proportion with the advancements in computing technology of the world (not in computing technology of a few centralized companies with access to the most powerful computer machine manufacturers).
+\textbf{The problem of most cryptoeconomic incentives centers on their focus. The focus is placed too strongly on the token miners, and not at all on the token users. The XYO Token stands as the first tokens to take both into account by defining the ideal-state and rewarding the market participants who hold in-memory accounts of the ideal-state and act upon reaching it (crypto-cybernetics). This aims to create a token economy where the holder of an XYO Token will enjoy long-term benefit from \textit{both holding and using the token}. The XYO Token is the first cryptocurrency of its kind to reward consumers in tokens for transacting during certain points in the system's state}. 
+
+%TODO(Arie): Voting of mathematical algorithm for ideal-state?
+The in-memory cybernetic vision of the system are voted on by miners themselves. Thus, in a XYO crypto-location mining pool (\textit{XYO Miners})  where the majority of XYO Miners are low quality, the entire pool of XYO Miners can vote to set the location-verification bar low; however as soon as more and more cheaper machines are introduced to the pool, with just as much (if not more power than the previous ones), the system votes to increase its Ideal State for the system. Thus the progression of the system lays in direct proportion with the advancements in computing technology of the world (not in computing technology of a few centralized mining pools with access to the most powerful computer machine manufacturers).
 
 At different points in the token's economy, the user is rewarded with different token reward rates depending on the natural flow of the system. We call this concept \textit{Liquidity Incentives}. In a system where transactions are rampant, a user who preserves the token won't be missing out on transacting. However just as safety measures are put in place for preventing fraud amongst cl-miners coming up with the wrong answers, by punishing them with XYO Token loss, so too will users be punished who are trying to game the system by transacting with other parties in a circular manner in hopes of gaming tokens (i.e. sending XYO back and forth between friends over and over to get rewarded in token rewards).
 
@@ -439,10 +428,22 @@ Similar to how credit cards reward consumers for spending money, in this model t
 \item Unsold and Unallocated tokens: Burned after the token sale event. No further XYO tokens will be generated after the Main Sale ends.
 \end{itemize}
 
+\begin{center}
+\line(1,0){50}
+\end{center}
 
-\section {Summary}
+\section {XYO Network Global Expansion \& XYO Miners}
+We are fortunate to have a consumer business that has successfully built a real-world network with over one million (1,000,000) bluetooth and GPS devices in the world. Most location networks fail to reach this phase and get the critical mass necessary to building out an extensive network. However the Sentinel network we have created is only the starting point. The XYO Network is an open system that any operator of location devices can plug into the XYO Network and begin earning XYO Tokens. 
 
-% TODO: Arana? Write a summary
+Most location innovation tends to center on use cases around big cities and metropolitan areas; however in the world of cryptocurrency, one of the most exciting ideas centers around transforming third-world countries and developing nations. A large reason why cryptographic currencies are so intriguing centers on their power in enabling individuals who did not win the \textit{ovarian lottery}, meaning they did not find themselves born in a wealthy, fully developed country. We are most intrigued by the impact the XYO Network will have on developing countries, and geographies with interesting geographic landscapes for location data (like remote islands). We intend to think globally from the very beginning in our expansion plans for the XYO Network. We will largely rely on the broader community of XYO Miners to expand the XYO Network; however, we will also devote internal resources to expanding the global presence of the XYO Network in Asia, Latin America, South-east Asia, Europe, Oceana and more.
+
+To further grow its network, the \Gls{xyo-network} is engaging with businesses to expand its network of \Glspl{sentinel} beyond its own network of XY Find It beacons, which total to over 800,000 globally as of January 2018. A variety of devices can act as Sentinels. Generally, the greater the Sentinel cardinality in the XYO Network, the more reliable the network. To broaden and strengthen the XYO Network, we are currently engaging mobile app companies, IoT companies and hardware companies to add Sentinels to the XYO Network. The XYO Network is providing solutions to a plethora of industries including eCommerce, government, automotive, healthcare, pharmaceutical, construction, insurance, utilities, oil \& gas, supply chain \& logistics, as well as businesses specializing in goods \& services reviews and traditional brick \& mortar retail. XY is working with a vast array of companies in order to create strategic partnerships that leverage \gls{cryptoeconomics} and economic incentives that are beneficial to both the Partner and end-user (which ultimately provide a cheaper product or service for the consumer).
+
+
+% TODO: 
+\section {Acknowledgements}
+TODO
+
 
 \begin{center}
 \line(1,0){50}
@@ -471,6 +472,10 @@ The terminal point of the transaction - the point where the package is delivered
 \line(1,0){50}
 \end{center}
 
+
+% TODO: Arana or Raul? Write a summary
+\section {References}
+TODO
 
 
 \clearpage

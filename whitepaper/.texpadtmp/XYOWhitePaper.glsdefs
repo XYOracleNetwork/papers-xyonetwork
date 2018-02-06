@@ -118,6 +118,36 @@ parent={},%
 %
 }%
 }%
+\ifglsentryexists{webble}{}%
+{%
+\gls@defglossaryentry{webble}%
+{%
+name={webble},%
+sort={webble},%
+type={main},%
+first={webble},%
+firstplural={webbles},%
+text={webble},%
+plural={webbles},%
+description={Everything in the world is defined spatially by its \textit {X,Y,Z,T} coordinate and nothing can leave that space. Objects are thus confined to ``webbubbles'', or what are referred to as \textit {webbles}.},%
+descriptionplural={Everything in the world is defined spatially by its \textit {X,Y,Z,T} coordinate and nothing can leave that space. Objects are thus confined to ``webbubbles'', or what are referred to as \textit {webbles}.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
 \ifglsentryexists{gas}{}%
 {%
 \gls@defglossaryentry{gas}%
