@@ -1,7 +1,7 @@
 This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
 Scanning style file ./XYOWhitePaper.ist.............................done (29 attributes redefined, 0 ignored).
-Scanning input file XYOWhitePaper.glo....done (126 entries accepted, 0 rejected).
-Sorting entries....done (947 comparisons).
-Generating output file XYOWhitePaper.gls....done (90 lines written, 0 warnings).
+Scanning input file XYOWhitePaper.glo....done (122 entries accepted, 0 rejected).
+Sorting entries....done (868 comparisons).
+Generating output file XYOWhitePaper.gls....done (86 lines written, 0 warnings).
 Output written in XYOWhitePaper.gls.
 Transcript written in XYOWhitePaper.glg.
