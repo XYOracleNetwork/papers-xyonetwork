@@ -1,0 +1,206 @@
+% Preamble
+% ---
+\documentclass{article}
+
+% Packages
+% ---
+\usepackage{amsmath} % Advanced math typesetting
+\usepackage[utf8]{inputenc} % Unicode support (Umlauts etc.)
+\usepackage{hyperref} % Add a link to your document
+\usepackage{graphicx} % Add pictures to your document
+\usepackage{listings} % Source code formatting and highlighting
+\usepackage{framed} % Source code formatting and highlighting
+\usepackage{appendix} % Source code formatting and highlighting
+\usepackage{csquotes} % Pretty quotes
+\usepackage[automake]{glossaries}
+\usepackage[letterpaper, portrait, margin=1.5in]{geometry}
+
+\graphicspath{ {images/} }
+
+\makeglossary
+
+%*******************************
+%**** Begin Glossary Section *****
+%*******************************
+
+\newglossaryentry{sentinel}
+{
+    name={Sentinel},
+    description={A Sentinel is a heuristic witnesses. It observes heuristics and vouches for the certainty and accuracy of them by producing temporal ledgers. The most important aspect of a Sentinel is that it produces ledgers that Diviners can be certain came from the same source by adding Proof of Origin to them}
+}
+
+
+
+\newglossaryentry{bridge}
+{
+    name={Bridge},
+    description={A Bridge is a heuristic transcriber. It securely relays heuristic ledgers from Sentinels to Diviners. The most important aspect of a Bridge is that a Diviner can be sure that the heuristic ledgers that are received from a Bridge have not been altered in any way. The second most important aspect of a Bridge is that they add an additional Proof of Origin metadata}
+}
+
+\newglossaryentry{archivist}
+{
+    name={Archivist},
+    description={An Archivist stores heuristics as a part of the decentralized data set with the goal of having all historical ledgers stored, but without that requirement. Even if some data is lost or becomes temporarily unavailable, the system continues to function, just with reduced accuracy. Archivists also index ledgers so that they can return a string of ledger data if needed. Archivists store raw data only and get paid solely for retrieval of the data. Storage is always free}
+}
+
+\newglossaryentry{diviner}
+{
+    name={Diviner},
+    description={A Diviner answers a given query by analyzing historical data that has been stored by the XYO Network. Heuristics stored in the XYO Network must have a high level of Proof of Origin to determine the validity and accuracy of the heuristic. A Diviner obtains and delivers an answer by judging the witness based on its Proof of Origin. Given that the XYO Network is a trustless system, Diviners must be incentivized to provide honest analyses of heuristics. Unlike Sentinels and Bridges, Diviners use Proof of Work to add answers to the blockchain}
+}
+
+\newglossaryentry{webble}
+{
+    name={webble},
+    description={Everything in the world is defined spatially by its \textit{X,Y,Z,T} coordinate and nothing can leave that space. Objects are thus confined to ``webbubbles'', or what are referred to as \textit{webbles}.}
+}
+
+\newglossaryentry{gas}
+{
+    name={gas},
+    description={The cost of a transaction (i.e. query) in the form of XYO Tokens}
+}
+
+\newglossaryentry{proof-of-origin}
+{
+    name={Proof of Origin},
+    description={Proof of Origin is the key to verifying that ledgers flowing into the XYO Network are valid. A unique ID for source of data is not practical since it can be forged. Private Key signing is not practical since most parts of the XYO Network are difficult or impossible to physically secure, thus the potential for a bad actor to steal a Private Key is too feasible. To solve this, XYO Network uses Transient Key Chaining. The benefit of this is that it is impossible to falsify the chain of origin for data. However, once the chain is broken, it is broken forever and cannot be continued, rendering it an island}
+}
+
+\newglossaryentry{proof-of-work}
+{
+    name={Proof of Work},
+    description={Proof of Work is a piece of data that satisfies certain requirements, is difficult to produce (i.e. costly, time-consuming), but easy for others to verify. Producing a Proof of Work can be a random process with a low probability of generation so that rigorous trial and error is required on average before a valid Proof of Work is created}
+}
+
+\newglossaryentry{bound-witness}
+{
+    name={Bound Witness},
+    description={Bound Witness is a concept achieved by the existence of a bidirectional heuristic. Given that an untrusted source of data for the use of digital contract resolution (an oracle) is not useful, there is a substantial increase in certainty of the data provided by the establishment of such a heuristic. The primary bidirectional heuristic is proximity since both parties can validate the occurrence and range of an interaction by cosigning the interaction. This allows for a zero-knowledge proof that the two nodes were in proximity of each other.}
+}
+
+\newglossaryentry{smart-contract}
+{
+    name={smart contract},
+    description={A protocol coined by Nick Szabo before Bitcoin, purportedly in 1994 (which is why some believe him to be Satoshi Nakamoto, the mystical and unknown inventor of Bitcoin). The idea behind smart contracts is to codify a legal agreement in a program and to have decentralized computers execute its terms, instead of humans having to interpret and act on contracts. Smart contracts collapse money (e.g. Ether) and contracts into the same concept. Being that smart contracts are deterministic (like computer programs) and fully transparent and readable, they serve as a powerful way to replace middle-men and brokers}
+}
+
+\newglossaryentry{cryptoeconomics}
+{
+    name={cryptoeconomics},
+    description={A formal discipline that studies protocols that govern the production, distribution, and consumption of goods and services in a decentralized digital economy. Cryptoeconomics is a practical science that focuses on the design and characterization of these protocols}
+}
+
+\newglossaryentry{xyo-network}
+{
+    name={XYO Network},
+    description={XYO Network stands for "XY Oracle Network." It is comprised of the entire system of XYO enabled components/nodes that include Sentinels, Bridges, Archivists, and Diviners. The primary function of the XYO Network is to act as a portal by which digital smart contracts can be executed through real world geo-location confirmations}
+}
+
+\newglossaryentry{certainty}
+{
+    name={certainty},
+    description={A measure of the likelihood that a data point or heuristic is free from corruption or tampering}
+}
+
+\newglossaryentry{accuracy}
+{
+    name={accuracy},
+    description={A measure of confidence that a data point or heuristic is within a specific margin of error}
+}
+
+\newglossaryentry{oracle}
+{
+    name={oracle},
+    description={A part of a DApp (decentralized application) system that is responsible for resolving a digital contract by providing an answer with accuracy and certainty. The term ``oracle'' originates from cryptography where it signifies a truly random source (e.g. of a random number). This provides the necessary gate from a crypto equation to the world beyond. Oracles feed smart contracts information from beyond the chain (the real world, or off-chain). Oracles are interfaces from the digital world to the real world. As a morbid example, consider a contract for a Last Will \& Testament. A Will's terms are executed upon confirmation that the testator is deceased. An oracle service could be built to trigger a Will by compiling and aggregating relevant data from official sources. The oracle could then be used as a feed or end-point for a smart contract to call out to in order to check whether or not the person is deceased}
+}
+
+\newglossaryentry{heuristic}
+{
+    name={heuristic},
+    description={A data point about the real world relative to the position of a Sentinel (proximity, temperature, light, motion, etc...)}
+}
+
+\newglossaryentry{transient-key-chain}
+{
+    name={Transient Key Chain},
+    description={A Transient Key Chain links a series of data packets using Transient Key Cryptography}
+}
+
+\newglossaryentry{best-answer-score}
+{
+    name={Best Answer Score},
+    description={A score generated by a Best Answer Algorithm that ranks the quality of the score.  The higher the score, the better it is, per the algorithm.  This score is used to determine which answer is better given two analyzed answers}
+}
+
+\newglossaryentry{best-answer-algorithm}
+{
+    name={Best Answer Algorithm},
+    description={An algorithm used to generate Best Answer Scores when a Diviner chooses an answer.  The XYO Network permits the addition of specialized algorithms and allows the customer to specify which algorithm to use.  It is required that this algorithm will result in the same score when run on any Diviner given the same data set}
+}
+
+\newglossaryentry{origin-chain-score}
+{
+    name={Origin Chain Score},
+    description={The score assigned to an Origin Chain to determine its credibility. This assessment takes length, tangle, overlap, and redundancy into consideration}
+}
+
+\newglossaryentry{origin-chain}
+{
+    name={Origin Chain},
+    description={A Transient Key Chain that links together a series of Bound Witness heuristic ledger entries}
+}
+
+\newglossaryentry{origin-tree}
+{
+    name={Origin Tree},
+    description={A data set of ledger entries taken from various Origin Chains to establish the origin of a heuristic ledger entry with a specified level of certainty}
+}
+
+\title {The XY Oracle Network Business Primer}
+
+\author{
+	Arie Trouw
+		\thanks{XYO Network, \texttt{arie.trouw@xyo.network}}
+	, Markus Levin
+		\thanks{XYO Network, \texttt{markus.levin@xyo.network}}
+	, Raul Jordan
+		\thanks{Harvard College, The Thiel Foundation and XYO Network, \texttt{rauljordan@college.harvard.edu}}
+	, Scott Scheper
+		\thanks{XYO Network, \texttt{scott.scheper@xyo.network}}
+}
+
+\date{January 2018}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\line(1,0){50}
+\end{center}
+
+
+%Introduction
+\section{Introduction}
+On January 3, 2009, the world changed forever. The Bitcoin network was born after its first block, the "genesis block", was mined. The brilliance of Bitcoin centered around one simple, yet profound concept: the elimination of trust. At that point, commerce on the Internet relied on financial institutions who served as trusted third parties to facilitate every single transaction. Bitcoin enabled humans who didn't already know one another to transact in peer-to-peer fashion over a digital communications channel. But the most novel component of Bitcoin centered around the way it constructed a solution to the double-spending problem. This was made possible due to leveraging \gls{cryptoeconomics} with a tool called \gls{proof-of-work} and utilizing a system of chained blocks known as blockchain. For the first time in history, humans were able to safely transact without knowing one another over a digital communications channel, and without an intermediary financial institution. Today, Bitcoin has gone from a little-known concept to one attracting mainstream popularity.
+
+Yet, in 2013 a new cryptographic technology was introduced to the world which caused even more excitement: a platform called \textit{Ethereum}. Ethereum introduced a Turing-complete programming language into blockchain technology. It's somewhat helpful to think of Ethereum like this: Imagine Bitcoin as a payment app on your phone. Think of Ethereum as the phone's entire operating system which enables one to create apps that can do virtually anything.
+A core component of Ethereum is a concept called a \gls{smart-contract}, which essentially collapses a payment and an agreement into the same thing. Imagine if a contract wasn't written on a piece of paper and signed by hand, but instead was written in computer code and executed when certain conditions were met. Smart contracts enable the world to make a leap from "wet code" on pieces of paper, to "dry code" that get deterministically executed by Ethereum computer nodes that are decentralized and are running around the world.
+
+Let us turn to games, but in part to avoid \textit{Ludic fallacy} we will not look to games of cards or dice, but instead look to the world of sports wagering, which serves as a nice illustration of how smart contracts can be deployed. Take for instance, the following wager between two agents: \textit{Agent A} wishes to wager with \textit{Agent B} that \textit{Team A} will beat \textit{Team B} in a game. Currently, one is given no other choice but to employ a trusted disinterested third party to intermediate the transaction (in exchange for a fee). This is precisely how the eCommerce world worked before the introduction of Bitcoin. With the introduction of Ethereum, one can now program a smart contract wherein funds from the agent who bet on the losing team, are deposited automatically to the agent who bet on the winning team. One can do this by developing a smart contract to deterministically execute at a timestamp in the future (\texttt{block.timestamp}) after the game concludes. In order to determine whether \textit{Team A} or \textit{Team B} won, the contract must call out to a data source (such as a \textit{website} that lists the outcome of the game). In the world of smart contracts, this external data source is known as an \gls{oracle}. The oracle sits as the weak point in the system, as external data sources can be hacked (for instance if \textit{Agent A} secretly works for the single data source that the smart contract relied upon, thus having access to tamper with the results, he or she could manipulate the data source in order to win the wager, even if the results were different in reality. Tampering makes sense when a party is financially incentivized to do so, which is why cryptoeconomics are typically utilized to make such actions economically unviable. This example does not rely on cryptoeconomics for certainty; rather, to protect against this weak point, a concept called \textit{consensus} is deployed for oracles, wherein the smart contract does not rely on one data source, but multiple sources of data, all of which must agree and achieve consensus on the winner in order for the contract to execute. Creating such a contract enables two parties to transact in a peer-to-peer manner with their agreement and without having to use a trusted third party. It is astonishingly simple, yet up until this point in history, this was not possible. Indeed, the implications of this are profound, and though not quite noticeable today, decentralized deterministic contracts will be omnipresent in the world of tomorrow.
+
+Now that smart contracts have been illustrated, it is important to note another component that Ethereum introduced to the world: decentralized applications, referred to as \textit{DApps}. DApps enable developers to create applications that do not rely on centralized sources. They run exactly as programmed without any possibility of downtime, censorship, fraud or third-party interference. DApps run on specialized blockchains, which are enormously powerful, globally shared infrastructures.
+
+Since the advent of Ethereum, the cryptographic community has experienced rapid-growth in the form of new DApps and protocol improvements. However up until this point, every platform, including Bitcoin and Ethereum, have focused almost entirely on digital channels (the online world), and not on real world channels (the offline world).
+
+Thankfully, progress has begun in the offline realm with the introduction of offline-focused cryptographic platforms that concentrate on specific use cases, such as the intersection of blockchain and the Internet of Things (\textit{IoT})\footnote{Including \textit{IOTA} (www.iota.org) and \textit{Hdac} (www.hdac.io)}. In addition, there are efforts being made to develop protocols that concentrate on the intersection of location and blockchain, which are being labeled \textit{Proof of Location}. These platforms and protocols are interesting and worth supporting; furthermore, they are useful components that serve as a spoke in the wheel of the XYO Network).
+
+Yet we still find the majority of blockchain technologies confined primarily to the narrow scope of the Internet. Since its founding in 2012, \textit{XY}, the company behind the XYO Network, has been building a location network in order to make the physical world programmable and accessible to developers. In brief, XY has been working towards the concept of enabling developers (such as those writing Ethereum smart contracts) to interact with the real world as if it were an API. This undertaking is a multi-year project that requires one to separate different components into tranches.
+
+\printglossaries
+
+%*******************************
+%**** End Glossary Section *****
+%*******************************
+
+\end{document}
