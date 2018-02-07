@@ -7,6 +7,12 @@
 \usepackage{amsmath} % Advanced math typesetting
 \usepackage[utf8]{inputenc} % Unicode support (Umlauts etc.)
 \usepackage{hyperref} % Add a link to your document
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=blue,
+}
 \usepackage{graphicx} % Add pictures to your document
 \usepackage{listings} % Source code formatting and highlighting
 \usepackage{framed} % Source code formatting and highlighting
@@ -166,14 +172,14 @@
 \title {The XY Oracle Network: The Proof-of-Origin and Bound Witness Protocol Based Cryptographic Location Network}
 
 \author{
-	Arie Trouw
-		\thanks{XYO Network, \texttt{arie.trouw@xyo.network}}
-	, Markus Levin
-		\thanks{XYO Network, \texttt{markus.levin@xyo.network}}
-	, Raul Jordan
-		\thanks{Harvard College, The Thiel Foundation and XYO Network, \texttt{rauljordan@college.harvard.edu}}
-	, Scott Scheper
-		\thanks{XYO Network, \texttt{scott.scheper@xyo.network}}
+    Arie Trouw
+        \thanks{XYO Network, \texttt{arie.trouw@xyo.network}}
+    , Markus Levin
+        \thanks{XYO Network, \texttt{markus.levin@xyo.network}}
+    , Raul Jordan
+        \thanks{Harvard College, The Thiel Foundation and XYO Network, \texttt{rauljordan@college.harvard.edu}}
+    , Scott Scheper
+        \thanks{XYO Network, \texttt{scott.scheper@xyo.network}}
 }
 
 \date{January 2018}
@@ -240,8 +246,9 @@ All things travel along the T-axis (time) and all these elements interact with e
 We are positioned to introduce the world's first oracle centering on geo-location data in the offline world: The XYO Network. The XYO Network makes it possible for smart contracts to plug into the real world by calling a network of Diviners to determine if an object is at a specific XY-coordinate. If the object’s location is confirmed, the smart contract is executed. 
 
 % Citation: https://www.usatoday.com/story/tech/news/2017/11/20/package-theft-hits-nearly-one-third-americans-video-surveillance-answer/874554001/
-The use cases and profound impact of such a technology are profound. The introduction of the XYO Network is perhaps the single most exciting cryptographic breakthrough in recent blockchain history. This makes it possible for two entities to transact in the real world without a centralized third party. Let us briefly illustrate a real world example of how the XYO Network can be used. eCommerce companies can distinguish themselves by offering a payment upon delivery premium service for their customers. This enables customers to only pay for a product once it arrives \textit{in} their home. For eCommerce retailers, integrating trustless location services can result in significant revenue gains. It can also result in safety measures and cost savings, as porch theft is reported by over 30\% of customers in some areas.
-%TODO: cite the 30 percent study
+%TODO (CHRISTINE - DONE): cite the 30 percent study
+The use cases and profound impact of such a technology are profound. The introduction of the XYO Network is perhaps the single most exciting cryptographic breakthrough in recent blockchain history. This makes it possible for two entities to transact in the real world without a centralized third party. Let us briefly illustrate a real world example of how the XYO Network can be used. eCommerce companies can distinguish themselves by offering a payment upon delivery premium service for their customers. This enables customers to only pay for a product once it arrives \textit{in} their home. For eCommerce retailers, integrating trustless location services can result in significant revenue gains. It can also result in safety measures and cost savings, as porch theft is reported by over 30\% of customers in some areas \cite{weise-packagetheft}.
+
 
 With a geo-location network of devices circulating in the world, combined with its breakthroughs in crypto-location technology (via the introduction of Proof of Origin protocols and Bound Witness location verification), the XYO Network is positioned to execute the monumental task of making location verification trustless. 
 
@@ -258,22 +265,22 @@ Before we turn to the specifics of the XYO Network, let us first look at the his
 \section{Proof of Location: It's History and Shortfalls}
 
 \subsection {Proof of Location: History}
-%TODO(Christine / Johnny): Site LORAN SOURCE and Location History; Do research
-The concept of provable location has been around since the 1960's, and can even be dated back to the 1940's with ground-based radio-navigation systems, such as LORAN. Today there are location services that stack multiple mediums of verification on top of one another to create a Proof of Location. The only difference today is that we see the definition take on a  blockchain flavor, by marrying the term of "Proof of Work" from Bitcoin, with the field of \textit{Location} to yield ``Proof of Location''. Yet, with this term arises a natural \textit{platonic fallacy}, creating a tendency to focus on model representations of reality at the expense of ignoring the messier and less tractable problems. Yet important problems exist in provable location today, and they are ripe for solutions built on blockchain technologies. But the focus should not be on Proof of Location; it should be on creating trustless location by focusing on the origin of the signals. Focusing exclusively on location, leads one to confusing the map with the territory. Essentially, Proof of Location sounds novel, but it comes at a serious cost. That is, the term focuses on a problem that has already been solved, not the most important one that still needs a solution. Thus innovation around Proof of Location overlooks the most critical component we face in location technologies today: designing a system that detects fraudulent signals and creates cryptoeconomic incentives to disincentivize the spoofing of location data. For this reason, we propose that the most important crypto-location platform today will be the one that focuses the most on proving the origin of the location signals. Thus, the core innovation surrounding the XYO Network centers around its focus on creating trustless, identityless verification protocols, a concept we call, \Gls{proof-of-origin}, which we will go into detail later on.
+%TODO(Christine - DONE): Site LORAN SOURCE and Location History; Do research
+The concept of provable location has been around since the 1960's, and can even be dated back to the 1940's with ground-based radio-navigation systems, such as LORAN \cite{blanchard-loran}. Today there are location services that stack multiple mediums of verification on top of one another to create a Proof of Location. The only difference today is that we see the definition take on a  blockchain flavor, by marrying the term of "Proof of Work" from Bitcoin, with the field of \textit{Location} to yield ``Proof of Location''. Yet, with this term arises a natural \textit{platonic fallacy}, creating a tendency to focus on model representations of reality at the expense of ignoring the messier and less tractable problems. Yet important problems exist in provable location today, and they are ripe for solutions built on blockchain technologies. But the focus should not be on Proof of Location; it should be on creating trustless location by focusing on the origin of the signals. Focusing exclusively on location, leads one to confusing the map with the territory. Essentially, Proof of Location sounds novel, but it comes at a serious cost. That is, the term focuses on a problem that has already been solved, not the most important one that still needs a solution. Thus innovation around Proof of Location overlooks the most critical component we face in location technologies today: designing a system that detects fraudulent signals and creates cryptoeconomic incentives to disincentivize the spoofing of location data. For this reason, we propose that the most important crypto-location platform today will be the one that focuses the most on proving the origin of the location signals. Thus, the core innovation surrounding the XYO Network centers around its focus on creating trustless, identityless verification protocols, a concept we call, \Gls{proof-of-origin}, which we will go into detail later on.
 
-%todo reference (http://sikorka.io/)
+%TODO(Christine - DONE): reference (http://sikorka.io/)
 %https://www.reddit.com/r/ethereum/comments/539o9c/proof_of_location/
-But the concept of combining the world of blockchain to location problems is an important one, and should not be ignored. The concept of applying location verification to blockchain technologies first appeared in September 2016 at Ethereum's DevCon 2. It was introduced by Lefteris Karapetsas, an Ethereum developer from Berlin. Karapetsas' brilliance should be noted not just because his concept was sound, but also because it surfaced at a time in Ethereum's history when it was still an unknown platform. Karapetsas' project, \textit{Sikorka}, enabled smart contracts to be deployed on the spot in the real world, using what he termed, \textit{Proof of Presence}. His application of bridging the world of blockchain and location focused primarily on augmented reality use cases; and he introduced novel concepts such as challenge questions in proving one's location.
+But the concept of combining the world of blockchain to location problems is an important one, and should not be ignored. The concept of applying location verification to blockchain technologies first appeared in September 2016 at Ethereum's DevCon 2 \cite{karapetsas-sikorka}. It was introduced by Lefteris Karapetsas, an Ethereum developer from Berlin. Karapetsas' brilliance should be noted not just because his concept was sound, but also because it surfaced at a time in Ethereum's history when it was still an unknown platform. Karapetsas' project, \textit{Sikorka}, enabled smart contracts to be deployed on the spot in the real world, using what he termed, \textit{Proof of Presence}. His application of bridging the world of blockchain and location focused primarily on augmented reality use cases; and he introduced novel concepts such as challenge questions in proving one's location \cite{karapetsas-sikorka}.
 
-%Reddit example: https://www.reddit.com/r/ethereum/comments/539o9c/proof_of_location/
-The term, Proof of Location, then formally surfaced in Ethereum's community on September 17, 2016. It was then further expounded on by Matt Di Ferrante, Developer at the Ethereum Foundation, who stated:
+%TODO(Christine - DONE) %https://www.reddit.com/r/ethereum/comments/539o9c/proof_of_location/
+The term, Proof of Location, then formally surfaced in Ethereum's community on September 17, 2016 \cite{diferrante-proofoflocation}. It was then further expounded on by Matt Di Ferrante, Developer at the Ethereum Foundation, who stated:
 
 \begin{quotation}
-Proof of Location you can trust is honestly one of the most difficult things to implement. Even if you have many participants that can attest each other's location, there's no guarantee that they wouldn't just go sybil at any point in the future, and since you're always only relying on majority reporting it's a huge weakness.
+"Proof of Location you can trust is honestly one of the most difficult things to implement. Even if you have many participants that can attest each other's location, there's no guarantee that they wouldn't just go sybil at any point in the future, and since you're always only relying on majority reporting it's a huge weakness.
 
 If you could require some type of specialized hardware device that has anti-tamper tech such that the private key is destroyed when one attempts to open it or change the firmware on it then you could possibly have greater security, but at the same time, it's not like it's impossible to spoof GPS signals either.
 
-A proper implementation of this requires so much fallback and so many different data sources to have any assurance of accuracy, it would have to be very well funded project.
+A proper implementation of this requires so much fallback and so many different data sources to have any assurance of accuracy, it would have to be very well funded project." \cite{diferrante-proofoflocation}
 \end{quotation}
 
 \subsection {Proof of Location: Shortfalls}
@@ -553,15 +560,15 @@ A bitcoin miner would prefer a world of permanent inefficiency so they can reap 
 This problem is apparent, yet no easy solution exists, at least in the non-cryptographic world. In financial markets and consumer markets, governments attempt to curb this system-harming self-interest bthrough regulation; yet in the world of cryptocurrency, there is no regulation, so the problem (\textit{thankfully}) must be solved in a more creative way.
 
 %The coincidence of wants .....problem (often "double coincidence of wants"[verification needed])[1] is the situation where the supplier of good A wants good B and the supplier of good B wants good A[2]
-%TODO (Johnny/Christine): Cite
-Fiat currencies were invented to solve the \textit{double coincidence of wants} problem and encourage transactions. Yet with the emergence of cryptocurrencies, fiat currencies are no longer the only currency option in existence. Cryptocurrency presents use cases far beyond the transfer of money. Cryptocurrencies can incentivize participants in the system to naturally move towards a more efficient system. For a decades, money has really been software (binary code thats sits on the servers of centralized banks). With cryptocurrency, money is not just software, but accountable through public ledgers. Through smart contracts and incentives, money can literally be programed to behave in certain ways. The capability to program money may seem subtle, but it has profound implications in token market design.
+%TODO (Christine - DONE): Cite
+Fiat currencies were invented to solve the \textit{double coincidence of wants} problem and encourage transactions \cite{freeman-fiatmoney}. Yet with the emergence of cryptocurrencies, fiat currencies are no longer the only currency option in existence. Cryptocurrency presents use cases far beyond the transfer of money. Cryptocurrencies can incentivize participants in the system to naturally move towards a more efficient system. For a decades, money has really been software (binary code thats sits on the servers of centralized banks). With cryptocurrency, money is not just software, but accountable through public ledgers. Through smart contracts and incentives, money can literally be programed to behave in certain ways. The capability to program money may seem subtle, but it has profound implications in token market design.
 
-%TODO (Christine/Johnny): Cite prisoner's dilemma
-The Bitcoin mining market presents a situation similar to the \textit{prisoner's dilemma}. Bitcoin, as a whole, would benefit more if market participants collaborated to some degree; however, in system design, absolutes typically prevail due to simplicity. Adam Smith, calls this \textit{greatest exactness}, declaring ``accurate in the highest degree, and admit of no exceptions or modifications, but such as may be ascertained as accurately as the rules themselves, and which generally, indeed, flow from the very same principles with them.''\cite{adamsmith-sentiments} For economies that rely on human actors, subject to human nature, simplistic hard rules prevail. Smith understood that it is human nature to operate with \textit{absolute} rules rather than rules of \textit{moderation} because holding the ideal-state of the system concurrently in-memory is taxing to the brain. In other words, ``hard-and-fast rules are easier to keep than rules that are slightly relaxed. The opposite should be true. You'd think assistance would be much harder to keep than moderation, but generally for humans, it is not.''\cite{roberts-howadamsmith} As a result, token economies become inefficient as tokens do not incentivize participants properly.
+%TODO (Christine - DONE): Cite prisoner's dilemma
+The Bitcoin mining market presents a situation similar to the \textit{prisoner's dilemma} \cite{lave-prisonersdilemma}. Bitcoin, as a whole, would benefit more if market participants collaborated to some degree; however, in system design, absolutes typically prevail due to simplicity. Adam Smith, calls this \textit{greatest exactness}, declaring ``accurate in the highest degree, and admit of no exceptions or modifications, but such as may be ascertained as accurately as the rules themselves, and which generally, indeed, flow from the very same principles with them.''\cite{smith-sentiments} For economies that rely on human actors, subject to human nature, simplistic hard rules prevail. Smith understood that it is human nature to operate with \textit{absolute} rules rather than rules of \textit{moderation} because holding the ideal-state of the system concurrently in-memory is taxing to the brain. In other words, ``hard-and-fast rules are easier to keep than rules that are slightly relaxed. The opposite should be true. You'd think assistance would be much harder to keep than moderation, but generally for humans, it is not.''\cite{roberts-howadamsmith} As a result, token economies become inefficient as tokens do not incentivize participants properly.
 
 It seems like the presumption with which all Proof of Work cryptocurrencies rely on centers on their over-estimation that complete and total self-interest leads to perfect markets. This comes from a concept first used by Adam Smith called, \textit{The Invisible Hand},  which has become sacred amongst economists holy among. The Invisible Hand essentially holds that participants driven by self-interest leads to an efficient economy. The term is catchy, but most overlook one key fact: it was mentioned briefly and only once in Adam Smith's famous work, \textit{The Wealth of Nations}, and it means that self-interest can lead to benefits for others. In the past, this was difficult because of the absistence vs. moderation problems that human participants have; yet in the world of cryptocurrency where the actions of participants, as well the money itself, can be programmed, we can move closer to Smith's true vision of an ideal economy. 
 
-Yet with the introduction of cryptocurrencies, in which money can be programmed, the prisoner's dilemma can be avoided and so too can our over-reliance on \textit{the invisible hand} by architecting \textit{deterministic} intelligence into the (non-human) participants with \textit{Q-Learning} (which we will cover shortly). Suppose market participants are issued tokens for providing faster and better data than their adversaries, but with one small twist: it is programmed to face penalties whenever another participant becomes utterly useless (i.e. not winning a single token for its attempt at verifying data). By programming the token in this way, the participant's fates are now crypto-economically bound in the system's best interest. By programming this into ones token economics, it results in a system where all participants have a financial incentive to collaborate. Each participant is still driven by self-interest, but the economy rewards participants who have the intelligence to understand the prisoner's dilemma. \textbf{Essentially, by changing the rules of money, one can program intelligence into participants to know when its best to \textit{not} compete with an adversary. This idea encapsulates Proof of Intelligence\cite{numeraire}, and will be employed in the token economy of the XYO Network.}
+Yet with the introduction of cryptocurrencies, in which money can be programmed, the prisoner's dilemma can be avoided and so too can our over-reliance on \textit{the invisible hand} by architecting \textit{deterministic} intelligence into the (non-human) participants with \textit{Q-Learning} (which we will cover shortly). Suppose market participants are issued tokens for providing faster and better data than their adversaries, but with one small twist: it is programmed to face penalties whenever another participant becomes utterly useless (i.e. not winning a single token for its attempt at verifying data). By programming the token in this way, the participant's fates are now crypto-economically bound in the system's best interest. By programming this into ones token economics, it results in a system where all participants have a financial incentive to collaborate. Each participant is still driven by self-interest, but the economy rewards participants who have the intelligence to understand the prisoner's dilemma. \textbf{Essentially, by changing the rules of money, one can program intelligence into participants to know when its best to \textit{not} compete with an adversary. This idea encapsulates Proof of Intelligence\cite{bradway-numeraire}, and will be employed in the token economy of the XYO Network.}
 
 \subsection{Q-Learning Capable Miners}
 
@@ -615,7 +622,7 @@ From straightforward to complex, the \Gls{xyo-network}'s usage  has vast applica
 Consider an entirely different integration of the XYO Network with a hotel review site, whose current problem is that their reviews are often not trusted. Naturally, hotel owners are incentivized to improve their reviews at any cost. What if one could say with extremely high \gls{certainty} that someone was in San Diego, flew to a hotel in Bali and stayed there for two weeks, returned to San Diego, and then wrote a review about their hotel stay in Bali? The review would have a very high reputation, especially if it was written by a serial reviewer who has written many reviews with verified location data. The solutions the XYO Network can provide are infinite and the potential is unlimited.
 
 \subsection{eCommerce}
-According to a recent study released by Comcast, more than 30\% of Americans have had a package stolen from their porch or doorstep. As the market share of eCommerce continues to grow, this problem will only become more prevalent. Megasites like Amazon are experimenting with different solutions to offer confirmed secure delivery as a premium service to their customers. 
+According to a recent study released by Comcast, more than 30\% of Americans have had a package stolen from their porch or doorstep \cite{comcast-packagesurvey}. As the market share of eCommerce continues to grow, this problem will only become more prevalent. Megasites like Amazon are experimenting with different solutions to offer confirmed secure delivery as a premium service to their customers.
 
 By utilizing the \Gls{xyo-network} and XYO Tokens, companies like Amazon and UPS can offer, as a premium service, an independently confirmed ledger to track every step of a shipment's progress, starting at the fulfillment center and ending with the package's secure delivery within the customer's home. As a trustless and decentralized system, the XYO Network provides independent confirmation not only of a package's delivery, but of its entire shipping history. This also allows a retailer or eCommerce site to offer payment on delivery, utilizing an Ethereum smart contract to protect the merchant from fraud or loss.
 
@@ -624,26 +631,25 @@ When a customer finalizes an order, an Ethereum \gls{smart-contract} is created 
 The terminal point of the transaction - the point where the package is delivered and payment is released - will be determined at the time the order is placed. Amazon has experimented with multiple secure delivery systems, including lockers in public places like convenience stores and even electronic locks that give their delivery team access to customers' homes. XYO Network devices within these secure locations will confirm delivery. In an Amazon locker, the shipped package will interact not just with its locker, but with XYO Network devices in other lockers and the customers that use them. In the customer's home, the XYO Network nodes could include the customer's phone, IoT devices, and even the Amazon Echo that was used to place the order.
 
 \subsection{Hospitals and Medical Errors}
-Medical errors are the third leading cause of death in the United States, according to \href{https://www.usnews.com/news/articles/2016-05-03/medical-errors-are-third-leading-cause-of-death-in-the-us}{a study released by the Johns Hopkins School of Medicine}. Many of these preventable deaths are a result of operational or record-keeping errors, including adverse drug interactions, improper medical records, and even unnecessary surgeries. The study's author, Dr. Martin Makary, said in a letter to the Centers for Disease Control and Prevention that ``it is time for the country to invest in medical quality and patient safety proportional to the mortality burden it bears. This would [include] research in technology that reduces harmful and unwarranted variation in medical care.''
+Medical errors are the third leading cause of death in the United States, according to a study released by the Johns Hopkins School of Medicine \cite{sternberg-medicalerrors}. Many of these preventable deaths are a result of operational or record-keeping errors, including adverse drug interactions, improper medical records, and even unnecessary surgeries. The study's author, Dr. Martin Makary, said in a letter to the Centers for Disease Control and Prevention that ``it is time for the country to invest in medical quality and patient safety proportional to the mortality burden it bears. This would [include] research in technology that reduces harmful and unwarranted variation in medical care.''
 
 \begin{displayquote}\textit{``It is time for the country to invest in medical quality and patient safety proportional to the mortality burden it bears. This would [include] research in technology that reduces harmful and unwarranted variation in medical care.''}
 \vspace{2mm}
 ---Dr. Martin Makary
 \end{displayquote}
 
-By tying the \Gls{xyo-network} into Hospitals' operational frameworks that are already in place, care providers can significantly reduce failures in communication and record keeping that result in patient injury and death. Utilizing the XYO Network and XYO Tokens can provide a trustless, decentralized, and independently verifiable record of all patient interactions with any staff as well as a log of relevant patient data such as the patient?s vitals, treatment details, and test results for the duration of their stay.
+By tying the \Gls{xyo-network} into Hospitals' operational frameworks that are already in place, care providers can significantly reduce failures in communication and record keeping that result in patient injury and death. Utilizing the XYO Network and XYO Tokens can provide a trustless, decentralized, and independently verifiable record of all patient interactions with any staff as well as a log of relevant patient data such as the patient's vitals, treatment details, and test results for the duration of their stay.
 
-The \Gls{xyo-network} is a web of devices that record and archive \gls{heuristic} data using a blockchain ledger. Whenever a device on the XYO Network interacts with another XY device, it logs this interaction. By reviewing this ledger of interactions and the additional data it  provides, it is possible to verify with a high degree of \gls{certainty} that a specific interaction happened at a specific time in a specific location.
+The \Gls{xyo-network} is a web of devices that record and archive \gls{heuristic} data using a blockchain ledger. Whenever a device on the XYO Network interacts with another XY device, it logs this interaction. By reviewing this ledger of interactions and the additional data it  provides, it's possible to verify with a high degree of \gls{certainty} that a specific interaction happened at a specific time in a specific location.
 
-For example, imagine a patient, John Doe, who is admitted to the E.R. John is given an identifying bracelet that is also an \Gls{xyo-network} \Gls{sentinel}, which keeps a record of any XY devices John interacts with. The monitor that reads John?s vital signs is also an XY Sentinel. It logs John's vitals as heuristic data, and the communication between the two devices eliminates the potential for human error in record keeping. The monitor also serves as an XYO Network \Gls{bridge}, reporting and archiving the blockchain ledgers of any XY Sentinels it interacts with.
+For example, imagine a patient, John Doe, who is admitted to the E.R. John is given an identifying bracelet that is also an \Gls{xyo-network} \Gls{sentinel}, which keeps a record of any XY devices John interacts with. The monitor that reads John's vital signs is also an XY Sentinel. It logs John's vitals as heuristic data, and the communication between the two devices eliminates the potential for human error in record keeping. The monitor also serves as an XYO Network \Gls{bridge}, reporting and archiving the blockchain ledgers of any XY Sentinels it interacts with.
 
 When John is treated by a doctor or nurse, these interactions are recorded on John's ledger, the monitor's ledger, and the ledger of an XY \Gls{sentinel} embedded in the staff member's hospital ID. The XYO Network could even keep a log of medications John receives, and because a Sentinel could be linked to the medication itself, it could provide confirmation that the correct dosage of the correct medication was administered, confirming the accuracy of John's medical record.
 
-
 \subsection{Rental Car Agencies}
-The number one problem that rental car agencies face are logistical ones. Simple events, such as the customer losing their keys, results in millions upon millions of dollars in lost opportunity cost for car rental companies each year. And the issue continues to get worse; not better. The most common issue rental car companies have revolves around loss of rental vehicle keys. Most often, this is because the customer fails to return the keys when they return the car. Each misplaced key costs the company hundreds of dollars, not only in replacement costs, but in lost revenue. 
+The number one problem that rental car agencies face are logistical ones. Simple events, such as the customer losing their keys, results in millions upon millions of dollars in lost opportunity cost for car rental companies each year. And the issue continues to get worse; not better. The most common issue rental car companies have revolves around loss of rental vehicle keys. Most often, this is because the customer fails to return the keys when they return the car. Each misplaced key costs the company hundreds of dollars, not only in replacement costs, but in lost revenue.
 
-XY has already implemented a pilot program with one of the largest US rental car agencies to help cut down on the number of keys that aren?t returned at major airports. By expanding the program to make use of the \Gls{xyo-network}, the rental car company and its customers can reduce the number of lost keys. In the event of a dispute, both the company and the customer will have access to an independently verifiable, trustless location ledger that has logged the location of the keys during and after the time of the return.
+XY has already implemented a pilot program with one of the largest US rental car agencies to help cut down on the number of keys that aren't returned at major airports. By expanding the program to make use of the \Gls{xyo-network}, the rental car company and its customers can reduce the number of lost keys. In the event of a dispute, both the company and the customer will have access to an independently verifiable, trustless location ledger that has logged the location of the keys during and after the time of the return.
 
 The \Gls{xyo-network} has already experimented with the implementation of their location network at airports in order to prevent customers from accidentally leaving without returning the keys to their rental car. By adding XYO Network \Glspl{bridge} to the system, rental car companies can have trustless, independent confirmation that keys are returned.  An accessible ledger will not only help prevent loss, but help locate lost keys more efficiently in the case of misplacement. It's easy to imagine the larger scope of such a technology. The instillation of XYO Network \Glspl{sentinel} and Bridges in vehicles also serves as an excellent fleet management tool.
 
@@ -671,27 +677,68 @@ We thank Johnny Kolasinski and Christine Sako for their research and compilation
 \end{center}
 
 
-
-
-% TODO: Christine (References?)
+% TODO: Christine - DONE
 
 \begin{thebibliography}{9}
+
+\bibitem{weise-packagetheft}
+Weise, Elizabeth.
+\textit{Package theft hits nearly one-third of Americans. Is video surveillance the answer?}
+USATODAY. San Francisco, CA, December 21, 2017.
+
+\bibitem{blanchard-loran}
+Blanchard, Walter.
+\textit{Hyperbolic Airborne Radio Navigation Aids}.
+Journal of Navigation, 44(3), September 1991.
+
+\bibitem{karapetsas-sikorka}
+Karapetsas, Lefteris.
+\textit{Sikorka.io}.
+\\\texttt{http://sikorka.io/files/devcon2.pdf}.
+Shanghai, September 29, 2016.
+
+\bibitem{diferrante-proofoflocation}
+Di Ferrante, Matt.
+\textit{Proof of Location}.
+\\\texttt{https://www.reddit.com/r/ethereum/comments/539o9c/proof\_of\_location/}.
+September 17, 2016.
+
+\bibitem{freeman-fiatmoney}
+Freeman, Scott.
+\textit{Fiat Money as a Medium of Exchange}.
+International Economic Review, 30(1), Hoboken, NJ, February 1989.
+
+\bibitem{lave-prisonersdilemma}
+Lave, Lester B.
+\textit{An Empiracle Description of the Prisoner's Dilemma Game}.
+\\\texttt{https://www.rand.org/content/dam/rand/pubs/papers/2009/P2091.pdf}.
+The RAND Corporation, P-2091, September 14, 1960.
+
+\bibitem{smith-sentiments} 
+Adam Smith.
+\textit{The Theory of Moral Sentiments}. 
+London, 1759.
+
 \bibitem{roberts-howadamsmith} 
-Russ Roberts. 
+Roberts, Russ. 
 \textit{How Adam Smith Can Change Your Life}. 
-Portfolio / Penguin, New York, NY, 2014.
+Portfolio / Penguin, New York, NY, October 9, 2014.
  
-\bibitem{numeraire} 
-Richard Craib, Geoffrey Bradway, Xander Dunn with Joey Krug
+\bibitem{bradway-numeraire} 
+Bradway, Geoffrey, Richard Craib, Xander Dunn, and Joey Krug.
 \textit{Numeraire: A Cryptographic Token for Coordinating Machine Intelligence and Preventing Overfitting}.
-\\\texttt{https://numer.ai/whitepaper.pdf}
+\\\texttt{https://numer.ai/whitepaper.pdf}.
 February 20, 2017.
  
-\bibitem{adamsmith-sentiments} 
-Adam Smith
-\textit{The Theory of Moral Sentiments}. 
-A. Millar, London, 1759.
+\bibitem{comcast-packagesurvey}
+Comcast.
+\textit{Survey: Nearly One-Third of Americans Have Had Packages Stolen from Their Doorsteps}.
+Business Wire, Philadelphia, PA, December 14, 2017.
 
+\bibitem{sternberg-medicalerrors}
+Sternberg, Steve.
+\textit{Medical Errors Are Third Leading Cause of Death in the U.S.}.
+U.S. News \& World Report, May 3, 2016.
 
 \end{thebibliography}
 
