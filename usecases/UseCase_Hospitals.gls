@@ -16,5 +16,5 @@
 \glossentry{xy-oracle-network}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{1}}}%
 \glossentry{xyo-network}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{2}}}%
+		\setentrycounter[]{page}\glsnumberformat{1\delimN 2}}}%
 \end{theglossary}\glossarypostamble
