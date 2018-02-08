@@ -159,7 +159,7 @@
 
 \makeglossary
 
-\title {XYO Network in eCommerce}
+\title {XYO Network in Automated Drone Technology}
 \author{Johnny Kolasinski, Christine Sako}
 \date{January 2018}
 
@@ -172,7 +172,7 @@
 \end{center}
 
 \begin{abstract}
-The \Gls{xy-oracle-network} incentivizes the reporting of locations and archiving of ledgers by awarding XYO Tokens to nodes within the web. For example, when a last-mile courier like a UPS driver encounters an XYO Network node on their route, the node will record their XYO Network ledger to be archived. Leveraging \gls{cryptoeconomics} in this way takes advantage of a key feature of blockchain technology - it's a trustless, decentralized system. This means it can offer third-party verification and a degree of reliability that current tracking systems simply can't provide. 
+There has been significant buzz recently around drone technology and the role it will play in our future. From emergency medical supply delivery to one-hour eCommerce delivery, advancements in drone automation bring these applications closer to reality each day. This raises very valid and practical questions for both the entities that will use drone technology and those affected by it. Where will the drones be able to fly? How will accidents be prevented? How will package delivery be confirmed? The \Gls{xy-oracle-network} can provide independently verified location data that can help keep drones within approved flight paths, avoid collisions with both moving and stationary objects, and report package location at key points. According to Amazon CEO Jeff Bezos, the platform's current plans for delivery confirmation require the customer to print out their own pre-generated symbol from a physical printer \cite{nickelsburg-amazondrones}. The \Gls{xyo-network} provides trustless location verification that eliminates this requirement, making the overall process and user experience smoother for the customer. The integration of the \Gls{xyo-network}'s unique blockchain technology will maximize the efficiency of the implemented drone systems, which is imperative for all newly-established industries to thrive and scale.
 
 \end{abstract}
 
@@ -181,15 +181,17 @@ The \Gls{xy-oracle-network} incentivizes the reporting of locations and archivin
 \end{center}
 
 \section {Problem}
-According to a recent study released by Comcast, more than 30\% of Americans have had a package stolen from their porch or doorstep \cite{comcast-packagesurvey}. As the market share of eCommerce continues to grow, this problem will only become more prevalent. Megasites like Amazon are experimenting with different solutions to offer confirmed secure delivery as a premium service to their customers.
+Numerous entities are very close to implementing automated drone services, from eCommerce giants like Amazon and Walmart to Google/Alphabet's Project Wing to the numerous drone mapping services already in operation. Ensuring public safety, securing personal privacy, and maintaining compliance with FAA regulation will become increasingly challenging as guidelines are altered and skies become more crowded.
 
 \section {Solution}
-By utilizing the \Gls{xyo-network} and XYO Tokens, companies like Amazon and UPS can offer, as a premium service, an independently confirmed ledger to track every step of a shipment's progress, starting at the fulfillment center and ending with the package's secure delivery within the customer's home. As a trustless and decentralized system, the XYO Network provides independent confirmation not only of a package's delivery, but of its entire shipping history. This also allows a retailer or eCommerce site to offer payment on delivery, utilizing an Ethereum smart contract to protect the merchant from fraud or loss.
+By utilizing the /Gls{xyo-network}, automated drones operating independently of each other will be able to communicate their relative and absolute locations using a universal protocol. Drones that are not inherently able to communicate with one another can take advantage of the XYO Network and still interact through third-party intermediaries, including independent devices or other drones. Interactions between devices on the XYO Network are also recorded on the blockchain, a decentralized ledger. This means that all automated drones are held publicly accountable in the event of an accident, regulation infringement, or breach in safety or personal privacy through the availability of a permanent and unalterable record of all device interactions.
 
 \section {How it Works}
-When a customer finalizes an order, an Ethereum \gls{smart-contract} is created which will release payment to the merchant upon successful delivery of the purchased product. The shipment will include an \Gls{xyo-network} \Gls{sentinel}, a low-cost electronic device that records its interactions with other devices on the XYO Network on its blockchain ledger. Other XYO Network devices will likewise record their interactions with packages being shipped. Every one of these interactions will be independently verifiable, asserting a web of locational certainty that stretches all the way back to the shipment's point of origin. When the shipment reaches its destination, as confirmed by its interaction with XYO Network devices within the buyer's home, the smart contract will be fulfilled, and payment will be released. Should there be a dispute, the ledger will provide a history that can confirm the delivery of the shipment or show where it went off track.
+Every drone that is connected to the /Gls{xyo-network} will include a device called a \Gls{sentinel}. Sentinels record and transmit \gls{heuristic} data like time, location, speed and temperature. They also communicate with other Sentinels and keep a record of these interactions. This history is transmitted to the blockchain via an XYO \Glspl{bridge}, which can either be included on the drones themselves, or as independent devices. The entire history of heuristic data and device interactions is archived on a decentralized, publicly accessible blockchain.
 
-The terminal point of the transaction - the point where the package is delivered and payment is released - will be determined at the time the order is placed. Amazon has experimented with multiple secure delivery systems, including lockers in public places like convenience stores and even electronic locks that give their delivery team access to customers' homes. XYO Network devices within these secure locations will confirm delivery. In an Amazon locker, the shipped package will interact not just with its locker, but with XYO Network devices in other lockers and the customers that use them. In the customer's home, the XYO Network nodes could include the customer's phone, IoT devices, and even the Amazon Echo that was used to place the order.
+Drones operated by different companies or produced by different manufacturers may very likely lack a universal standard of wireless communication necessary to communicate directly with each other. The XYO Network is platform-agnostic and is not tied to any one radio broadcast band or communication protocol. This means that Bridges can act as middlemen between devices that would otherwise not be able to correspond with each other. Devices on the XYO Network can help improve each other's data, allowing for greater \gls{accuracy} among all drones. For example, if one drone uses GPS for location calculation, and another triangulates off of cell towers, comparing their data at the time of interaction will independently verify both devices' histories. A device on the XYO Network that doesn't have an independent geo-positioning system will also be able to use the drones' heuristics to confirm its own location.
+
+Participation in the XYO Network is incentivized by XYO Tokens - Sentinels and Bridges are awarded XYO Tokens when the accurate information they provide to the XYO Network is accessed, as well as other devices on the XYO Network that are responsible for archiving and analyzing the data that is provided.  
 
 
 \begin{center}
@@ -198,17 +200,16 @@ The terminal point of the transaction - the point where the package is delivered
 
 
 \clearpage
+ 
+ \begin{thebibliography}{9}
 
-\begin{thebibliography}{9}
-
-\bibitem{comcast-packagesurvey}
-Comcast.
-\textit{Survey: Nearly One-Third of Americans Have Had Packages Stolen from Their Doorsteps}.
-Business Wire, Philadelphia, PA, December 14, 2017.
-
+\bibitem{nickelsburg-amazondrones}
+Nickelsburg, Monica.
+\textit{Jeff Bezos: Amazon Drones Will Find Landing Spots Using Symbols Printed Out By Customers}.
+GeekWire, October 24, 2016.
 
 \end{thebibliography}
- 
+
 \printglossaries
 
 \end{document}

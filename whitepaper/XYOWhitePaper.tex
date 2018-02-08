@@ -7,6 +7,13 @@
 \usepackage{amsmath} % Advanced math typesetting
 \usepackage[utf8]{inputenc} % Unicode support (Umlauts etc.)
 \usepackage{hyperref} % Add a link to your document
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,
+    citecolor=blue,      
+    urlcolor=blue,
+}
 \usepackage{graphicx} % Add pictures to your document
 \usepackage{listings} % Source code formatting and highlighting
 \usepackage{framed} % Source code formatting and highlighting
@@ -164,14 +171,14 @@
 \title {The XY Oracle Network: The Proof-of-Origin Based Cryptographic Location Network}
 
 \author{
-	Arie Trouw
-		\thanks{XYO Network, \texttt{arie.trouw@xyo.network}}
-	, Markus Levin
-		\thanks{XYO Network, \texttt{markus.levin@xyo.network}}
-	, Raul Jordan
-		\thanks{Harvard College, The Thiel Foundation and XYO Network, \texttt{rauljordan@college.harvard.edu}}
-	, Scott Scheper
-		\thanks{XYO Network, \texttt{scott.scheper@xyo.network}}
+    Arie Trouw
+        \thanks{XYO Network, \texttt{arie.trouw@xyo.network}}
+    , Markus Levin
+        \thanks{XYO Network, \texttt{markus.levin@xyo.network}}
+    , Raul Jordan
+        \thanks{Harvard College, The Thiel Foundation and XYO Network, \texttt{rauljordan@college.harvard.edu}}
+    , Scott Scheper
+        \thanks{XYO Network, \texttt{scott.scheper@xyo.network}}
 }
 
 \date{January 2018}
@@ -222,9 +229,8 @@ The concept of provable location has been around since the 1960's, and can even 
 
 Surprisingly, the concept of applying location verification to blockchain technologies first appeared in September 2016 at Ethereum's DevCon 2. It was introduced by Lefteris Karapetsas, an Ethereum developer from Berlin. Karapetsas' project, \textit{Sikorka}, enabled smart contracts to be deployed on the spot in the real world, using what he termed, \textit{Proof of Presence}. His application of bridging the world of blockchain and location focused primarily on augmented reality use cases; and he introduced novel concepts such as challenge questions in proving one's location.
 
-%Reddit example: https://www.reddit.com/r/ethereum/comments/539o9c/proof_of_location/
-The term, Proof of Location, then formally surfaced in Ethereum's community on September 17, 2016. It was then further expounded on by Matt Di Ferrante, Developer at the Ethereum Foundation, who stated:
-
+%TODO(Christine - DONE) %https://www.reddit.com/r/ethereum/comments/539o9c/proof_of_location/
+The term, Proof of Location, then formally surfaced in Ethereum's community on September 17, 2016 \cite{diferrante-proofoflocation}. It was then further expounded on by Matt Di Ferrante, Developer at the Ethereum Foundation, who stated:
 
 \begin{displayquote}\textit{``Proof of Location you can trust is honestly one of the most difficult things to implement. Even if you have many participants that can attest each other's location, there's no guarantee that they wouldn't just go sybil at any point in the future, and since you're always only relying on majority reporting it's a huge weakness.
 If you could require some type of specialized hardware device that has anti-tamper tech such that the private key is destroyed when one attempts to open it or change the firmware on it then you could possibly have greater security, but at the same time, it's not like it's impossible to spoof GPS signals either.
@@ -463,10 +469,12 @@ Another important attack is Distributed Denial of Service among sentinel nodes i
 
 \Glspl{oracle} stand as a significant portion of the power and infrastructure needs for decentralized applications, with most of the focus revolving around the connectivity and aggregation of authoritative oracles. We believe that the need for a fully decentralized and trustless system of oracles is needed for decentralized applications to reach their maximum potential.
 
+
 \subsection {XYO Network Cryptoeconomics}
  We use XYO to incentivize the desired behavior of providing accurate, reliable location \glspl{heuristic}. XYO Tokens can be thought of as``gas'' needed to interface with the real world in order to verify the XY-coordinate of a specified object.
 
 The process works like this: A token holder queries the XYO Network with a query, (e.g. ``Where is my eCommerce order package with XYO Address \texttt{0x123456789}''). The query gets sent into a queue, where it waits to be processed and answered. A user can set their desired confidence level and XYO gas cost at query creation. The cost of a query (in XYO tokens) is determined by the amount of data required to provide an answer to the query and will depend on market dynamics.  The more data needed, the more expensive the query and higher the XYO Gas Price. Potential queries to the XYO Network can be very large and expensive. For instance, a trucking and logistics company could query the XYO Network to ask, \textit{``What is the location of every single car in our fleet?''}
+
 
 Once the XYO Token holder queries the XYO Network and pays the requested gas, Diviners taking hold of the task call out to the relevant \Gls{archivist} to retrieve the pertinent data needed to answer the query. The data returned is derived from the \Glspl{bridge}, who originally gathered the data from the \Glspl{sentinel}. Sentinels are essentially devices or signals that verify the location of objects. These include devices like Bluetooth trackers, GPS trackers, geo-location tracking built into IoT devices, satellite tracking technology, QR-code scanners, RFID scanning and many others. XY Findables has pioneered and launched its consumer business, XY Find It, which has allowed it to test and process real-world location heuristics. All efforts of XY Find It have served to help significantly in designing the XYO Network Blockchain Protocol.
 
@@ -512,7 +520,9 @@ Similar to how credit cards reward consumers for spending money, in this model t
 
 %Use Cases Section
 \section{XYO Network Use Cases}
+
 The \Gls{xyo-network}'s usage  has vast applications that span a multitude of industries. Take for example an eCommerce Company that could offer its premium customers payment-upon-delivery services. To be able to offer this service, the eCommerce company would leverage the XYO Network and XY Platform (which uses XYO Tokens) to write a \gls{smart-contract} (i.e. on Ethereum's platform). The XYO Network could then track the location of the package being sent to the consumer along every single step of fulfillment; from the warehouse shelf to the the shipping courier, all the way into the consumer's house and every location in between. This could enable eCommerce retailers and websites to verify, in a trustless way, that the package not only appeared on the customer's doorstep, but also safely inside their home. Once the package has arrived in the customer's home (defined and verified by a specific XY-Coordinate), the shipment is considered complete and the payment to the vendor gets released. The eCommerce integration of the XYO Oracle Network thusly enables the ability to protect the merchant from fraud and ensure consumers only pay for goods that arrive in their home.
+
 
 Consider an entirely different integration of the XYO Network with a hotel review site, whose current problem is that their reviews are often not trusted. Naturally, hotel owners are incentivized to improve their reviews at any cost. What if one could say with extremely high \gls{certainty} that someone was in San Diego, flew to a hotel in Bali and stayed there for two weeks, returned to San Diego, and then wrote a review about their hotel stay in Bali? The review would have a very high reputation, especially if it was written by a serial reviewer who has written many reviews with verified location data.
 
@@ -525,10 +535,49 @@ We are fortunate to have a consumer business that has successfully built a real-
 
 To further grow its network, the \Gls{xyo-network} is engaging with businesses to expand its network of \Glspl{sentinel} beyond its own network of XY Find It beacons, which total to over 800,000 globally as of January 2018. A variety of devices can act as Sentinels. Generally, the greater the Sentinel cardinality in the XYO Network, the more reliable the network.
 
+
 % TODO:
 \section {Acknowledgements}
 
-We thank Johnny Kolasinski and Christine Sako for their research and compilation of applicable use cases, and their work in auditing the white paper for formatting consistency. We also thank the following individuals for their comments and insight in reviewing our work: John Arana and Raul Jordan.
+We thank Christine Sako and Johnny Kolasinski for their research and compilation of applicable use cases, as well as for their work in auditing the white paper for formatting and consistency. We also thank John Arana for his comments and insight throughout reviewing our work.
+
+
+\begin{center}
+\line(1,0){50}
+\end{center}
+
+
+% TODO: Christine - DONE
+
+\begin{thebibliography}{9}
+
+\bibitem{comcast-packagesurvey}
+Comcast.
+\textit{Survey: Nearly One-Third of Americans Have Had Packages Stolen from Their Doorsteps}.
+Business Wire, Philadelphia, PA, December 14, 2017.
+
+\bibitem{blanchard-loran}
+Blanchard, Walter.
+\textit{Hyperbolic Airborne Radio Navigation Aids}.
+Journal of Navigation, 44(3), September 1991.
+
+\bibitem{karapetsas-sikorka}
+Karapetsas, Lefteris.
+\textit{Sikorka.io}.
+\\\texttt{http://sikorka.io/files/devcon2.pdf}.
+Shanghai, September 29, 2016.
+
+\bibitem{diferrante-proofoflocation}
+Di Ferrante, Matt.
+\textit{Proof of Location}.
+\\\texttt{https://www.reddit.com/r/ethereum/comments/539o9c/proof\_of\_location/}.
+September 17, 2016.
+
+\bibitem{freeman-fiatmoney}
+Freeman, Scott.
+\textit{Fiat Money as a Medium of Exchange}.
+International Economic Review, 30(1), Hoboken, NJ, February 1989.
+\end{thebibliography}
 
 \clearpage
 
