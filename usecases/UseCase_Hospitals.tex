@@ -7,20 +7,19 @@
 \usepackage{amsmath} % Advanced math typesetting
 \usepackage[utf8]{inputenc} % Unicode support (Umlauts etc.)
 \usepackage{hyperref} % Add a link to your document
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,
+    citecolor=blue,      
+    urlcolor=blue,
+}
 \usepackage{graphicx} % Add pictures to your document
 \usepackage{listings} % Source code formatting and highlighting
 \usepackage{framed} % Source code formatting and highlighting
 \usepackage{appendix} % Source code formatting and highlighting
 \usepackage[automake]{glossaries}
 \usepackage{csquotes}
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=black,
-    filecolor=black,      
-    urlcolor=blue,
-}
-
 \usepackage[letterpaper, portrait, margin=1.5in]{geometry}
 
 \graphicspath{ {images/} }
@@ -173,7 +172,7 @@
 \end{center}
 
 \begin{abstract}
-Hospitals are among the most demanding and perilous establishments in the medical field. From medical equipment to identification of both patient and staff, a single misplacement or mistake could mean the difference between life and death. The \Gls{xy-oracle-network} can provide trustless, verified location reporting that is critical in such a sensitive environment. The feasibility of error reduction and increased efficiency in hospitals is made possible with the \Gls{xy-oracle-network}'s unique blockchain technology. The implications could reduce prescription dosage errors, prevent unnecessary procedures, and ultimately, save lives.
+Hospitals are among the most demanding and perilous establishments in the medical field. From medical equipment to identification of both patient and staff, a single misplacement or mistake could mean the difference between life and death. The \Gls{xy-oracle-network} can provide trustless, verified location reporting that is critical in such a sensitive environment. The feasibility of error reduction and increased efficiency in hospitals is made possible with the \Gls{xyo-network}'s unique blockchain technology. The implications could reduce prescription dosage errors, prevent unnecessary procedures, and ultimately, save lives.
 
 \end{abstract}
 
@@ -182,7 +181,7 @@ Hospitals are among the most demanding and perilous establishments in the medica
 \end{center}
 
 \section {Problem}
-Medical errors are the third leading cause of death in the United States, according to \href{https://www.usnews.com/news/articles/2016-05-03/medical-errors-are-third-leading-cause-of-death-in-the-us}{a study released by the Johns Hopkins School of Medicine}. Many of these preventable deaths are a result of operational or record-keeping errors, including adverse drug interactions, improper medical records, and even unnecessary surgeries. The study?s author, Dr. Martin Makary, said in a letter to the Centers for Disease Control and Prevention that ``it is time for the country to invest in medical quality and patient safety proportional to the mortality burden it bears. This would [include] research in technology that reduces harmful and unwarranted variation in medical care.''
+Medical errors are the third leading cause of death in the United States, according to a study released by the Johns Hopkins School of Medicine \cite{sternberg-medicalerrors}. Many of these preventable deaths are a result of operational or record-keeping errors, including adverse drug interactions, improper medical records, and even unnecessary surgeries. The study's author, Dr. Martin Makary, said in a letter to the Centers for Disease Control and Prevention that ``it is time for the country to invest in medical quality and patient safety proportional to the mortality burden it bears. This would [include] research in technology that reduces harmful and unwarranted variation in medical care.''
 
 \begin{displayquote}\textit{``It is time for the country to invest in medical quality and patient safety proportional to the mortality burden it bears. This would [include] research in technology that reduces harmful and unwarranted variation in medical care.''}
 
@@ -192,14 +191,14 @@ Medical errors are the third leading cause of death in the United States, accord
 
 
 \section {Solution}
-By tying the \Gls{xyo-network} into Hospitals' operational frameworks that are already in place, care providers can significantly reduce failures in communication and record keeping that result in patient injury and death. Utilizing the XYO Network and XYO Tokens can provide a trustless, decentralized, and independently verifiable record of all patient interactions with any staff as well as a log of relevant patient data such as the patient?s vitals, treatment details, and test results for the duration of their stay.
+By tying the \Gls{xyo-network} into Hospitals' operational frameworks that are already in place, care providers can significantly reduce failures in communication and record keeping that result in patient injury and death. Utilizing the XYO Network and XYO Tokens can provide a trustless, decentralized, and independently verifiable record of all patient interactions with any staff as well as a log of relevant patient data such as the patient's vitals, treatment details, and test results for the duration of their stay.
 
 \section {How it Works}
-The \Gls{xyo-network} is a web of devices that record and archive \gls{heuristic} data using a blockchain ledger. Whenever a device on the XYO Network interacts with another XY device, it logs this interaction. By reviewing this ledger of interactions and the additional data it  provides, it?s possible to verify with a high degree of \gls{certainty} that a specific interaction happened at a specific time in a specific location.
+The \Gls{xyo-network} is a web of devices that record and archive \gls{heuristic} data using a blockchain ledger. Whenever a device on the XYO Network interacts with another XY device, it logs this interaction. By reviewing this ledger of interactions and the additional data it  provides, it's possible to verify with a high degree of \gls{certainty} that a specific interaction happened at a specific time in a specific location.
 
-For example, imagine a patient, John Doe, who is admitted to the E.R. John is given an identifying bracelet that is also an \Gls{xyo-network} \Gls{sentinel}, which keeps a record of any XY devices John interacts with. The monitor that reads John?s vital signs is also an XY Sentinel. It logs John?s vitals as heuristic data, and the communication between the two devices eliminates the potential for human error in record keeping. The monitor also serves as an XYO Network \Gls{bridge}, reporting and archiving the blockchain ledgers of any XY Sentinels it interacts with.
+For example, imagine a patient, John Doe, who is admitted to the E.R. John is given an identifying bracelet that is also an \Gls{xyo-network} \Gls{sentinel}, which keeps a record of any XY devices John interacts with. The monitor that reads John's vital signs is also an XY Sentinel. It logs John's vitals as heuristic data, and the communication between the two devices eliminates the potential for human error in record keeping. The monitor also serves as an XYO Network \Gls{bridge}, reporting and archiving the blockchain ledgers of any XY Sentinels it interacts with.
 
-When John is treated by a doctor or nurse, these interactions are recorded on John?s ledger, the monitor?s ledger, and the ledger of an XY \Gls{sentinel} embedded in the staff member?s hospital ID. The XYO Network could even keep a log of medications John receives, and because a Sentinel could be linked to the medication itself, it could provide confirmation that the correct dosage of the correct medication was administered, confirming the accuracy of John?s medical record.
+When John is treated by a doctor or nurse, these interactions are recorded on John's ledger, the monitor's ledger, and the ledger of an XY \Gls{sentinel} embedded in the staff member's hospital ID. The XYO Network could even keep a log of medications John receives, and because a Sentinel could be linked to the medication itself, it could provide confirmation that the correct dosage of the correct medication was administered, confirming the accuracy of John's medical record.
 
 \begin{center}
 \line(1,0){50}
@@ -207,6 +206,15 @@ When John is treated by a doctor or nurse, these interactions are recorded on Jo
 
 
 \clearpage
+
+\begin{thebibliography}{9}
+
+\bibitem{sternberg-medicalerrors}
+Sternberg, Steve.
+\textit{Medical Errors Are Third Leading Cause of Death in the U.S.}
+U.S. News \& World Report, May 3, 2016.
+
+\end{thebibliography}
  
 \printglossaries
 
