@@ -11,7 +11,7 @@
     colorlinks=true,
     linkcolor=black,
     filecolor=black,
-    citecolor=blue,      
+    citecolor=blue,
     urlcolor=blue,
 }
 \usepackage{graphicx} % Add pictures to your document
@@ -220,7 +220,11 @@ Thus the following problem exists: \textbf{both certainty and accuracy of the lo
 
 XYO has been working towards the concept of enabling developers, such as those writing smart contracts for blockchain platforms, to interact with the physical world as if it were an API. The XYO Network is the world's first oracle protocol that makes it possible for two entities to transact in the real world without a centralized third party through smart contract technology. Our abstractions allow us to make location verification trustless for developers, creating a protocol with novel use cases that have not been possible until today.
 
+<<<<<<< HEAD
+The XYO Network will be built upon an existing infrastructure of 1,000,000 devices XY - The Findables Company. has already deployed throughout the world. XY's Bluetooth and GPS devices allow everyday consumers to place physical tracking beacons on the things they want to keep track of (such as keys, luggage, bikes and even pets). If they misplace or lose such an item, they can see exactly where it is by viewing its location on a smartphone application. In just six years, XY has created one of the largest consumer Bluetooth and GPS networks in the world.
+=======
 The XYO Network will be built upon an existing infrastructure of 1,000,000 devices circulating in the world that were distributed through their consumer-facing findables business. XY's Bluetooth and GPS devices allow everyday consumers to place physical tracking beacons on the things they want to keep track of (such as keys, luggage, bikes and even pets). If they misplace or lose such an item, they can see exactly where it is by viewing its location on a smartphone application. In just six years, the XYO Network has created one of the largest consumer Bluetooth and GPS networks in the world.
+>>>>>>> 5147cb519420fa21797e92b35c04cd62c1fb9206
 
 \section{Historical Background \& Previous Approaches}
 \subsection{Proof of Location}
@@ -262,9 +266,15 @@ In summary, Proof of Location can be understood as leveraging the blockchain's p
 The goal of the XYO Network is to create a trustless, decentralized system of location oracles that is resistant to attack and produces the highest certainty possible when queried for available data. We accomplish this through a set of abstractions that greatly reduces the risk of location spoofing through a chain of zero-knowledge proofs along the components of the system.
 
 \subsection {Network Overview}
+<<<<<<< HEAD
+Our system provides an entrypoint into a protocol of connected devices that provides high certainty on location data through a chain of cryptographic proofs. Users are able to issue transactions called \textit{``queries``} to retrieve a piece of location data to a smart contract (on Ethereum, EOS, or any other dApp platform). Aggregators from the XY Oracle Network then listen to these queries issued to the contract and fetch the answers with the highest accuracy from a decentralized set of devices that relay cryptographic proofs back up to these aggregators. These aggregators then feed these answers back into the smart contract after reaching consensus on the answer with the best score. This network of components makes it possible to determine if an object is at a specific XY-coordinate at a given time, with the most provable, trustless certainty possible.
+
+The \Gls{xyo-network} has four primary components: \textbf{\Glspl{sentinel}} (The Data Gatherers), \textbf{\Glspl{bridge}} (The Data Relayers), \textbf{\Glspl{archivist}} (The Data Stores), and \textbf{\Glspl{diviner}} (The Answer Formulators). Sentinels gather location information via sensors, radios, and other means. Bridges take this data from Sentinels and provide them to Archivists. Archivists store this information for Diviners to analyze. Diviners analyze location heuristics from Archivists to generate answers to queries and provide an accuracy score and relay these answers back into a smart contract (Diviners serve as oracles). This accuracy score, named the \textbf{Origin Chain Score}, is determined through a set of zero-knowledge proofs known as an \textbf{Origin Chain} that guarantees two or more pieces of data originated from the same source without revealing the underlying information. Each component along the query's path generates its own Proof of Origin that is then chained to each component it relays data to. \Gls{proof-of-origin} is a novel formulation that forms a chain of cryptographic guarantees along a path of relayers in the network to offer high confidence in real world data. This \textbf{Origin Chain} encapsulates the confidence we can have in a piece of location data all the way down to the devices that gathered it in the first place. We will explore how \Gls{proof-of-origin} works in-depth in the following section.
+=======
 Our system provides an entrypoint into a protocol of connected devices that provides high certainty on location data through a chain of cryptographic proofs. Users are able to issue transactions called \textit{``queries``} to retrieve a piece of location data on any blockchain platform possessing smart contract functionality.\footnote{Ethereum, Bitcoin + RSK, Stellar, Cardano, IOTA, EOS, NEO, Dragonchain, Lisk, RChain, Counterparty, Monax and others} Aggregators from the XY Oracle Network then listen to these queries issued to the contract and fetch the answers with the highest accuracy from a decentralized set of devices that relay cryptographic proofs back up to these aggregators. These aggregators then feed these answers back into the smart contract after reaching consensus on the answer with the best score. This network of components makes it possible to determine if an object is at a specific XY-coordinate at a given time, with the most provable, trustless certainty possible.
 
 The \Gls{xyo-network} has four primary components: \textbf{\Glspl{sentinel}} (The Data Gatherers), \textbf{\Glspl{bridge}} (The Data Relayers), \textbf{\Glspl{archivist}} (The Data Stores), and \textbf{\Glspl{diviner}} (The Answer Aggregators). Sentinels gather location information via beacons, sensors, radios, and other means. Bridges take this data from Sentinels and provide them to Archivists. Archivists store this information for Diviners to analyze. Diviners analyze location heuristics from Archivists to generate answers to queries and provide an accuracy score and relay these answers back into a smart contract (Diviners serve as oracles). This accuracy score, named the \textbf{Origin Chain Score}, is determined through a set of zero-knowledge proofs known as an \textbf{Origin Chain} that guarantees two or more pieces of data originated from the same source without revealing the underlying information. Each component along the query's path generates its own Proof of Origin that is then chained to each component it relays data to. \Gls{proof-of-origin} is a novel formulation that forms a chain of cryptographic guarantees along a path of relayers in the network to offer high confidence in real world data. This \textbf{Origin Chain} encapsulates the confidence we can have in a piece of location data all the way down to the devices that gathered it in the first place. We will explore how \Gls{proof-of-origin} works in-depth in the following section.
+>>>>>>> 5147cb519420fa21797e92b35c04cd62c1fb9206
 
 To establish a decentralized consensus mechanism among diviners, the XYO Network will rely on a public, immutable blockchain known as the XYOMainChain that stores query transactions along with data gathered from Diviners and their associated origin score. Before we dive in-depth into the functioning of the entire system, we will clearly define the responsibilities of each component in our network.
 
@@ -293,23 +303,35 @@ Other diviners reach consensus on the validity of a block and digitally sign the
 Now that the responsibilities of each component are clear, here is an end-to-end example of how the system will work:
 
 \begin{enumerate}
-  \item \textbf{User Issues a Query to the XYO Smart Contract on the Ethereum Blockchain}
+  \item \textbf{Sentinels Gather Data}
   \begin{itemize}
-    \item Diviners poll for queries sent to the Ethereum smart contract and then decide to take on a query by fetching the appropriate information needed from the Archivist network.
+    \item Sentinels gather real world location heuristics and prepare their own Proof of Origin to be chained to nodes above them
   \end{itemize}
-  \item \textbf{Archivists Aggregate the Information from Bridges and Feed Back the Data With the Highest Origin Score to Diviners}
+  \item \textbf{Bridges Gather Data From Sentinels}
   \begin{itemize}
-    \item Bridges constantly send information to Archivists that are then kept on decentralized stores along with a location heuristic index. Bridges constantly poll Sentinels that provide their Proof of Origin chains and location data.
+    \item Bridges gather necessary data from online sentinels and append Proof of Origin to their chain. Bridges then make themselves available to Archivists in the Network.
   \end{itemize}
-  \item \textbf{Diviners Judge the Best Origin Chain and Determine an Accuracy Score}
+  \item \textbf{Archivists Index/Assemble Data from Bridges}
+  \begin{itemize}
+    \item Bridges constantly send information to Archivists that are then kept on decentralized stores along with a location heuristic index.
+  \end{itemize}
+  \item \textbf{Diviner Fetches a User's Query}
+  \begin{itemize}
+    \item Diviners poll for queries sent to the Ethereum smart contract and decide to begin the answer formulation process
+  \end{itemize}
+  \item \textbf{Diviner Collects Data From Archivists}
+  \begin{itemize}
+    \item  Diviners then decide to take on a query by fetching the appropriate information needed from the Archivist network.
+  \end{itemize}
+  \item \textbf{Diviner Formulates Answer}
   \begin{itemize}
     \item Diviners choose the best answer to the query from the Archivist Network that contain the best Origin Chain Score
   \end{itemize}
-  \item \textbf{Diviners Propose a Block on the XYOMainChain}
+  \item \textbf{Diviner Proposes Block}
   \begin{itemize}
     \item Diviners then propose blocks on the XYOMainChain containing the answer contents, the query, the XYO paid through Proof of Work. Other Diviners on the network digitally sign the block's content and then the coinbase Diviner's account nonce is updated to showcase its Proof of Work in the system once consensus on a valid block is reached.
   \end{itemize}
-  \item \textbf{Diviners Relay the Answer Back to the XYO Smart Contract on the Ethereum Blockchain}
+  \item \textbf{Diviner Returns Result to Query Initiator}
   \begin{itemize}
     \item Diviners package the answer along with its Origin Chain Score and set of digital signatures and send the to an adapter component that securely connects to the XYO smart contract. The adapter is in charge of making sure the integrity of the Diviner has not been compromised and sends the set of digitally signed answers to the smart contract. This happens right after the block creation process. The coinbase Diviner is then paid for its efforts.
   \end{itemize}
@@ -331,6 +353,8 @@ Since blocks on the XYOMainChain store the Origin Chain and graph of components 
 \subsection{XYO Network’s Framework For Selecting The Best Answer Candidate}
 
 We define The Best Answer as the one, amongst a list of Answer Candidates, which returns the highest validity score and has a higher accuracy score than the minimum required accuracy. The validity score is based on the Origin Chain Score. The system knows what the highest record Origin Score was, which would be the 100 percent until a higher score is achieved, which then becomes the new 100 percent. The XYO Network allows selection of the Best Answer Algorithm for determining the Best Answer. This creates expansion for future research into alternative algorithms.
+
+When data is excluded from an answer due to it being considered bad or incorrect, it will be circulated to archivists so that they can purge that data from their decentralized stores.
 
 \subsection{Initial Integration With Public Blockchains}
 
