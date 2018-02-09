@@ -150,6 +150,18 @@
     description={A data set of ledger entries taken from various Origin Chains to establish the origin of a heuristic ledger entry with a specified level of certainty}
 }
 
+\newglossaryentry{crypto-location}
+{
+    name={crypto-location},
+    description={The realm of cryptographic location technology}
+}
+
+\newglossaryentry{trustless}
+{
+    name={trustless},
+    description={A characteristic where all parties in a system can reach a consensus on what the canonical truth is. Power and trust is distributed (or shared) among the network’s stakeholders (e.g. developers, miners, and consumers), rather than concentrated in a single individual or entity (e.g. banks, governments, and financial institutions). This is acommon term that can be easily misunderstood. Blockchains don’t actually eliminate trust. What they do is minimize the amount of trust required from any single actor in the system. They do this by distributing trust among different actors in the system via an economic game that incentivizes actors to cooperate with the rules defined by the protocol.}
+}
+
 \newacronym{pow}{PoW}{Proof of Work}
 
 \newacronym{poo}{PoO}{Proof of Origin}
@@ -185,10 +197,10 @@ Lost and mishandled luggage costed airlines \$2.1 billion dollars in 2016, accor
 
 
 \section {Solution}
-The \Gls{xyo-network} has implemented a decentralized, trustless system for tracking and locating luggage. Its decentralized nature even allows airlines to utilize each other's networks without compromising the airlines' network security or needing to coordinate system updates - this means that if you're at the United desk in Dallas, but your bag is at the Delta desk at SFO, the bag can still be instantly located by accessing the \Gls{xyo-network} Ledger. Should a bag be permanently lost and a passenger file a claim with the airline, the decentralized and trustless nature of the blockchain ledger allows both parties (the airline and the passenger) to independently verify who had possession of it last.
+The \Gls{xyo-network} has implemented a decentralized, \gls{trustless} system for tracking and locating luggage. Its decentralized nature even allows airlines to utilize each other's networks without compromising the airlines' network security or needing to coordinate system updates - this means that if you're at the United desk in Dallas, but your bag is at the Delta desk at SFO, the bag can still be instantly located by accessing the \Gls{xyo-network} Ledger. Should a bag be permanently lost and a passenger file a claim with the airline, the decentralized and trustless nature of the blockchain ledger allows both parties (the airline and the passenger) to independently verify who had possession of it last.
 
 \section {How it Works}
-The XY Oracle Network makes use of affordable hardware devices called ``\Glspl{sentinel},'' which  record \gls{heuristic} data like location, temperature, motion and other signals. Each of these Sentinel also share and record the activity of other nearby Sentinel creating a blockchain (decentralized ledger). For example, every bag in a cargo hold would be able to communicate with other bags in the hold, sharing information like when they were checked in, when they were moved, and what baggage handlers or TSA staff handled them. IoT devices called \Glspl{bridge} hand off all of this heuristic data to decentralized nodes. These nodes will be rewarded with XYO Tokens for relaying and archiving the information. This way, a cryptoeconomics-based incentive aggregates within the system to provide accurate and trustless historical data.
+The XY Oracle Network makes use of affordable hardware devices called ``\Glspl{sentinel},'' which  record \gls{heuristic} data like location, temperature, motion and other signals. Each of these Sentinel also share and record the activity of other nearby Sentinel creating a blockchain (decentralized ledger). For example, every bag in a cargo hold would be able to communicate with other bags in the hold, sharing information like when they were checked in, when they were moved, and what baggage handlers or TSA staff handled them. IoT devices called \Glspl{bridge} hand off all of this heuristic data to decentralized nodes. These nodes will be rewarded with XYO Tokens for relaying and archiving the information. This way, a cryptoeconomics-based incentive aggregates within the system to provide accurate and \gls{trustless} historical data.
 
 The decentralized nature of the \Gls{xyo-network} means that the tracking systems put in place by the different airlines can support each other without the need for the airlines themselves to implement a unified baggage handling system. As in the example above, a Delta-owned \Gls{bridge} will be able to report the history reported by a United-owned \Gls{sentinel}, and vice versa. Since the location and tracking information is communicated via a decentralized ledger, there will be no need for Delta and United (nor any other airline) to waste resources building out systems that need to communicate directly.
 

@@ -162,6 +162,18 @@
     description={A data set of ledger entries taken from various Origin Chains to establish the origin of a heuristic ledger entry with a specified level of certainty}
 }
 
+\newglossaryentry{crypto-location}
+{
+    name={crypto-location},
+    description={The realm of cryptographic location technology}
+}
+
+\newglossaryentry{trustless}
+{
+    name={trustless},
+    description={A characteristic where all parties in a system can reach a consensus on what the canonical truth is. Power and trust is distributed (or shared) among the network’s stakeholders (e.g. developers, miners, and consumers), rather than concentrated in a single individual or entity (e.g. banks, governments, and financial institutions). This is acommon term that can be easily misunderstood. Blockchains don’t actually eliminate trust. What they do is minimize the amount of trust required from any single actor in the system. They do this by distributing trust among different actors in the system via an economic game that incentivizes actors to cooperate with the rules defined by the protocol.}
+}
+
 \newacronym{pow}{PoW}{Proof of Work}
 
 \newacronym{poo}{PoO}{Proof of Origin}
@@ -192,9 +204,7 @@
 
 %Abstract Section
 \begin{abstract}
-With the growing presence of connected, location-reliant technologies, our privacy and safety rely heavily on the accuracy and validity of location information. Various attempts have been made to eliminate the need for centralized entities controlling the flow of location data, but every attempt has relied on the integrity of the devices collecting this data in the physical world.
-We propose a trustless, cryptographic location network using a novel formulation reliant on a chain of zero-knowledge proofs to establish a high degree of data certainty on location information.
-The \textbf{XYO Network} is an abstraction that enables layered, location verification across many device classes and protocols. At its core sits a set of novel cryptographic mechanisms known as \textbf{Proof of Origin} \& \textbf{Bound Witnesses} that tie together the power of blockchain technology and real world data collection into a system with direct applications today.
+With the growing presence of connected, location-reliant technologies, our privacy and safety rely heavily on the \gls{accuracy} and validity of location information. Various attempts have been made to eliminate the need for centralized entities controlling the flow of location data, but every attempt has relied on the integrity of the devices collecting this data in the physical world. We propose a \gls{trustless}, cryptographic location network using a novel formulation reliant on a chain of zero-knowledge proofs to establish a high degree of data gls{certainty} on location information. The \textbf{\Gls{xy-oracle-network}} is an abstraction that enables layered, location verification across many device classes and protocols. At its core sits a set of novel cryptographic mechanisms known as \textbf{\Gls{proof-of-origin}} \& \textbf{\Gls{bound-witness}} that tie together the power of blockchain technology and real world data collection into a system with direct applications today.
 
 \begin{center}
 \line(1,0){50}
@@ -203,47 +213,40 @@ The \textbf{XYO Network} is an abstraction that enables layered, location verifi
 
 %Introduction
 \section{Introduction}
-With the advent of blockchain-based, trustless smart contracts, the need for oracle services
-that arbitrate the outcome of a contract has grown significantly. Most current implementations
-of smart contracts rely on a single or aggregated set of authoritative oracles to settle
-the outcome of the contract. In cases where both parties can agree on the authority and
-incorruptibility of the specified oracle, this is sufficient. However, in many cases, either
-an appropriate oracle does not exist or the oracle cannot be considered
-authoritative because of the possibility of error or corruption.
+With the advent of blockchain-based, \gls{trustless} \glspl{smart-contract}, the need for \gls{oracle} services that arbitrate the outcome of a contract has grown significantly. Most current implementations of smart contracts rely on a single or aggregated set of authoritative oracles to settle the outcome of the contract. In cases where both parties can agree on the authority and incorruptibility of the specified oracle, this is sufficient. However, in many cases, either an appropriate oracle does not exist or the oracle cannot be considered authoritative because of the possibility of error or corruption.
 
-Location oracles fall into this category. The divination of the location of a physical world
-item relies on the reporting, relay, storage, and processing components of the given oracle,
-all of which introduce error and can be corrupted. Risks include data manipulation, data
-pollution, data loss, and collusion.
+Location oracles fall into this category. The divination of the location of a physical world item relies on the reporting, relay, storage, and processing components of the given oracle, all of which introduce error and can be corrupted. Risks include data manipulation, data pollution, data loss, and collusion.
+
 \clearpage
-Thus the following problem exists: \textbf{both certainty and accuracy of the location are negatively impacted by the lack of a trustless, decentralized location oracle.} Platforms such as Ethereum and EOS have been used extensively for their power to mediate interactions securely online with the primary use cases being escrows for fundraising escrows in the form of ICO's. However, up until this point, every platform has focused entirely on the online world and not on the physical world due to noisy, corruptible data integrity of current information channels.
+Thus the following problem exists: \textbf{both \gls{certainty} and \gls{accuracy} of the location are negatively impacted by the lack of a trustless, decentralized location oracle.} Platforms such as Ethereum and EOS have been used extensively for their power to mediate interactions securely online with the primary use cases involving escrows for fundraising escrows in the form of ICOs. However, up to this point, every platform has focused entirely on the online world and not on the physical world due to noisy, corruptible data integrity of current information channels.
 
-XYO has been working towards the concept of enabling developers, such as those writing Ethereum smart contracts, to interact with the physical world as if it were an API. The XYO Network is the world's first oracle protocol that makes it possible for two entities to transact in the real world without a centralized third party through smart contract technology. Our abstractions allow us to make location verification trustless for developers, creating a protocol with novel use cases that have not been possible until today.
+The \Gls{xyo-network} has been working towards the concept of enabling developers, such as those writing Ethereum smart contracts, to interact with the physical world as if it were an API. Through its smart contract technology, the XYO Network is the world's first oracle protocol that makes it possible for two entities to transact in the real world without a centralized third party. Our abstractions allow us to make location verification trustless for developers, creating a protocol with novel use cases that have not been possible until today.
 
-The XYO Network will be built upon an existing infrastructure of 1,000,000 devices XY Findables LLC. has already deployed throughout the world. XY's Bluetooth and GPS devices allow everyday consumers to place physical tracking beacons on the things they want to keep track of (such as keys, luggage, bikes and even pets). If they misplace or lose such an item, they can see exactly where it is by viewing its location on a smartphone application. In just six years, XY has created one of the largest consumer Bluetooth and GPS networks in the world.
+The XYO Network will be built upon an existing infrastructure of over 1,000,000 devices that it has already deployed throughout the world. XY's Bluetooth and GPS devices allow everyday consumers to place physical tracking beacons on the things they want to keep track of (such as keys, luggage, bikes and even pets). If they misplace or lose such an item, they can see exactly where it is by viewing its location on a smartphone application. In just six years, XY has created one of the largest consumer Bluetooth and GPS networks in the world.
 
 \section{Historical Background \& Previous Approaches}
 \subsection{Proof of Location}
 
-The concept of provable location has been around since the 1960's, and can even be dated back to the 1940's with ground-based radio-navigation systems, such as LORAN. Today there are location services that stack multiple mediums of verification on top of one another to create a Proof of Location through triangularization and GPS services. However, these approaches have yet to address the most critical component we face in location technologies today: designing a system that detects fraudulent signals and disincentivizes the spoofing of location data. For this reason, we propose that the most important crypto-location platform today will be the one that focuses the most on proving the origin of physical location signals.
+The concept of provable location has been around since the 1960's, and can even be dated back to the 1940's with ground-based radio-navigation systems, such as LORAN \cite{blanchard-loran}. Today, there are location services that stack multiple mediums of verification on top of one another to create a Proof of Location through triangularization and GPS services. However, these approaches have yet to address the most critical component we face in location technologies today: designing a system that detects fraudulent signals and disincentivizes the spoofing of location data. For this reason, we propose that the most significant crypto-location platform today will be the one that focuses most on proving the origin of physical location signals.
 
-Surprisingly, the concept of applying location verification to blockchain technologies first appeared in September 2016 at Ethereum's DevCon 2. It was introduced by Lefteris Karapetsas, an Ethereum developer from Berlin. Karapetsas' project, \textit{Sikorka}, enabled smart contracts to be deployed on the spot in the real world, using what he termed, \textit{Proof of Presence}. His application of bridging the world of blockchain and location focused primarily on augmented reality use cases; and he introduced novel concepts such as challenge questions in proving one's location.
+Surprisingly, the concept of applying location verification to blockchain technologies first appeared in September 2016 at Ethereum's DevCon 2. It was introduced by Lefteris Karapetsas, an Ethereum developer from Berlin. Karapetsas' project, \textit{Sikorka}, enabled \glspl{smart-contract} to be deployed on the spot in the real world, using what he termed, ``\textit{Proof of Presence}.'' His application of bridging location and the world of blockchain focused primarily on augmented reality use cases; and he introduced novel concepts such as challenge questions in proving one's location \cite{karapetsas-sikorka}.
 
 %TODO(Christine - DONE) %https://www.reddit.com/r/ethereum/comments/539o9c/proof_of_location/
-The term, Proof of Location, then formally surfaced in Ethereum's community on September 17, 2016 \cite{diferrante-proofoflocation}. It was then further expounded on by Matt Di Ferrante, Developer at the Ethereum Foundation, who stated:
+On September 17th, 2016, the term, ``\textit{Proof of Location},'' formally surfaced in Ethereum's community \cite{diferrante-proofoflocation}. It was then further expounded upon by Ethereum Foundation developer, Matt Di Ferrante:
 
 \begin{displayquote}\textit{``Proof of Location you can trust is honestly one of the most difficult things to implement. Even if you have many participants that can attest each other's location, there's no guarantee that they wouldn't just go sybil at any point in the future, and since you're always only relying on majority reporting it's a huge weakness.
 If you could require some type of specialized hardware device that has anti-tamper tech such that the private key is destroyed when one attempts to open it or change the firmware on it then you could possibly have greater security, but at the same time, it's not like it's impossible to spoof GPS signals either.
-A proper implementation of this requires so much fallback and so many different data sources to have any assurance of accuracy, it would have to be very well funded project.''}
+A proper implementation of this requires so much fallback and so many different data sources to have any assurance of accuracy, it would have to be very well funded project.''} \cite{diferrante-proofoflocation}
+
 \vspace{2mm}
----Matt Di Ferrante
+---Matt Di Ferrante, Developer, Ethereum Foundation
 \end{displayquote}
 
 
 \subsection {Proof of Location: Shortcomings}
 % The Importance of Location Being Platform-agnostic:
 
-In summary, Proof of Location can be understood as leveraging the blockchain's powerful properties, such as time-stamping and decentralization, and combining them with off-chain location-aware device(s) that are \textit{hopefully} resistant to spoofing. We refer to the realm of cryptographic location technologies as \textit{crypto-location}. Moreover, similar to how the weakness of smart contracts centers around oracles that use a single source of truth (and thus have a single source of failure), crypto-location systems face the same problem. The weak point in crypto-location technologies centers on the off-chain devices that report back an object's location. In smart contracts, the off-chain data source is called an oracle. In the XYO Network, the off-chain data source moves around in the real world as a specialized type of oracle we call a Sentinel. The core innovation surrounding the XYO Network centers around an identityless, location-based proof underlying the components of our system to create a trustless crypto-location protocol.
+In summary, Proof of Location can be understood as leveraging blockchain's powerful properties, such as time-stamping and decentralization, and combining them with off-chain, location-aware device(s) that are \textit{hopefully} resistant to spoofing. We refer to the realm of cryptographic location technology as ``\textit{\gls{crypto-location}}.'' Moreover, similar to how the weakness of \glspl{smart-contract} centers around \glspl{oracle} using a single source of truth (and thus have a single source of failure), crypto-location systems face the same problem. The vulnerability in current crypto-location technologies revolves around the off-chain devices that report back an object's location. In smart contracts, the off-chain data source is called an oracle. In the \Gls{xyo-network}, the off-chain data source moves around in the real world as a specialized type of oracle we call a \Gls{sentinel}. The core innovation surrounding the XYO Network centers around an identityless, location-based proof underlying the components of our system to create a \gls{trustless}, crypto-location protocol.
 \begin{center}
 \line(1,0){50}
 \end{center}
@@ -253,42 +256,33 @@ In summary, Proof of Location can be understood as leveraging the blockchain's p
 %******
 \section {The XY Oracle Network}
 
-\begin{displayquote}\textit{``The need for a difficult-to-disrupt system to complement GPS has been well known for years. GPS is exceptionally accurate and dependable, yet jamming, spoofing, cyber attacks and other forms of interference appear to be growing in frequency and severity. This has the potential for devastating effects on our lives and economic activity.''}
+\begin{displayquote}\textit{``The need for a difficult-to-disrupt system to complement GPS has been well known for years. GPS is exceptionally accurate and dependable, yet jamming, spoofing, cyber attacks and other forms of interference appear to be growing in frequency and severity. This has the potential for devastating effects on our lives and economic activity.''} \cite{goward-resiliant}
 
 \vspace{2mm}
 ---Dana Goward, President, RNT Foundation
 \end{displayquote}
 
 \subsection{Introduction}
-The goal of the XYO Network is to create a trustless, decentralized system of location oracles that is resistant to attack and produces the highest certainty possible when queried for available data. We accomplish this through a set of abstractions that greatly reduces the risk of location spoofing through a chain of zero-knowledge proofs along the components of the system.
+The goal of the \Gls{xyo-network} is to create a \gls{trustless}, decentralized system of location \glspl{oracle} that is resistant to attack and produces the highest \gls{certainty} possible when queried for available data. We accomplish this through a set of abstractions that greatly reduces the risk of location spoofing through a chain of zero-knowledge proofs along the components of the system.
 
 \subsection {Network Overview}
-Our system provides an entrypoint into a protocol of connected devices that provides high certainty on location data through a chain of cryptographic proofs. Users are able to issue transactions called \textit{``queries``} to retrieve a piece of location data to a smart contract (On Ethereum or EOS). Aggregators from the XY Oracle Network then listen to these queries issued to the contract and fetch the answers with the highest accuracy from a decentralized set of devices that relay cryptographic proofs back up to these aggregators. These aggregators then feed these answers back into the smart contract after reaching consensus on the answer with the best score. This network of components makes it possible to determine if an object is at a specific XY-coordinate at a given time, with the most provable, trustless certainty possible.
+Our system provides an entry point into a protocol of connected devices that provides high \gls{certainty} on location data through a chain of cryptographic proofs. Users are able to issue transactions, called ``\textit{queries},'' in order to retrieve a piece of location data for a \gls{smart-contract} (on Ethereum or EOS). Aggregators from the \Gls{xyo-network} then listen to these queries issued to the contract and fetch the answers that have the highest accuracy from a decentralized set of devices that relay cryptographic proofs back up to these aggregators. These aggregators then feed these answers back into the smart contract after reaching a consensus on the answer with the best score. This network of components makes it possible to determine if an object is at a specific XY-coordinate at a given time, with the most provable, \gls{trustless} certainty possible.
 
-The \Gls{xyo-network} has four primary components: \textbf{\Glspl{sentinel}} (The Data Gatherers), \textbf{\Glspl{bridge}} (The Data Relayers), \textbf{\Glspl{archivist}} (The Data Stores), and \textbf{\Glspl{diviner}} (The Answer Aggregators). Sentinels gather location information via sensors, radios, and other means. Bridges take this data from Sentinels and provide them to Archivists. Archivists store this information for Diviners to analyze. Diviners analyze location heuristics from Archivists to generate answers to queries and provide an accuracy score and relay these answers back into a smart contract (Diviners serve as oracles). This accuracy score, named the \textbf{Origin Chain Score}, is determined through a set of zero-knowledge proofs known as an \textbf{Origin Chain} that guarantees two or more pieces of data originated from the same source without revealing the underlying information. Each component along the query's path generates its own Proof of Origin that is then chained to each component it relays data to. \Gls{proof-of-origin} is a novel formulation that forms a chain of cryptographic guarantees along a path of relayers in the network to offer high confidence in real world data. This \textbf{Origin Chain} encapsulates the confidence we can have in a piece of location data all the way down to the devices that gathered it in the first place. We will explore how \Gls{proof-of-origin} works in-depth in the following section.
+The XYO Network has four primary components: \textbf{\Glspl{sentinel}} (The Data Gatherers), \textbf{\Glspl{bridge}} (The Data Relayers), \textbf{\Glspl{archivist}} (The Data Storers), and \textbf{\Glspl{diviner}} (The Answer Aggregators). Sentinels gather location information via sensors, radios, and other means. Bridges take this data from Sentinels and provide them to Archivists. Archivists store this information for Diviners to analyze. Diviners analyze location \glspl{heuristic} from Archivists in order to generate answers to queries and assign accuracy scores to them. Diviners then relay these answers back into a smart contract (thusly, Diviners serve as \glspl{oracle}). The accuracy score, named the \textbf{\Gls{origin-chain-score}}, is determined through a set of zero-knowledge proofs known as an \textbf{\Gls{origin-chain}}. This chain guarantees two or more pieces of data originated from the same source without revealing any underlying information. Each component along the query's path generates its own \Gls{proof-of-origin} that is then chained to each component it relays data to. Proof of Origin is a novel formulation that builds a chain of cryptographic guarantees along a path of relayers in the network in order to offer high confidence of real world data. This \textbf{Origin Chain} encapsulates the confidence we can have in a piece of location data all the way down to the very first devices that gathered the data. We will explore how Proof of Origin works in-depth in the following section.
 
-To establish a decentralized consensus mechanism among diviners, the XYO Network will rely on a public, immutable blockchain known as the XYMainChain that stores query transactions along with data gathered from Diviners and their associated origin score. Before we dive in-depth into the functioning of the entire system, we will clearly define the responsibilities of each component in our network.
+To establish a decentralized consensus mechanism among Diviners, the XYO Network will rely on a public, immutable blockchain known as the \textbf{XYMainChain} that stores query transactions along with data gathered from Diviners and their associated origin score. Before we dive into the details of the functionality of the entire system, we will clearly define the responsibilities of each component in our network.
 
 \subsubsection{Sentinels}
 
-Sentinels are location witnesses. They observe data heuristics and vouch for the certainty and
-accuracy of the heuristic by producing temporal ledgers. The most important aspect of
-Sentinels is that they produce ledgers that other components can be certain came from the same source
-by adding Proof of Origin to a relay chain of cryptographic proofs.
-Given that the XY Oracle Network is a trustless system, Sentinels must be incentivized to
-provide honest location information. This is done by combining a reputation component with a
-payment component. A Sentinel is rewarded with XY Oracle Network Tokens (XYO) when
-their information is used to answer a query. To increase their odds of being rewarded,
-they must create ledgers that are consistent with their peers and provide Proof of
-Origin to identify themselves as the source of the location information.
+\Glspl{sentinel} are location witnesses. They observe data \glspl{heuristic} and vouch for the \gls{certainty} and \gls{accuracy} of the heuristic by producing temporal ledgers. The most important aspect of Sentinels is that they produce ledgers that other components can be certain came from the same source. They do this by adding \Gls{proof-of-origin} to a relay chain of cryptographic proofs. Given that the \Gls{xyo-network} is a \gls{trustless} system, Sentinels must be incentivized to provide honest location information. This is done by combining a reputation component with a payment component. A Sentinel is rewarded with XYO Tokens (XYO) when their information is used to answer a query. To increase their odds of being rewarded, they must create ledgers that are consistent with that of their peers and provide Proof of Origin to identify themselves as the source of the location information.
 
 \subsubsection{Bridges}
 
-Bridges are location data transcribers. They securely relay location ledgers from Sentinels to Archivists. The most important aspect of a Bridge is that an Archivist can be sure that the heuristic ledgers that are received from a Bridge have not been altered in any way. The second most important aspect of a Bridge is that they add an additional Proof of Origin. Given that XYO Network is a trustless system, Bridges must be incentivized to provide honest relaying of heuristics. This is done by combining a reputation component with a payment component. A Bridge is rewarded with XYO Tokens (XYO) when the information that they relayed is used to answer a query. To increase their odds of being rewarded, they must create ledgers that are consistent with their peers and provide Proof of Origin to identify themselves as the relay of the heuristic.
+\Glspl{bridge} are location data transcribers. They securely relay location ledgers from \Glspl{sentinel} to \Glspl{archivist}. The most important aspect of a Bridge is that an Archivist can be sure that the \gls{heuristic} ledgers that are received from a Bridge have not been altered in any way. The second most important aspect of a Bridge is that they add an additional \Gls{proof-of-origin}. Given that the \Gls{xyo-network} is a \gls{trustless} system, Bridges must be incentivized to provide an honest relaying of heuristics. This is done by combining a reputation component with a payment component. A Bridge is rewarded with XYO Tokens (XYO) when the information that they have relayed is used to answer a query. To increase their odds of being rewarded, they must create ledgers that are consistent with that of their peers and provide Proof of Origin to identify themselves as the relay of the heuristic.
 
 \subsubsection{Archivists}
 
-Archivists store location information from Bridges in a decentralized form with the goal of having all historical ledgers stored. Even if some data is lost or becomes temporarily unavailable, the system continues to function, just with reduced accuracy. Archivists also index ledgers so that they can return a string of ledger data if needed. Archivists store raw data only and get paid XYO Tokens solely for retrieval of the data and subsequent use. Storage is always free.
+\Glspl{archivist} store location information from \Glspl{bridge} in a decentralized form with the goal of having all historical ledgers stored. Even if some data is lost or becomes temporarily unavailable, the system continues to function, just with reduced accuracy. Archivists also index ledgers so that they can return a string of ledger data if needed. Archivists store raw data only and get paid XYO Tokens solely for retrieval of the data and subsequent use. Storage is always free.
 
 Archivists are networked, so asking one Archivist will result in that Archivist asking other Archivists for data that it does not contain. An Archivist can optionally store any ledger information that is returned to it. This will most likely result in two types of Archivists: ones that are at the data production edge of the “cloud” and the ones that are at the data consumption edge of the “cloud”. Archivists in the middle will be hybrids. The choice of data store is not enforced, but can easily be done through IPFS or another decentralized storage solution. Each time data is handed off from one Archivist to another, additional Proof of Origin is appended in order to track payment, since all Archivists get paid. For a retrieval, a minimum Proof of Origin level can be set to increase validity. The interests of Sentinels, Bridges, and Archivists must be aligned to prevent data bloat.
 
@@ -572,6 +566,11 @@ Di Ferrante, Matt.
 \textit{Proof of Location}.
 \\\texttt{https://www.reddit.com/r/ethereum/comments/539o9c/proof\_of\_location/}.
 September 17, 2016.
+
+\bibitem{goward-resiliant}
+Goward, Dana.
+\textit{RNT Foundation Testifies Before Congress}.
+US House of Representatives Hearing: ``Finding Your Way: The Future of Federal Aids to Navigation,'' Washington, DC, February 4, 2014.
 
 \bibitem{freeman-fiatmoney}
 Freeman, Scott.
