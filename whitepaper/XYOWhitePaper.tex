@@ -11,7 +11,7 @@
     colorlinks=true,
     linkcolor=black,
     filecolor=black,
-    citecolor=blue,      
+    citecolor=blue,
     urlcolor=blue,
 }
 \usepackage{graphicx} % Add pictures to your document
@@ -311,23 +311,35 @@ Other Diviners reach consensus on the validity of a block and digitally sign the
 Now that the responsibilities of each component are detailed, here is an end-to-end example of how the system will work:
 
 \begin{enumerate}
-  \item \textbf{User Issues a Query to the XYO Smart Contract on the Ethereum Blockchain}
+  \item \textbf{Sentinels Gather Data}
   \begin{itemize}
-    \item \Glspl{diviner} poll for queries sent to the Ethereum \gls{smart-contract} and then decide to take on a query by fetching the appropriate information needed from the \Gls{archivist} network.
+    \item Sentinels gather real world location heuristics and prepare their own Proof of Origin to be chained to nodes above them
   \end{itemize}
-  \item \textbf{Archivists Aggregate the Information from Bridges and Feed Back to Diviners the Data With the Highest Origin Score}
+  \item \textbf{Bridges Gather Data From Sentinels}
   \begin{itemize}
-    \item \Glspl{bridge} constantly send information to Archivists that are then kept on decentralized stores along with a location \gls{heuristic} index. Bridges constantly poll \Glspl{sentinel} that provide their \Gls{proof-of-origin} chains and location data.
+    \item Bridges gather necessary data from online sentinels and append Proof of Origin to their chain. Bridges then make themselves available to Archivists in the Network.
   \end{itemize}
-  \item \textbf{Diviners Judge the Best Origin Chain and Determine an Accuracy Score}
+  \item \textbf{Archivists Index/Assemble Data from Bridges}
+  \begin{itemize}
+    \item Bridges constantly send information to Archivists that are then kept on decentralized stores along with a location heuristic index.
+  \end{itemize}
+  \item \textbf{Diviner Fetches a User's Query}
+  \begin{itemize}
+    \item Diviners poll for queries sent to the Ethereum smart contract and decide to begin the answer formulation process
+  \end{itemize}
+  \item \textbf{Diviner Collects Data From Archivists}
+  \begin{itemize}
+    \item  Diviners then decide to take on a query by fetching the appropriate information needed from the Archivist network.
+  \end{itemize}
+  \item \textbf{Diviner Formulates Answer}
   \begin{itemize}
     \item Diviners choose the \Gls{best-answer} to the query from the Archivist Network that contains the best \Gls{origin-chain-score}.
   \end{itemize}
-  \item \textbf{Diviners Propose a Block on the XYOMainChain}
+  \item \textbf{Diviner Proposes Block}
   \begin{itemize}
     \item Diviners then propose blocks on the \Gls{xyomainchain} containing the answer contents, the query, and the XYO Tokens (XYO) paid through \Gls{proof-of-work}. Other Diviners on the network digitally sign the block's content, then the coinbase Diviner's account nonce is updated to showcase its Proof of Work in the system once a consensus on a valid block is reached.
   \end{itemize}
-  \item \textbf{Diviners Relay the Answer Back to the XYO Smart Contract on the Ethereum Blockchain}
+  \item \textbf{Diviner Returns Result to Query Initiator}
   \begin{itemize}
     \item Diviners package the answer, its Origin Chain Score, and its set of digital signatures and send them to an adapter component that securely connects to the XYO smart contract. The adapter is in charge of making sure the integrity of the Diviner has not been compromised and sends the set of digitally signed answers to the smart contract. This happens right after the block creation process. The coinbase Diviner is then paid for its efforts.
   \end{itemize}
@@ -349,6 +361,8 @@ Since blocks on the XYOMainChain store the \Gls{proof-of-origin-chain} and graph
 \subsection{XYO Network’s Framework For Selecting The Best Answer Candidate}
 
 We define the \textit{\Gls{best-answer}} as the single answer, amongst a list of Answer Candidates, that returns the highest validity score and has a higher \gls{accuracy} score than the minimum required accuracy. The validity score is based on the \Gls{origin-chain-score}. The system knows what the highest record Origin Score is, which would be the 100 percent until a higher score is achieved, which then becomes the new 100 percent. The \Gls{xyo-network} allows selection of the \Gls{best-answer-algorithm} for determining the Best Answer. This creates expansion for future research into alternative algorithms.
+
+When data is excluded from an answer due to it being considered bad or incorrect, it will be circulated to archivists so that they can purge that data from their decentralized stores.
 
 \subsection{Initial Integration With Public Blockchains}
 
