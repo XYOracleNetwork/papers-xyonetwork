@@ -1,0 +1,220 @@
+% Preamble
+% ---
+\documentclass{article}
+
+% Packages
+% ---
+\usepackage{amsmath} % Advanced math typesetting
+\usepackage[utf8]{inputenc} % Unicode support (Umlauts etc.)
+\usepackage{hyperref} % Add a link to your document
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,
+    citecolor=blue,      
+    urlcolor=blue,
+}
+\usepackage{graphicx} % Add pictures to your document
+\usepackage{listings} % Source code formatting and highlighting
+\usepackage{framed} % Source code formatting and highlighting
+\usepackage{appendix} % Source code formatting and highlighting
+\usepackage[automake]{glossaries}
+\usepackage{csquotes}
+\usepackage[letterpaper, portrait, margin=1.5in]{geometry}
+
+\graphicspath{ {images/} }
+
+\newglossaryentry{sentinel}
+{
+    name={Sentinel},
+    description={A Sentinel is a heuristic witnesses. It observes heuristics and vouches for the certainty and accuracy of them by producing temporal ledgers. The most important aspect of a Sentinel is that it produces ledgers that Diviners can be certain came from the same source by adding Proof of Origin to them}
+}
+
+\newglossaryentry{bridge}
+{
+    name={Bridge},
+    description={A Bridge is a heuristic transcriber. It securely relays heuristic ledgers from Sentinels to Diviners. The most important aspect of a Bridge is that a Diviner can be sure that the heuristic ledgers that are received from a Bridge have not been altered in any way. The second most important aspect of a Bridge is that they add an additional Proof of Origin metadata}
+}
+
+\newglossaryentry{archivist}
+{
+    name={Archivist},
+    description={An Archivist stores heuristics as a part of the decentralized data set with the goal of having all historical ledgers stored, but without that requirement. Even if some data is lost or becomes temporarily unavailable, the system continues to function, just with reduced accuracy. Archivists also index ledgers so that they can return a string of ledger data if needed. Archivists store raw data only and get paid solely for retrieval of the data. Storage is always free}
+}
+
+\newglossaryentry{diviner}
+{
+    name={Diviner},
+    description={A Diviner answers a given question by analyzing historical data that has been stored by the XYO Network. Heuristics stored in the XYO Network must have a high level of Proof of Origin to determine the validity and accuracy of the heuristic. A Diviner obtains and delivers an answer by judging the witness based on its Proof of Origin. Given that the XYO Network is a trustless system, Diviners must be incentivized to provide honest analyses of heuristics. Unlike Sentinels and Bridges, Diviners use Proof of Work to add answers to the blockchain}
+}
+
+\newglossaryentry{gas}
+{
+    name={gas},
+    description={The cost of a transaction (i.e. question) in the form of XYO Tokens}
+}
+
+\newglossaryentry{proof-of-origin}
+{
+    name={Proof of Origin},
+    description={Proof of Origin is the key to verifying that ledgers flowing into the XYO Network are valid. A unique ID for source of data is not practical since it can be forged. Private Key signing is not practical since most parts of the XYO Network are difficult or impossible to physically secure, thus the potential for a bad actor to steal a Private Key is too feasible. To solve this, XYO Network uses Transient Key Chaining. The benefit of this is that it is impossible to falsify the chain of origin for data. However, once the chain is broken, it is broken forever and cannot be continued, rendering it an island}
+}
+
+\newglossaryentry{proof-of-work}
+{
+    name={Proof of Work},
+    description={Proof of Work is a piece of data that satisfies certain requirements, is difficult to produce (i.e. costly, time-consuming), but easy for others to verify. Producing a Proof of Work can be a random process with a low probability of generation so that rigorous trial and error is required on average before a valid Proof of Work is created}
+}
+
+\newglossaryentry{bound-witness}
+{
+    name={Bound Witness},
+    description={Bound Witness is a concept achieved by the existence of a bidirectional heuristic. Given that an untrusted source of data for the use of digital contract resolution (an oracle) is not useful, there is a substantial increase in certainty of the data provided by the establishment of such a heuristic. The primary bidirectional heuristic is proximity since both parties can validate the occurrence and range of an interaction by cosigning the interaction. This allows for a zero-knowledge proof that the two nodes were in proximity of each other.}
+}
+
+\newglossaryentry{smart-contract}
+{
+    name={smart contract},
+    description={A protocol coined by Nick Szabo before Bitcoin, purportedly in 1994 (which is why some believe him to be Satoshi Nakamoto, the mystical and unknown inventor of Bitcoin). The idea behind smart contracts is to codify a legal agreement in a program and to have decentralized computers execute its terms, instead of humans having to interpret and act on contracts. Smart contracts collapse money (e.g. Ether) and contracts into the same concept. Being that smart contracts are deterministic (like computer programs) and fully transparent and readable, they serve as a powerful way to replace middle-men and brokers}
+}
+
+\newglossaryentry{cryptoeconomics}
+{
+    name={cryptoeconomics},
+    description={A formal discipline that studies protocols that govern the production, distribution, and consumption of goods and services in a decentralized digital economy. Cryptoeconomics is a practical science that focuses on the design and characterization of these protocols}
+}
+
+\newglossaryentry{xyo-network}
+{
+    name={XYO Network},
+    description={XYO Network stands for ``XY Oracle Network.'' It is comprised of the entire system of XYO enabled components/nodes that include Sentinels, Bridges, Archivists, and Diviners. The primary function of the XYO Network is to act as a portal by which digital smart contracts can be executed through real world geo-location confirmations}
+}
+
+\newglossaryentry{certainty}
+{
+    name={certainty},
+    description={A measure of the likelihood that a data point or heuristic is free from corruption or tampering}
+}
+
+\newglossaryentry{accuracy}
+{
+    name={accuracy},
+    description={A measure of confidence that a data point or heuristic is within a specific margin of error}
+}
+
+\newglossaryentry{oracle}
+{
+    name={oracle},
+    description={A part of a DApp (decentralized application) system that is responsible for resolving a digital contract by providing an answer with accuracy and certainty. The term ``oracle'' originates from cryptography where it signifies a truly random source (e.g. of a random number). This provides the necessary gate from a crypto equation to the world beyond. Oracles feed smart contracts information from beyond the chain (the real world, or off-chain). Oracles are interfaces from the digital world to the real world. As a morbid example, consider a contract for a Last Will \& Testament. A Will's terms are executed upon confirmation that the testator is deceased. An oracle service could be built to trigger a Will by compiling and aggregating relevant data from official sources. The oracle could then be used as a feed or end-point for a smart contract to call out to in order to check whether or not the person is deceased}
+}
+
+\newglossaryentry{heuristic}
+{
+    name={heuristic},
+    description={A data point about the real world relative to the position of a Sentinel (proximity, temperature, light, motion, etc...)}
+}
+
+\newglossaryentry{transient-key-chain}
+{
+    name={Transient Key Chain},
+    description={A Transient Key Chain links a series of data packets using Transient Key Cryptography}
+}
+
+\newglossaryentry{best-answer-score}
+{
+    name={Best Answer Score},
+    description={A score generated by a Best Answer Algorithm that ranks the quality of the score.  The higher the score, the better it is, per the algorithm.  This score is used to determine which answer is better given two analyzed answers}
+}
+
+\newglossaryentry{best-answer-algorithm}
+{
+    name={Best Answer Algorithm},
+    description={An algorithm used to generate Best Answer Scores when a Diviner chooses an answer.  The XYO Network permits the addition of specialized algorithms and allows the customer to specify which algorithm to use.  It is required that this algorithm will result in the same score when run on any Diviner given the same data set}
+}
+
+\newglossaryentry{origin-chain-score}
+{
+    name={Origin Chain Score},
+    description={The score assigned to an Origin Chain to determine its credibility. This assessment takes length, tangle, overlap, and redundancy into consideration}
+}
+
+\newglossaryentry{origin-chain}
+{
+    name={Origin Chain},
+    description={A Transient Key Chain that links together a series of Bound Witness heuristic ledger entries}
+}
+
+\newglossaryentry{origin-tree}
+{
+    name={Origin Tree},
+    description={A data set of ledger entries taken from various Origin Chains to establish the origin of a heuristic ledger entry with a specified level of certainty}
+}
+
+\newglossaryentry{crypto-location}
+{
+    name={crypto-location},
+    description={The realm of cryptographic location technology}
+}
+
+\newglossaryentry{trustless}
+{
+    name={trustless},
+    description={A characteristic where all parties in a system can reach a consensus on what the canonical truth is. Power and trust is distributed (or shared) among the network’s stakeholders (e.g. developers, miners, and consumers), rather than concentrated in a single individual or entity (e.g. banks, governments, and financial institutions). This is a common term that can be easily misunderstood. Blockchains don’t actually eliminate trust. What they do is minimize the amount of trust required from any single actor in the system. They do this by distributing trust among different actors in the system via an economic game that incentivizes actors to cooperate with the rules defined by the protocol.}
+}
+
+\newacronym{pow}{PoW}{Proof of Work}
+
+\newacronym{poo}{PoO}{Proof of Origin}
+
+\newacronym{xy-oracle-network}{XY Oracle Network}{XYO Network}
+
+
+\makeglossary
+
+\title {XYO Network in National Security}
+\author{Johnny Kolasinski, Christine Sako}
+\date{January 2018}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\begin{center}
+\line(1,0){50}
+\end{center}
+
+\begin{abstract}
+The presence of government-regulated firearms in establishments where weapons are strictly prohibited fundamentally introduces a considerable risk. Tightly controlled security is imperative at major transportation hubs (i.e. international airports) where traffic volume is high and potential dangers are inherently evident. Firearms are not only carried by security and police forces on the ground, but also by Federal Air Marshals in the sky. The \Gls{xy-oracle-network} can confirm a weapon is exactly where it is intended to be by reporting independently verified and \gls{trustless} location data.  Through its decentralized blockchain technology, the \Gls{xyo-network} is able to provide an unparalleled element of safety and accountability to arguably the most targeted, at-risk establishments in the world.
+\end{abstract}
+
+\begin{center}
+\line(1,0){50}
+\end{center}
+
+\section {Problem}
+In operations requiring a high level of security, it is crucial to ensure that any authorized firearms are strictly and safely controlled. Creating a system that is secure, reliable, and publicly accountable poses an operational challenge.
+
+\section {Solution}
+A high-profile government security agency has contracted with XY to secure firearms in major transportation hubs throughout the United States. The use of XY?s existing technology saves the agency millions of dollars, and the decentralized nature of its blockchain creates a system that is both independently secure and publicly accountable.
+
+\section {How it Works}
+The \Gls{xyo-network} is a web of devices that record and archive \gls{heuristic} data using a blockchain ledger. Whenever a device on the XYO Network interacts with another XY device, it logs this interaction. By reviewing this ledger of interactions and the additional data they provide, it can be guaranteed with a high degree of \gls{certainty} that a specific interaction happened at a distinct time in a precise location.
+
+Each firearm protected by the XYO Network is affixed with a device called a``\Gls{sentinel}'' which records heuristic data like its location, temperature and movement. The Sentinel also records any interaction it has with other nearby Sentinels, and both devices share their histories with each other. IoT devices called``\Glspl{bridge}'' relay Sentinels' records to decentralized nodes which archives this data on a decentralized ledger or blockchain. These nodes are rewarded with XYO tokens when they archive, process or relay accurate historical data. In this way, the XYO Network leverages \gls{cryptoeconomics} to create a \gls{trustless}, decentralized, unalterable location and interaction history for each protected firearm.
+
+In other words, when the firearms are securely stored, they create a record of where they are stored and what other firearms are in storage with them. When a firearm is removed, each firearm's record is updated, noting what firearm was removed and by whom. The firearm's Sentinel records where it is taken, when it moves, who interacts with it, and when it is returned. Any other XYO Network Sentinels also record their interactions with the firearm?s Sentinel. 
+
+This decentralized ledger serves two important purposes. First, it provides an unalterable, auditable archive of when a firearm was accessed and by whom, where it was taken, and when it was returned. Second, the XYO Network's decentralized nature means that the information in this archive can be independently audited and confirmed. This feature can also be implemented in other industries where accountability is critical, such as law enforcement, corrections, and health care.
+
+
+
+\begin{center}
+\line(1,0){50}
+\end{center}
+
+
+\clearpage
+ 
+\printglossaries
+
+\end{document}
