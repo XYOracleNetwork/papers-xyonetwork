@@ -159,7 +159,7 @@
 \newglossaryentry{trustless}
 {
     name={trustless},
-    description={A characteristic where all parties in a system can reach a consensus on what the canonical truth is. Power and trust is distributed (or shared) among the network’s stakeholders (e.g. developers, miners, and consumers), rather than concentrated in a single individual or entity (e.g. banks, governments, and financial institutions). This is acommon term that can be easily misunderstood. Blockchains don’t actually eliminate trust. What they do is minimize the amount of trust required from any single actor in the system. They do this by distributing trust among different actors in the system via an economic game that incentivizes actors to cooperate with the rules defined by the protocol.}
+    description={A characteristic where all parties in a system can reach a consensus on what the canonical truth is. Power and trust is distributed (or shared) among the network’s stakeholders (e.g. developers, miners, and consumers), rather than concentrated in a single individual or entity (e.g. banks, governments, and financial institutions). This is a common term that can be easily misunderstood. Blockchains don’t actually eliminate trust. What they do is minimize the amount of trust required from any single actor in the system. They do this by distributing trust among different actors in the system via an economic game that incentivizes actors to cooperate with the rules defined by the protocol.}
 }
 
 \newacronym{pow}{PoW}{Proof of Work}
@@ -193,9 +193,9 @@ Hospitals are among the most demanding and perilous establishments in the medica
 \end{center}
 
 \section {Problem}
-Medical errors are the third leading cause of death in the United States, according to a study released by the Johns Hopkins School of Medicine \cite{sternberg-medicalerrors}. Many of these preventable deaths are a result of operational or record-keeping errors, including adverse drug interactions, improper medical records, and even unnecessary surgeries. The study's author, Dr. Martin Makary, said in a letter to the Centers for Disease Control and Prevention that ``it is time for the country to invest in medical quality and patient safety proportional to the mortality burden it bears. This would [include] research in technology that reduces harmful and unwarranted variation in medical care.''
+Medical errors are the third leading cause of death in the United States, according to a study released by the Johns Hopkins School of Medicine \cite{makary-medicalerrors}. Many of these preventable deaths are a result of operational or record-keeping errors, including adverse drug interactions, improper medical records, and even unnecessary surgeries. In a letter to the Centers for Disease Control and Prevention, the study's author, Dr. Martin Makary, stated:
 
-\begin{displayquote}\textit{``It is time for the country to invest in medical quality and patient safety proportional to the mortality burden it bears. This would [include] research in technology that reduces harmful and unwarranted variation in medical care.''}
+\begin{displayquote}\textit{``It is time for the country to invest in medical quality and patient safety proportional to the mortality burden it bears. This would [include] research in technology that reduces harmful and unwarranted variation in medical care.''} \cite{makary-johnshopkins}
 
 \vspace{2mm}
 ---Dr. Martin Makary
@@ -203,14 +203,14 @@ Medical errors are the third leading cause of death in the United States, accord
 
 
 \section {Solution}
-By tying the \Gls{xyo-network} into Hospitals' operational frameworks that are already in place, care providers can significantly reduce failures in communication and record keeping that result in patient injury and death. Utilizing the XYO Network and XYO Tokens can provide a \gls{trustless}, decentralized, and independently verifiable record of all patient interactions with any staff as well as a log of relevant patient data such as the patient's vitals, treatment details, and test results for the duration of their stay.
+By tying the \Gls{xyo-network} into the operational frameworks that are already in place in Hospitals, care providers can significantly reduce failures in communication and record keeping that result in patient injury and death. Utilizing the XYO Network and XYO Tokens can provide a \gls{trustless}, decentralized, and independently verifiable record of all patient interactions with any staff as well as a log of relevant patient data such as the patient's vitals, treatment details, and test results for the duration of their stay.
 
 \section {How it Works}
-The \Gls{xyo-network} is a web of devices that record and archive \gls{heuristic} data using a blockchain ledger. Whenever a device on the XYO Network interacts with another XY device, it logs this interaction. By reviewing this ledger of interactions and the additional data it  provides, it's possible to verify with a high degree of \gls{certainty} that a specific interaction happened at a specific time in a specific location.
+The \Gls{xyo-network} is a web of devices that record and archive \gls{heuristic} data using a blockchain ledger. Whenever a device on the XYO Network interacts with another XYO device device, it logs this interaction. By reviewing this ledger of interactions and the additional data it provides, it's possible to verify with a high degree of \gls{certainty} that a specific interaction happened at a specific time in a specific location.
 
-For example, imagine a patient, John Doe, who is admitted to the E.R. John is given an identifying bracelet that is also an \Gls{xyo-network} \Gls{sentinel}, which keeps a record of any XY devices John interacts with. The monitor that reads John's vital signs is also an XY Sentinel. It logs John's vitals as heuristic data, and the communication between the two devices eliminates the potential for human error in record keeping. The monitor also serves as an XYO Network \Gls{bridge}, reporting and archiving the blockchain ledgers of any XY Sentinels it interacts with.
+For example, imagine a patient, John Doe, who is admitted to the E.R. John is given an identification bracelet that is also an \Gls{xyo-network} \Gls{sentinel}, which keeps a record of any XYO Network devices John interacts with. The monitor that reads John's vital signs is also a Sentinel. It logs John's vitals as heuristic data, and the communication between the two devices eliminates the potential for human error in record keeping. The monitor also serves as an XYO Network \Gls{bridge}, reporting and archiving the blockchain ledgers of any Sentinels it interacts with.
 
-When John is treated by a doctor or nurse, these interactions are recorded on John's ledger, the monitor's ledger, and the ledger of an XY \Gls{sentinel} embedded in the staff member's hospital ID. The XYO Network could even keep a log of medications John receives, and because a Sentinel could be linked to the medication itself, it could provide confirmation that the correct dosage of the correct medication was administered, confirming the accuracy of John's medical record.
+When John is treated by a doctor or nurse, these interactions are recorded on John's ledger, the monitor's ledger, and the ledger of a \Gls{sentinel} embedded in the staff member's hospital ID. The XYO Network could even keep a log of medications John receives, and because a Sentinel could be linked to the medication itself, it could provide confirmation that the correct dosage of the correct medication was administered, confirming the accuracy of John's medical record.
 
 \begin{center}
 \line(1,0){50}
@@ -221,10 +221,15 @@ When John is treated by a doctor or nurse, these interactions are recorded on Jo
 
 \begin{thebibliography}{9}
 
-\bibitem{sternberg-medicalerrors}
-Sternberg, Steve.
-\textit{Medical Errors Are Third Leading Cause of Death in the U.S.}
-U.S. News \& World Report, May 3, 2016.
+\bibitem{makary-medicalerrors}
+Makary, Martin and Michael Daniel.
+\textit{Study Suggests Medical Errors Now Third Leading Cause of Death in the U.S.}
+John Hopkins Medicine, May 3, 2016.
+
+\bibitem{makary-johnshopkins}
+Makary, Martin.
+\textit{Johns Hopkins professor: CDC should list medical errors as 3rd leading cause of death}.
+Washington Report, Baltimore, MD, May 4, 2016.
 
 \end{thebibliography}
  
