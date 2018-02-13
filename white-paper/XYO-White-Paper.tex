@@ -228,7 +228,7 @@
 
 %Abstract Section
 \begin{abstract}
-With the growing presence of connected, location-reliant technologies, our privacy and safety rely heavily on the \gls{accuracy} and validity of location information. Various attempts have been made to eliminate the need for centralized entities controlling the flow of location data, but every attempt has relied on the integrity of the devices collecting this data in the physical world. We propose a \gls{trustless}, cryptographic location network using a novel formulation reliant on a chain of zero-knowledge proofs to establish a high degree of data gls{certainty} on location information. The \textbf{\Gls{xy-oracle-network}} is an abstraction that enables layered, location verification across many device classes and protocols. At its core sits a set of novel cryptographic mechanisms known as \textbf{\Gls{proof-of-origin}} \& \textbf{\Gls{bound-witness}} that tie together the power of blockchain technology and real world data collection into a system with direct applications today.
+With the growing presence of connected, location-reliant technologies, our privacy and safety rely heavily on the \gls{accuracy} and validity of location information. Various attempts have been made to eliminate the need for centralized entities controlling the flow of location data, but every attempt has relied on the integrity of the devices collecting this data in the physical world. We propose a \gls{trustless}, cryptographic location network using a novel formulation reliant on a chain of zero-knowledge proofs to establish a high degree of data \gls{certainty} on location information. The \textbf{\Gls{xy-oracle-network}} is an abstraction that enables layered, location verification across many device classes and protocols. At its core sits a set of novel cryptographic mechanisms known as \textbf{\Gls{proof-of-origin}} \& \textbf{\Gls{bound-witness}} that tie together the power of blockchain technology and real world data collection into a system with direct applications today.
 
 \begin{center}
 \line(1,0){50}
@@ -415,10 +415,10 @@ Given a set of reported data and a query for a relative position of one of the e
 Given the same set of data and the same analysis algorithm, every calculation should arrive at the same position approximation and the same coefficients for certainty and accuracy.
 
 \subsection {Diagram}
-\textit{S'} and \textit{S''} (Figure 2.) are each a \Gls{sentinel} (edge node) that collect \glspl{heuristic}. When in contact with each other, they exchange heuristic data and public keys. Both build a full record of the interaction and sign the resulting interaction. That signed record then becomes the next entry in both of their local ledgers (\texttt{16} for \textit{S'} and \texttt{3} for \textit{S''}). This action binds these two witnesses as being within proximity of each other.
+\textit{S'} and \textit{S''} (Figure 1.) are each a \Gls{sentinel} (edge node) that collect \glspl{heuristic}. When in contact with each other, they exchange heuristic data and public keys. Both build a full record of the interaction and sign the resulting interaction. That signed record then becomes the next entry in both of their local ledgers (\texttt{16} for \textit{S'} and \texttt{3} for \textit{S''}). This action binds these two witnesses as being within proximity of each other.
 
 \includegraphics [width=\textwidth]{boundwitness}
-\begin{center}\textbf{Figure 2.}  Witness Binding Example Between Two Sentinels
+\begin{center}\textbf{Figure 1.}  Witness Binding Example Between Two Sentinels
 \end{center}
 
 \subsection{Origin Chains}
@@ -474,10 +474,10 @@ A primary method for establishing \Gls{proof-of-origin} is based on the fact tha
 To make a \Gls{proof-of-origin-chain} more secure, it is required that the chain is updated no more than once every ten seconds and no less than once every sixty minutes. In the case that no new data is available, an empty block will be added to the chain.
 
 \subsection {Diagram}
-As time travels from left to right (Figure 3.), the \Gls{proof-of-origin-chain} that is being built gets longer. At any given time, the producer of the chain will only provide to the caller the entries with darkened borders, waiting for the second signing of the entry before making it available. For example, in the 3rd column, only entries \texttt{2} and \texttt{1} will be returned as being part of the chain.
+As time travels from left to right (Figure 2.), the \Gls{proof-of-origin-chain} that is being built gets longer. At any given time, the producer of the chain will only provide to the caller the entries with darkened borders, waiting for the second signing of the entry before making it available. For example, in the 3rd column, only entries \texttt{2} and \texttt{1} will be returned as being part of the chain.
 
 \includegraphics[width=\textwidth] {proofoforigin}
-\begin{center}\textbf{Figure 3.}  Link inclusion example in a Proof of Origin Chain
+\begin{center}\textbf{Figure 2.}  Link inclusion example in a Proof of Origin Chain
 \end{center}
 
 \subsection {Summary}
