@@ -235,7 +235,7 @@ This paper addresses high level concepts in regards to potential attacks against
 
 \subsection{Bluetooth}
 % Issues with Bluetooth protocols
-Most Bluetooth devices utilize a "Long Term Key" pairing setup that establishes a PIN used for encryption. If the key is discovered through an interception of the pairing process, all future traffic could easily be decrypted. There are tools that exist that could brute force the PIN. Even well-established schemes that establish a password outside of the protocol are usually executed in an unencrypted manner. This allows for multiple attack vectors to access the protocol. In addition, devices could be easily sourced to expedite these approaches.
+Most Bluetooth devices utilize a ``Long Term Key'' pairing setup that establishes a PIN used for encryption. If the key is discovered through an interception of the pairing process, all future traffic could easily be decrypted. There are tools that exist that could brute force the PIN. Even well-established schemes that establish a password outside of the protocol are usually executed in an unencrypted manner. This allows for multiple attack vectors to access the protocol. In addition, devices could be easily sourced to expedite these approaches.
 
 In order to prevent attacks of this nature, white-listing MAC addresses can prevent unauthorized devices from communicating with the \Glspl{sentinel} and \Glspl{bridge}. Another way to counter these attacks is to require a user to physically press a ``reset'' button in order to pair the device, which would prevent attacks from users who do not have direct physical access to the device. 
 
