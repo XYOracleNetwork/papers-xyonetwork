@@ -7,6 +7,13 @@
 \usepackage{amsmath} % Advanced math typesetting
 \usepackage[utf8]{inputenc} % Unicode support (Umlauts etc.)
 \usepackage{hyperref} % Add a link to your document
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,
+    citecolor=blue,
+    urlcolor=blue,
+}
 \usepackage{graphicx} % Add pictures to your document
 \usepackage{listings} % Source code formatting and highlighting
 \usepackage{framed} % Source code formatting and highlighting
@@ -35,6 +42,7 @@
     name={Bridge},
     description={A Bridge is a heuristic transcriber. It securely relays heuristic ledgers from Sentinels to Diviners. The most important aspect of a Bridge is that a Diviner can be sure that the heuristic ledgers that are received from a Bridge have not been altered in any way. The second most important aspect of a Bridge is that they add an additional Proof of Origin metadata}
 }
+
 \newglossaryentry{archivist}
 {
     name={Archivist},
@@ -46,6 +54,43 @@
     name={Diviner},
     description={A Diviner answers a given query by analyzing historical data that has been stored by the XYO Network. Heuristics stored in the XYO Network must have a high level of Proof of Origin to determine the validity and accuracy of the heuristic. A Diviner obtains and delivers an answer by judging the witness based on its Proof of Origin. Given that the XYO Network is a trustless system, Diviners must be incentivized to provide honest analyses of heuristics. Unlike Sentinels and Bridges, Diviners use Proof of Work to add answers to the blockchain}
 }
+
+\newglossaryentry{webble}
+{
+    name={webble},
+    description={Everything in the world is defined spatially by its \textit{X,Y,Z,T} coordinate and nothing can leave that space. Objects are thus confined to ``webbubbles'', or what are referred to as \textit{webbles}.}
+}
+
+\newglossaryentry{gas}
+{
+    name={gas},
+    description={The cost of a transaction (i.e. query) in the form of XYO Tokens}
+}
+
+\newglossaryentry{proof-of-origin}
+{
+    name={Proof of Origin},
+    description={Proof of Origin is the key to verifying that ledgers flowing into the XYO Network are valid. A unique ID for source of data is not practical since it can be forged. Private key signing is not practical since most parts of the XYO Network are difficult or impossible to physically secure, thus the potential for a bad actor to steal a private key is too feasible. To solve this, XYO Network uses Transient Key Chaining. The benefit of this is that it is impossible to falsify the chain of origin for data. However, once the chain is broken, it is broken forever and cannot be continued, rendering it an island}
+}
+
+\newglossaryentry{proof-of-work}
+{
+    name={Proof of Work},
+    description={Proof of Work is a piece of data that satisfies certain requirements, is difficult to produce (i.e. costly, time-consuming), but easy for others to verify. Producing a Proof of Work can be a random process with a low probability of generation so that rigorous trial and error is required on average before a valid Proof of Work is created}
+}
+
+\newglossaryentry{bound-witness}
+{
+    name={Bound Witness},
+    description={Bound Witness is a concept achieved by the existence of a bidirectional heuristic. Given that an untrusted source of data for the use of digital contract resolution (an oracle) is not useful, there is a substantial increase in certainty of the data provided by the establishment of such a heuristic. The primary bidirectional heuristic is proximity since both parties can validate the occurrence and range of an interaction by cosigning the interaction. This allows for a zero-knowledge proof that the two nodes were in proximity of each other.}
+}
+
+\newglossaryentry{smart-contract}
+{
+    name={smart contract},
+    description={A protocol coined by Nick Szabo before Bitcoin, purportedly in 1994 (which is why some believe him to be Satoshi Nakamoto, the mystical and unknown inventor of Bitcoin). The idea behind smart contracts is to codify a legal agreement in a program and to have decentralized computers execute its terms, instead of humans having to interpret and act on contracts. Smart contracts collapse money (e.g. Ether) and contracts into the same concept. Being that smart contracts are deterministic (like computer programs) and fully transparent and readable, they serve as a powerful way to replace middle-men and brokers}
+}
+
 \newglossaryentry{cryptoeconomics}
 {
     name={cryptoeconomics},
@@ -58,21 +103,114 @@
     name={XYO Network},
     description={XYO Network stands for ``XY Oracle Network.'' It is comprised of the entire system of XYO enabled components/nodes that include Sentinels, Bridges, Archivists, and Diviners. The primary function of the XYO Network is to act as a portal by which digital smart contracts can be executed through real world geo-location confirmations}
 }
+
+\newglossaryentry{certainty}
+{
+    name={certainty},
+    description={A measure of the likelihood that a data point or heuristic is free from corruption or tampering}
+}
+
+\newglossaryentry{accuracy}
+{
+    name={accuracy},
+    description={A measure of confidence that a data point or heuristic is within a specific margin of error}
+}
+
+\newglossaryentry{oracle}
+{
+    name={oracle},
+    description={A part of a DApp (decentralized application) system that is responsible for resolving a digital contract by providing an answer with accuracy and certainty. The term ``oracle'' originates from cryptography where it signifies a truly random source (e.g. of a random number). This provides the necessary gate from a crypto equation to the world beyond. Oracles feed smart contracts information from beyond the chain (the real world, or off-chain). Oracles are interfaces from the digital world to the real world. As a morbid example, consider a contract for a Last Will \& Testament. A Will's terms are executed upon confirmation that the testator is deceased. An oracle service could be built to trigger a Will by compiling and aggregating relevant data from official sources. The oracle could then be used as a feed or end-point for a smart contract to call out to in order to check whether or not the person is deceased}
+}
+
+\newglossaryentry{heuristic}
+{
+    name={heuristic},
+    description={A data point about the real world relative to the position of a Sentinel (proximity, temperature, light, motion, etc...)}
+}
+
+\newglossaryentry{transient-key-chain}
+{
+    name={Transient Key Chain},
+    description={A Transient Key Chain links a series of data packets using Transient Key Cryptography}
+}
+
+\newglossaryentry{best-answer}
+{
+    name={Best Answer},
+    description={We define the Best Answer as the single answer, amongst a list of Answer Candidates, that returns the highest validity score and has a higher accuracy score than the minimum required accuracy.}
+}
+
+\newglossaryentry{best-answer-score}
+{
+    name={Best Answer Score},
+    description={A score generated by a Best Answer Algorithm that ranks the quality of the score.  The higher the score, the better it is, per the algorithm.  This score is used to determine which answer is better given two analyzed answers}
+}
+
+\newglossaryentry{best-answer-algorithm}
+{
+    name={Best Answer Algorithm},
+    description={An algorithm used to generate Best Answer Scores when a Diviner chooses an answer.  The XYO Network permits the addition of specialized algorithms and allows the customer to specify which algorithm to use.  It is required that this algorithm will result in the same score when run on any Diviner given the same data set}
+}
+
+\newglossaryentry{origin-chain-score}
+{
+    name={Origin Chain Score},
+    description={The score assigned to an Origin Chain to determine its credibility. This assessment takes length, tangle, overlap, and redundancy into consideration}
+}
+
+\newglossaryentry{proof-of-origin-chain}
+{
+    name={Proof of Origin Chain},
+    description={A Transient Key Chain that links together a series of Bound Witness heuristic ledger entries}
+}
+
+\newglossaryentry{origin-tree}
+{
+    name={Origin Tree},
+    description={A data set of ledger entries taken from various Origin Chains to establish the origin of a heuristic ledger entry with a specified level of certainty}
+}
+
+\newglossaryentry{crypto-location}
+{
+    name={crypto-location},
+    description={The realm of cryptographic location technology}
+}
+
 \newglossaryentry{trustless}
 {
     name={trustless},
-    description={A characteristic where all parties in a system can reach a consensus on what the canonical truth is. Power and trust is distributed (or shared) among the network's stakeholders (e.g. developers, miners, and consumers), rather than concentrated in a single individual or entity (e.g. banks, governments, and financial institutions). This is a common term that can be easily misunderstood. Blockchains don't actually eliminate trust. What they do is minimize the amount of trust required from any single actor in the system. They do this by distributing trust among different actors in the system via an economic game that incentivizes actors to cooperate with the rules defined by the protocol}
+    description={A characteristic where all parties in a system can reach a consensus on what the canonical truth is. Power and trust is distributed (or shared) among the network’s stakeholders (e.g. developers, miners, and consumers), rather than concentrated in a single individual or entity (e.g. banks, governments, and financial institutions). This is a common term that can be easily misunderstood. Blockchains don’t actually eliminate trust. What they do is minimize the amount of trust required from any single actor in the system. They do this by distributing trust among different actors in the system via an economic game that incentivizes actors to cooperate with the rules defined by the protocol}
 }
+
+\newglossaryentry{xyomainchain}
+{
+    name={XYOMainChain},
+    description={An immutable blockchain in the XYO Network that stores query transactions along with data gathered from Diviners and their associated origin score}
+}
+
+\newglossaryentry{xyo-miner}
+{
+    name={XYO Miner},
+    description={Sentinels, Bridges, Archivists, and Ddiviners who take part in answering queries to the XYO Network in an XYO crypto-location mining pool}
+}
+
+\newglossaryentry{ideal-state}   
+{
+    name={ideal-state},
+    description={The location-verification standard in an XYO crypto-location mining pool. It can be voted on amongst other XYO miners in the XYO Network system votes to increase or decrease this standard}
+}
+    
+\newacronym{xy-oracle-network}{XY Oracle Network}{XYO Network}
 
 \definecolor{lightred}{rgb}{1,0.85,0.85}
 
-\title {XYO Network: Security Risks and Mitigants}
+\title {XYO Network: Security Risks and Mitigations}
 
 \author{
     Arie Trouw \thanks{XYO Network, \texttt{arie.trouw@xyo.network}} , Andrew Rangel, Jack Cable
 }
 
-\date{February 2018 - Draft}
+\date{February 2018}
 
 \begin{document}
 
@@ -85,72 +223,83 @@
 \end{center}
 
 \section{Introduction}
-A primary concern for the \gls{xyo-network}, like all decentralized trustless systems, is the security of the system.  Vulnerabilities include, but are not limited to, design/architecture flaws, coding errors, incorrect economic motivation, and social engineering. For the purposes of this document, we will focus on design/architecture flaws and economic motivation.
+The \Gls{xyo-network} is a \gls{trustless} and decentralized cryptographic location network that utilizes zero-knowledge proofs to establish a high degree of certainty regarding location verification. A primary concern for the XYO Network, like with all decentralized and trustless entities, is the security of the system.  Vulnerabilities include, but are not limited to: design/architecture flaws, coding errors, incorrect economic motivation, and social engineering. The primary focus of this document pertains to design/architecture flaws and economic motivation.
+
+\begin{center}
+\line(1,0){50}
+\end{center}
 
 \section {Technical Considerations}
 \subsection{Summary}
-In this paper we will discuss high level concepts and attacks against the XYO Network. This network is \gls{trustless}, therefore we will assume that all participants in the network (sentinels, bridges, etc) are vulnerable. In this section we will detail out some of the known protocol level attacks along with industry standard protections against them. From here on out all other attacks assume the devices are compromised.
+This paper addresses high level concepts in regards to potential attacks against the \Gls{xyo-network}. Due to the fact that the network utilizes a \gls{trustless} system, it is assumed that all participants in the network are vulnerable (e.g. \Glspl{sentinel}, \Glspl{bridge}, etc.). This section details some of the known protocol-level attacks along with industry standard safeguards against them. All other attacks assume the devices in the system are compromised.
 
 \subsection{Bluetooth}
-% Issues with bluetooth protocols
-Most Bluetooth devices use a "Long Term Key" pairing setup that establishes a PIN used for encryption. If the key is discovered through intercepting the pairing process, all future traffic is easily decrypted. There are also tools that allow for brute forcing the PIN. Even well established schemes to establish a password outside of the protocol are usually done unecrypted. This provides multiple attack vectors for the protocol. There are easily sourced devices that expedite these approaches.
+% Issues with Bluetooth protocols
+Most Bluetooth devices utilize a ``Long Term Key'' pairing setup that establishes a PIN used for encryption. If the key is discovered through an interception of the pairing process, all future traffic could easily be decrypted. There are tools that exist that could brute force the PIN. Even well-established schemes that establish a password outside of the protocol are usually executed in an unencrypted manner. This allows for multiple attack vectors to access the protocol. In addition, devices could be easily sourced to expedite these approaches.
 
-In order to prevent attacks of this nature, white-listing MAC addresses can prevent un-authorized devices from communicating with the sentinels and bridges. Another counter measure is to require physically pressing a "reset" button in order to pair, this prevents attacks from users without direct physical access. 
+In order to prevent attacks of this nature, white-listing MAC addresses can prevent unauthorized devices from communicating with the \Glspl{sentinel} and \Glspl{bridge}. Another way to counter these attacks is to require a user to physically press a ``reset'' button in order to pair the device, which would prevent attacks from users who do not have direct physical access to the device. 
 
-\subsection{Over the Air}
+\subsection{Over the Air (OTA)}
 %OTA interception
-Sentinel's will need the ability to be updated via an "Over the Air" (OTA) update. OTA updates allow for quick patches to improve stability and security. A potential downside is an attack that spoofs this update and adds malicious code. 
+\Glspl{sentinel} need the ability to be perform ``Over the Air'' (OTA) updates. OTA updates allow for quick patches in order to improve the stability and security of the device. A downside of this feature is the possibility of an attack that spoofs this update and appends malicious code. 
 
 
 \subsection{Hardware}
 % For instance physically exploiting the device
-These devices will be physically located in a range of places all across the globe. This means that there will be a constant ability to physically comprise the devices. This is a key reason for XYO Network to be a completely trust-less network. We will rely on complex algorithms that parse the history and content of the data coming into the system. Any data that doesn't pass as quality long-chain data will be disregarded and the devices will be penalized. 
+The devices on the \Gls{xyo-network} are physically dispersed in a wide range of locations throughout the globe. This means that there exists an ongoing potential to physically comprise a device. This is an integral reason for the XYO Network to be a completely \gls{trustless} network. The entirety of the system relies on complex algorithms that carefully and diligently parse the history and content of the data flowing into the system. Any data that doesn't pass as high-scoring, long-chain data will be disregarded and the offending devices will be penalized. 
+
+\begin{center}
+\line(1,0){50}
+\end{center}
 
 \section{Poison the Well Attacks}
 %Andrew
 \subsection{Summary}
-A Poison the Well Attack is where a malfunctioning or malicious party is creating corrupt data which decreases the accuracy and/or certainty of results generated by the system.
+A Poison the Well Attack occurs when a malfunctioning or malicious party creates and injects corrupted data which decreases the overall \gls{accuracy} and/or \gls{certainty} of results generated by the system.
 
 \subsection{Motivation}
-In this attack the bad actor is motivated to disrupt or \emph{poison} the data that is going to a particular \gls{sentinel} or \gls{bridge}. This could allow them to cause both short term and long term financial disruption. The XYO Network is a trustless system which gives it a low tolerance for this bad data. 
+In a Poison the Well Attack, the bad actor's goal is to to disrupt or \textit{poison} the data that is being sent to a particular \Gls{sentinel} or \Gls{bridge}. Achieving this would allow them to cause both short-term and long-term economic disruption. Given that the \Gls{xyo-network} is a \gls{trustless} system, there is a low tolerance for this type bad data to enter the network. 
 
-While there is no direct gain for the bad actor, often there are benefits to disrupting other people's financial and reputation standing. For instance, let's surmise that the XYO Network is being used to track parolees' locations to monitor for any infractions they commit by being somewhere against their parole terms. This could be as simple as not allowing a continual DUI offender to be in a bar past a certain amount of time. An enterprising parolee could poison the well in terms of feeding the \gls{bridge} for the bar bad data until it is knocked off the network. Then they could come and go from the bar as they please. Even if the data showed them locating in the bar, the bad data could limit the ability to prosecute.
+While there is no direct gain for the bad actor, there exist benefits in the disruption and/or tampering of other peoples' data \textit{reputation}. Suppose the XYO Network was employed to track the location of parolees in order to report any location-based violations of parole terms. If this were used to monitor the amount of time a serial DUI offender spends at a bar, an offending parolee could Poison the Well by feeding a bar-based \Gls{bridge} bad data until it is knocked off the network. The delinquent could then violate the terms of their parole and consume alcohol at the bar for as long as he or she pleases. Even if the provided data reported the offender as being at the bar's location, the poisoned data could reduce its certainty to the point that it is rendered invalid.
 
 \subsection{Technical Analysis}
-Location data of the sentinel could be affected by a GPS jammer or illegal radio frequency transmitters that are designed to interfere with authorized radio communications. GPS Spoofing devices \cite{gps1} can send false data to GPS receiving radios to falsify their location. 
+Location data of a \Gls{sentinel} could be affected by a GPS jammers or illegal radio frequency transmitters that are designed to interfere with authorized radio communications. GPS spoofing devices \cite{jafarina-gps} have the ability to send false data to GPS radio receptors in order to falsify location. 
 
-Due to the Sentinels communicating via Bluetooth, this presents another vector for this attack. They are various documented ways to spoof a Bluetooth device to send bad data \cite{bluetooth1}. While the private keys are ephemeral, it is possible that a device could listen to the sentinel communicating with the \gls{bridge} and copy the data it is sending across. Theoretically it could then send bad data as that sentinel which would begin to poison the data the \gls{bridge} is sending to the Archiver. 
+Sentinels communicating via Bluetooth present another vector for this type of attack. They are various methods in which a Bluetooth device could be spoofed into sending bad data \cite{padgette-bluetooth}. While the private keys created by the XYO Network are immediately deleted, it is possible that a device could listen to the communication between a Sentinel and a \Gls{bridge} and copy the data that is sent. This thief could then send bad data acting as the Sentinel and begin to poison the data the Bridge sends to the \Glspl{archivist}. 
 
 \subsection{Protocol Mitigation Strategies}
-While effective, a GPS jammer is easily recognized due to the pollution it causes to the general area. For instance, anyone will a cell phone in the area would notice a complete block out of many of the apps they use. It would be a fairly short amount of time until it was discovered that there was a jammer in the area. Given that the disruption is easily noticed and the FCC has explicit ruling that jammers are illegal \cite{fcc1}, the likelihood of this attack is low. That being said, there are sophisticated GPS anti-spoofing techniques at the hardware and software level being developed. \cite{gps1}
+While active, a GPS jammer can be easily recognized due to the pollution it causes to the general area it is targeting. For example, any cell phone user in the targeted area would experience a sudden block out of many of the apps they use. It would only be a matter of time before multiple parties confirm similar issues and are able to confirm a jammer is the culprit. Given that this type of disruption is highly detectable combined with the fact that the FCC has explicitly ruled that invoking jammers is illegal \cite{chief-fcc}, the high risk associated with this type of attack renders the likelihood of its occurrence to be low. Even so, there are sophisticated GPS anti-spoofing techniques that are currently being developed both at the hardware and software levels for added security \cite{jafarina-gps}.
 
-There are current technologies and strategies that allow us to protect against bluetooth spoofing and disruption, such as authenticated link key using secure connections. \cite{bluetooth2}
+In addition to these safeguards, there are current technologies and strategies that enable us to protect against Bluetooth spoofing and disruption, such as authenticating link keys with secure connections. \cite{dunning-bluetooth}
 
 \subsection{XYO Network Mitigation Strategies}
-At the \gls{archivist} level [detailed in yellow paper], the network begins to prune bad data. Its storage of the chain back to the origin allows it to detect recently added bad data, and even long chain spoofed information. The Archivist network is a competitive network to return valid data while being queried by the Diviners. Each Archivist also cross-checks the other Archivists' data to build a valid consensus for the network. Since all Archivists get paid, along with the \gls{bridge}s and sentinels, the cryptoeconomics suppress attempts to poison lower-level components.
+The \Gls{archivist} network is a competitive network that returns verified data upon being queried by \Glspl{diviner}. At the point at which \Glspl{archivist} receive data (detailed in yellow paper), the network begins to prune bad data. The relaying of the information stored on the chain back to the origin allows for the detection of recently added bad data, even with spoofed information on a long chain. Each Archivist also cross-checks the other Archivists' data to build a valid consensus for the network. Due to the fact that Archivists get paid, along with \Glspl{bridge} and \Glspl{sentinel}, inherent \gls{cryptoeconomics} suppress attempts to poison lower-level components.
 
 \subsection{Conclusion}
-Due to the Archivist pulling data from a wide geographical region and the necessity to physically be in a location at some point to poison it, this attack will result in the attacker being equally punished. Thus, an attacker is economically disincentivized to conduct such an attack.  
+Considering an \Gls{archivist} pulls data from a wide geographical region and there is a necessity for it to be physically located somewhere in order to poison that region, this type of attack would result in the attacker being punished by the network. This is what makes an attacker economically disincentivized to conduct such an attack on the \Gls{xyo-network}.  
 
+\begin{center}
+\line(1,0){50}
+\end{center}
 
 \section{Assassination Attacks}
 % Jack
 
 \subsection{Summary}
 
-An Assassination Attack is where a malicious actor tries to discredit (character assassination) or make non-functional (technical assassination) another node.
+An Assassination Attack is defined by a malicious actor attempting to discredit a node (character assassination) or render another node non-functional (technical assassination).
 
 \subsection{Motivation}
 
-In an Assassination Attack, an attacker is motivated to undermine the reputation of legitimate nodes in order to boost the relative credibility of other nodes controlled by the attacker. As the reputation of Sentinels on the XYO Network is fundamental for a functioning network, it is crucial that the reputation of nodes cannot be easily manipulated.
+In an Assassination Attack, an attacker is motivated to undermine the reputation of legitimate nodes in order to boost the relative credibility of other nodes controlled by the attacker. As the reputation of \Glspl{sentinel} on the \Gls{xyo-network} is fundamental for a functioning network, it is crucial that the reputation of nodes cannot be easily manipulated.
 
-Consider a situation where an attacker aims to broadcast false location information on the XYO Network (as detailed further in the Force Field Attack). In this case, the attacker must first target individual nodes to harm their reputation. One method in which this can be accomplished is via selective signing, where an attacker selectively provides information to a legitimate Sentinel in order to make the node less consistent with other nodes on the XYO Network. This causes the Sentinel's reputation to be lowered relative to other nodes on the network.
+Consider a situation where an attacker attempts to broadcast false location information on the XYO Network (detailed further in the Force Field Attack). In this case, the attacker must first target individual nodes to harm their reputation. One method in which this could be accomplished is via selective signing, where an attacker selectively provides false information to a legitimate Sentinel (rendering its data an outlier) in order to make the node less consistent with other nodes on the XYO Network. This causes the Sentinel's reputation to be lowered relative to other nodes on the network.
 
-Additionally, an attacker may engage in technical assassination of nodes in order to achieve similar results, rendering devices non-functional. This could be as simple as a physical attack destroying a device.
+Additionally, an attacker may engage in a technical assassination of a node, such as physically destroying a device. These types of attacks are also made in attempts to falsify location information on the network and result in non-functional devices.
 
 \subsection{Technical Analysis}
 
-An Assassination attack on one Sentinel requires an attacker to deploy at least one device to selectively communicate with the target Sentinel. Since other devices on the network will not generate signatures with the malicious node, the malicious node is only visible onto the target node.
+An Assassination attack on a \Gls{sentinel} requires an attacker to deploy at least one device to selectively communicate with the target Sentinel. Since other devices on the network do not generate signatures with the malicious node, the malicious node is only visible onto the target node.
 
 To \gls{bridge}s, external to the network, the information broadcast by the target node is inconsistent with the rest of the network. This has the effect of the target node losing reputation with respect to the rest of the network, which are consistent in not recognizing the malicious node.
 
@@ -158,201 +307,234 @@ To \gls{bridge}s, external to the network, the information broadcast by the targ
 
 Fundamental to the protection against an Assassination attack is the establishment of punishing a node's reputation if it engages in selective signing. In this scenario, the malicious nodes engage in selective signing in order to make themselves appear invisible to other Sentinels on the network.
 
-By establishing a reputation of each Sentinel according to its consistency with the rest of the network, it is possible to punish nodes that engage in selective signing. A reputable node may issue a query to a less reputable node on the network. If the node is legitimate, it would be in its own best interest to sign the query and make itself visible to the network, which would increase its own reputation. Thus, in the case that a node practices selective signing, the more reputable node may broadcast that the malicious node refused to sign its query (Note that this could not be exploited if a node does actually sign the query, as the node can broadcast its signature to disprove the selective signing punishment).
+Establishing a reputation of each Sentinel according to its consistency with the rest of the network makes it possible to punish nodes that engage in selective signing. A reputable node may issue a query to a less reputable node on the network. If the less reputable node is legitimate, it would be in its best interest to sign the query and make itself visible to the network, increasing its reputation. Thus, if a node were to practice selective signing, the more reputable node can broadcast that the malicious node refused to sign its query. This practice can not be exploited in the case where a node actually does sign the query, as the legitimate node can then broadcast its signature to disprove the selective signing accusation.
 
-Punishing selective signing has the effect of mitigating character assassination attacks, as each Sentinel has a defense mechanism for receiving inconsistent information.
+The act of punishing selective signing within the \Gls{xyo-network} mitigates character assassination attacks, as each Sentinel has a defense mechanism for receiving inconsistent information.
 
 \subsection{XYO Network Mitigation Strategies}
 
-Due to the reputation associated with each Sentinel, nodes are discouraged from engaging in selective signing. This effectively mitigates character assassination attacks, as any Sentinel on the network is punished for selective signing. Of course, physical assassination attacks (e.g. destroying a device) are impossible to prevent, but the XYO Network is resilient to attacks targeting single devices.
+Establishing a reputation for each Sentinel discourages nodes from engaging in selective signing. This mitigates character assassination attacks by making any Sentinel on the network punishable for selective signing. Physical assassination attacks (e.g. destroying a device) are harder to prevent at the network level, but the \Gls{xyo-network} is resilient to attacks that target single devices.
 
 \subsection{Conclusion}
 
-The establishment of a reputation system allows Sentinels to enforce each other and eliminate any bad actors. Thus, Assassination Attacks are mitigated on the XYO Network.
+The establishment of a reputation system allows Sentinels to enforce each other's good standing and eradicate bad actors. This is how the \Gls{xyo-network} mitigates Assassination Attacks.
+
+\begin{center}
+\line(1,0){50}
+\end{center}
 
 \section{Deception Attacks}
 %Jack
-A Deception Attack is where a malicious actor tries to pass off incorrect yet valid data to be used in the system for personal gain.
+A Deception Attack occurs when a malicious actor tries to pass off incorrect, yet valid data to be used in the system for personal gain.
 
-One case of a Deception Attack occurs with Multi-Chain Forging, where an attacker maintains multiple versions of their own chain, essentially existing in multiple places at once.
+One form of a Deception Attack occurs by Multi-Chain Forging, where an attacker maintains multiple versions of their own chain that could essentially exist in multiple places at once.
 
 \subsection{Motivation}
 
-An attacker can benefit from false information by forking their own location chain. This can be accomplished by sending the private key for one chain link (generated during the creation of new local blocks) to one or more colluding adversaries in different areas, which proceed to create new location chains branching from the same point.
+An attacker could falsify information by forking their own location chain. This could be accomplished by sending the private key for one chain link, which is generated during the creation of new local blocks, to one or more colluding adversaries in different areas. This allows for continued creation of new location chains that branch from the same point of origin.
 
-Consider a situation where an attacker wishes to spread false information about their location. This could prove advantageous in situations where accuracy of location is important, e.g. in establishing an alibi to attest that the attacker was present at a location at a given time. By having multiple chains, the attacker can wait for an opportune moment and then selectively report only the chain whose information is most advantageous to them.
+An attacker could benefit from spreading false information about their location in situations where accuracy of location is imperative. Take for example the intent to establish an alibi to attest that the attacker was present at a specific location at a given time. By having multiple chains, the attacker could selectively report only the chain carrying information is most advantageous to them as an alibi.
 
 \subsection{Technical Analysis}
 
-A Deception attack is increasingly more difficult to execute as the chain grows longer. As time proceeds, information from a particular node is broadcast across the XYO Network. As a result, a feasible attack would allow at most a few small changes to a chain at some point in the past.
+A Deception Attack is increasingly difficult to execute as a chain grows longer. As time progresses, information from a particular node is broadcast across the \Gls{xyo-network}. This means any feasible attack would allow, at most, a few small changes to a chain at a given point in the past.
 
-This does not completely diminish a potential for an attack. When syncing with a \gls{bridge}, a malicious Sentinel may choose one of its forked chains to share with the Bridge. As both chains are valid, the Bridge and other upstream devices cannot immediately conclude that the chain has been forked. Instead, it is necessary for nodes to cross-check with records of communication with other Sentinels on the network to verify that the Node has not existed in multiple locations at once.
+This process does not completely diminish a potential for an attack. While syncing with a \Gls{bridge}, a malicious \Gls{sentinel} could choose one of its forked chains to share with the Bridge. Since both chains are valid, the Bridge and other  devices upstream cannot immediately conclude that the chain has been forked. Instead, it is essential for nodes to cross-check with records of communication with other Sentinels on the network to verify that the node has not existed in multiple locations at once. 
 
 \subsection{Protocol Mitigation Strategies}
 
-The XYO Network, by nature, is not tolerant of Multi-Chain attacks. Any long-term fork of a node's chain will be inconsistent with the general consensus of the network. In order to prevent small modifications, when the integrity of location data is more important, a user may wait for more confirmations from Archivists containing signatures from distributed nodes. As time proceeds, any discrepancies resulting from a forked chain will become apparent.
+The \Gls{xyo-network}, by nature, can detect Multi-Chain attacks. Any long-term fork of a node's chain will be inconsistent with the general consensus of the network. In order to prevent small modifications, when the integrity of location data is paramount, a user may wait for additional confirmations from \Glspl{archivist} containing signatures from distributed nodes. As time progresses, any discrepancies resulting from a forked chain will become apparent.
 
 \subsection{XYO Network Mitigation Strategies}
 
-Data is distributed throughout Archivists containing ledgers of signed communications between Sentinels. In practice, even slight (though valid) modifications of an existing chain will be detectable. If a Sentinel attempts to perform a Multi-Chain attack, other nodes with conflicting histories may broadcast the conflict to the network. As a result, the reputation of the rogue Sentinel will drop, causing both its chains to be removed from the network.
+Data is distributed throughout the \Glspl{archivist} that contain signed ledgers of communications between \Glspl{sentinel}. In practice, even slight (though valid) modifications of an existing chain are be detectable. If a Sentinel attempts to perform a Multi-Chain attack, other nodes with conflicting histories can broadcast the conflict to the network. As a result, the reputation of the rogue Sentinel will drop, forcing all its chains to be removed from the network.
+
+Thusly, \Gls{xyo-network} is designed to enable the cross-checking of these communications as a safeguard against these types of attacks.
 
 \subsection{Conclusion}
 
-Due to data redundancy in the XYO Network, attempting to broadcast inconsistent data will lead to a Sentinel's reputation being lowered, removing it from consideration in the network.
+The data redundancy in the \Gls{xyo-network} deters attempts to broadcast inconsistent data by lowering the reputation of any offending \Gls{sentinel} to a level that removes it from consideration in the network.
+
+\begin{center}
+\line(1,0){50}
+\end{center}
 
 \section{Same-Machine Sybil Attack}
 %Jack
-A Same-Machine Sybil Attack occurs when a malicious actor creates multiple nodes from a single machine. Since devices aren't assigned unique IDs, this is easily achievable. The malicious actor builds up reputation by signing packets between the simulated nodes to portray the nodes as normal-looking nodes, and then lets the nodes each communicate with different groups of nearby nodes such that each simulated node keeps different information in their Proof of Origin chains, resulting in all having high Origin chain scores. This attack allows malicious actors to cheaply mass produce nodes that they can use to conduct Sybil attacks on the local or even global network. 
+A Same-Machine Sybil Attack occurs when a malicious actor creates multiple nodes from a single machine. Since devices on the \Gls{xyo-network} aren't assigned unique IDs, this is easily achievable. The malicious actor reinforces reputation by signing packets between the simulated nodes to portray the nodes as organic and pure. The attacker then lets the nodes each communicate with different groups of nearby nodes such that each simulated node keeps different information in their \Glspl{proof-of-origin-chain}. This results in all simulated nodes acquiring high \Glspl{origin-chain-score}. This attack allows malicious actors to inexpensively mass-produce nodes that can be used to conduct Sybil attacks on a local or even global network. 
 
 \subsection{Motivation}
 
-An attacker may seek to engage in a Same-Machine Sybil attack to increase influence over a particular region. By creating multiple fake nodes from the same device, this lowers the barrier for entry in executing a Sybil attack. It is much easier for an attacker to create many fake devices on one machine than create many malicious devices.
+An attacker may seek to engage in a Same-Machine Sybil Attack to inflate influence over a particular region. By creating multiple fake nodes from the same device, the barrier to execute a Sybil attack is lowered. It is much easier for an attacker to create many fake devices on one machine than create many malicious devices.
 
 \subsection{Technical Analysis}
 
-It is easy to spoof a bluetooth device's information in order to appear indistinguishable from the device \cite{bluetooth3}. Thus, an attacker can trivially create multiple devices from one computer that act and appear separate.
+It is not difficult to spoof a Bluetooth device's information in order to appear indistinguishable from the device \cite{haxf4rall-bluetooth}. Thus, an attacker could create multiple devices from one computer that act and appear as separate devices.
 
-Once a number of virtual Sentinels have been created, the attacker can operate the Sentinels as if they were physically distinct. The Sentinels would proceed as normal to sign information related to other Sentinels in their proximity. Additionally, an attacker may create a virtual map of devices that are reflected in the signatures of the virtual Sentinels.
+Once a number of virtual \Glspl{sentinel} have been created, an attacker can operate the Sentinels as if they were physically distinct. The Sentinels would appear to be organic and proceed to sign information related to other Sentinels in their proximity. Additionally, an attacker could create a virtual map of devices that are reflected in the signatures of the virtual Sentinels.
 
 \subsection{Protocol Mitigation Strategies}
 
-The key to defending against such an attack lies in detecting duplicate data as perceived in signal strength. A computer running many virtual Sentinels would appear to have the same RSSI for each Sentinel. As a result, to an external Sentinel, each virtual Sentinel operating on the computer would be close to each other, provided a certain fluctuation in signal strength. In order to prevent this attack, it is important for a legitimate Sentinel to recognize bundled devices and treat their information as one node.
+The key to defending against a Same-Machine Sybil Attack is the ability to detect duplicate data by analyzing signal strength. A computer running many virtual \Glspl{sentinel} would appear to have the same RSSI for each Sentinel. As a result, to an external Sentinel, each virtual Sentinel operating on the computer would appear to be close to each other (provided a certain fluctuation in signal strength). In order to prevent this type of attack, it is important for a legitimate Sentinel to detect bundled devices and treat their information as a single node.
 
 \subsection{XYO Network Mitigation Strategies}
 
-The XYO Network's primary indicator is bluetooth signal strength (RSSI). This is a two-way metric which can be agreed upon by two nodes. As a result, a node running a Same-Machine Sybil Attack will appear to have the same signal strength for each virtual node. Deduplication of node data will occur by Archivists, causing the virtual nodes to be treated as one. As a result, a Same-Machine Sybil Attack is ineffective in representing one machine as several virtual nodes.
+The \Gls{xyo-network}'s primary indicator for detecting Same-Machine Sybil Attacks is Bluetooth signal strength (RSSI). This is a two-way metric which can be agreed upon by two nodes. As a result, a node running a Same-Machine Sybil Attack will appear to have the same signal strength for each of its virtual nodes. De-duplication of node data is pruned by \Glspl{archivist}, causing all virtual nodes to be treated as a single node. This renders a Same-Machine Sybil Attack ineffective in representing one machine as several virtual nodes.
 
 \subsection{Conclusion}
 
-Due to the verifiability of bluetooth signal strength coupled with deduplication of data, a machine that creates a cluster of virtual nodes will be treated as a single node, mitigating the attack.
+The \Gls{xyo-network}'s detection of Bluetooth signal strength coupled with its ability to de-duplicate data mitigates an attack from a machine that creates a cluster of virtual nodes by treating the cluster as a single node.
+
+\begin{center}
+\line(1,0){50}
+\end{center}
 
 \section{Force Field Attacks}
 %Jack
-A Force Field attack combines an Assassination and a traditional Sybil attack in order to provide false data to a network. The attack is twofold: an attacker provides inconsistent information to legitimate nodes while simultaneously allowing the attacker's network of nodes to serve as a consistent network for outside observers.
+A Force Field attack combines an Assassination with a traditional Sybil attack in order to provides false data to a network. The attack is twofold: an attacker feeds inconsistent information to legitimate nodes while simultaneously allowing the attacker's network of nodes to serve as a consistent network for outside observers.
 
 \subsection{Motivation}
 
-This approach takes the form of a local Sybil, where the attacker aims to completely control the authority of a certain physical location. However, a pure Sybil attack on the XYO Network would require a large number and history of distributed devices in order to outnumber the existing nodes in reputation. Instead, a Force Field attack is a hybrid approach, first targeting the reputation of existing nodes via Assassination Attacks in order to cause inconsistencies between legitimate nodes.
+This approach takes the form of a local Sybil, where the attacker aims to completely control the authority of a certain physical location. However, a pure Sybil attack on the \Gls{xyo-network} would require a large number of distributed devices with extensive histories in order to outnumber the existing reputable nodes. To circumvent this obstacle, a Force Field attack employs a hybrid approach, which first targets the reputation of existing nodes via Assassination Attacks in order to create inconsistencies between legitimate nodes.
 
-Consider a situation where an attacker wishes to have complete authority of a certain local region. In a Force Field attack, the attacker would first flood each legitimate node with inconsistent information. Thus, the reputation of nodes on the network would decrease, with the barrier for entry of reputation significantly decreasing. As such, an attacker would consequentially be able to supply their own network of devices to outnumber the reputation of legitimate devices, establishing singular authority for the targeted region. 
+Consider a situation where an attacker wishes to have complete authority of a certain local region. Employing a Force Field Attack, the attacker could first flood each legitimate node with inconsistent information. The reputation of these nodes on the network would consequently decrease, lowering the reputation qualification barrier. With this reduced barrier, an attacker could supply their own network of devices that outnumber the lowered reputation of legitimate devices, establishing singular authority for the targeted region. 
 
 \subsection{Technical Analysis}
 
-In order to render an existing network inconsistent, an attacker makes use of selective signing in order to lessen the overlap between legitimate nodes. For instance, an attacker could bring malicious nodes into the local network, and then have each node only communicate with certain devices on the network. Each legitimate Sentinel will broadcast the location of the malicious node communicating with it, while the malicious node appears invisible to other Sentinels around it. At a large scale, this will cause each Sentinel to have a vastly different interpretation of the state of the network. To an outside source, such as a \gls{bridge}, the reputation of each node would be lowered.
+In order to render an existing network inconsistent, an attacker utilizes selective signing in order to decrease the overlap between legitimate nodes. This could be done by bringing malicious nodes into the local network, and then allowing each node to only communicate with particular devices on the network. Each legitimate \Gls{sentinel} selected would broadcast the location of the malicious node it communicates with, while the malicious node remains invisible to surrounding Sentinels. On a large scale, this would cause each Sentinel to have a vastly different interpretation of the state of the network. To an outside source, such as a \Gls{bridge}, the reputation of each node would be lowered.
 
-From here, an attacker would take advantage of the reduced reputation of the entire system in order to enter their own network of Sentinels. Note that these devices may already have existed on the network, and simply become more powerful as the reputation of other Sentinels is lessened.
+Once this is accomplished, an attacker could take advantage of the reduced reputation of the entire system in order to inject their own network of Sentinels. It is possible that these devices have already existed on the network, they would simply become more significant as the reputations of other Sentinels are lowered.
 
-The attack is dependent upon the number of existing nodes in the region, and becomes increasingly more difficult as the number of nodes in a region grows.
+This method of attack is contingent on the number of existing nodes in the region and becomes increasingly difficult as this number grows.
 
 \subsection{Protocol Mitigation Strategies}
 
-As outlined when preventing Assassination attacks, mitigation for Force Field attacks relies on punishing selective signing. A Force Field attack uses selective signing with a cartel of malicious nodes to make target legitimate nodes inconsistent with the XYO Network. 
+Similar to prevention of Assassination Attacks, mitigation of Force Field Attacks relies on the punishment of selective signing. A Force Field Attack employs selective signing with a cartel of malicious nodes in order to make targeted legitimate nodes inconsistent with the \Gls{xyo-network}. 
 
-Having reputable Sentinels poll less reputable nodes for signatures and broadcasting nodes that refuse to respond diminishes the ability of nodes to selectively sign with legitimate nodes.
+Having reputable \Glspl{sentinel} poll less reputable nodes for signatures and reporting nodes that refuse to respond diminishes the ability of nodes to engage in selective signing.
 
-This would make a Force Field attack much more difficult to execute, because any reputation built to execute the attack would quickly dissipate after engaging in selective signing.
+This makes a Force Field Attack much more difficult to execute, because any reputation built to execute the attack would quickly dissipate after engaging in selective signing.
 
 \subsection{XYO Network Mitigation Strategies}
 
-Nodes practicing selective signing will be punished for not conforming with the rest of the system. This leads to a large incentive for a node to respond to signing requests and contribute data to the XYO Network. Non-complying nodes will lose credibility in the form of reputation, causing the Assassination component of a Force Field attack to be economically inviable. In turn, this reduces a Force Field attack to a traditional Sybil attack, which requires an inordinate amount of devices and computing power.
+The \Gls{xyo-network} punishes nodes that attempt selective signing for not conforming with the rest of the system. This boosts the incentive for nodes to respond to signing requests and contribute data to the XYO Network. Incompliant nodes lose credibility in the form of lowered reputation, causing the Assassination component of a Force Field attack to be economically inviable. This reduces a Force Field attack to a traditional Sybil attack, which requires an inordinate amount of devices and computing power.
 
 \subsection{Conclusion}
 
-Similar to an Assassination attack, the cost to a Sentinel's reputation makes a Force Field attack economically impractical, mitigating the issue.
+The resulting cost to a \Gls{sentinel}'s reputation in a Force Field Attack on the \Gls{xyo-network} renders the attack economically impractical.
+
+\begin{center}
+\line(1,0){50}
+\end{center}
 
 \section{Teleportation Attack}
 %Andrew
 \subsection{Motivation}
-A Teleportation attack occurs when someone is able to falsify their location by "teleporting" to another location via the network. For instance if a phone or bluetooth beacon was being used as the sentinel that proves their location, they could falsify that location by sending the device with someone else. In the aforementioned example of needing an alibi, a bad actor could swap phones with someone else in order to create a fake location. 
+A Teleportation Attack occurs when an attacker is able to falsify their location by ``teleporting'' to another location through the network. If a smart phone or Bluetooth beacon is utilized as the \Gls{sentinel} that provides an attacker's location data, an attacker could falsify their location by sending their Sentinel with someone else. If the network were utilized to establish an alibi, a bad actor could swap their Sentinel with someone else in order to falsify their reported location. 
 
-This can also be achieved from a software perspective by sharing your private keys with another individual. For instance if you wanted to have verified hotel reviews you would only let people leave reviews that had a trusted history on-chain. A bad actor could share their private key with an individual near the hotel and it would appear as if they are located there with the chain being non the wiser. 
+This type of attack could also be achieved at the software level by an attacker sharing their private key with one or more individuals. If the network was employed to verify hotel reviews, it would only allow people to leave reviews that had trusted, on-chain history. A bad actor could remotely share their private key with an individual at the hotel and could appear as if they were located there without being in physical proximity of the area.
 
 \subsection{Technical Analysis}
-If the private key is able to be accessed by the user it can easily be shared to create a spoofed device that appears as that users device. Utilizing Software Defined Radio it would allow anyone with the means to appear to the network as your specific device. This will nullify attempts to validating a users location. This also has an implication for the data on the the blockchain, because it is theoretically difficult to discern what is valid device travel and what appears to be a teleportation attack. 
+If the private key is provided to the user, it could be shared to create a spoofed device that appears as that users device. The utilization of Software Defined Radio would allow eligible parties to appear as any specific device on the network, provided it is associated with that device's private key. This would nullify attempts to validate a user's location. This could also affect data on the the blockchain, as it is theoretically difficult to discern legitimate device travel from a Teleportation Attack. 
 
 \subsection{Protocol Mitigation Strategies}
-Mitigation strategies for this approach are complex due to there being natural breaks in the chain. In this instance when a person boards a flight their devices no longer communicate with the network until they land. These gaps of information will require a sophisticated algorithm to discern what are natural gaps, and what are potentially bad data points that must be penalized. 
+Detection strategies against this type of attack are complex due to the natural breaks in the chain. For example, if a phone is utilized as a \Gls{sentinel} and it is turned off, it is not in communication with the network until it is turned back on. Gaps in information being sent require a sophisticated algorithm to distinguish natural gaps from potentially bad data points that must be penalized. 
 
 \subsection{XYO Network Mitigation Strategies}
-This attack is viable until the Archivist level where nodes are able to share information with each other and verify data viability. The number of devices is reduced further upstream on the Network chain, where it is realistic for servers to compare data across large geographic areas. This will allow Diviners to observe bad data in the form of duplicate locations and teleportation, which can be filtered and punished using an algorithm. 
+The feasibility of a Teleportation Attack falters at the point where the \Glspl{archivist} are able to share information with each other and verify data viability. The number of eligible devices is further reduced upstream on the Network, where it is realistic for servers to compare data across large geographic areas. This allows \Glspl{diviner} to observe bad data in the form of duplicate locations and Teleportation, which can be filtered and punished with use of an algorithm. 
 
 \subsection{Conclusion}
-While at a protocol level this attack is difficult to determine, the wide view that higher-level servers, such as Diviners, have allows them to detect malicious data on the Network. Sharing of information between the servers will continually build more trusted information and filter bad data from the system.
+While a Teleportation Attack is difficult to determine at the protocol-level, higher-level servers on the \Gls{xyo-network}, such as \Gls{xyo-network}, enables detection and punishment of malicious data on the Network. Information sharing between these servers will continually build and append trusted information in order to filter bad data from the system.
+
+\begin{center}
+\line(1,0){50}
+\end{center}
 
 \section{Stealth Attack}
 %Andrew
-A Stealth Attack occurs when a device hides itself from the network. Within various uses of the XYO Network it is important that devices have a solid chain history. 
+A Stealth Attack is defined by a device masking itself from the network. Various use cases of the \Gls{xyo-network} require the devices on the network to have a solid chain history. 
 
 \subsection{Motivation}
-A user could strategically turn on and off their location services using their phone or beacon to create bad chain data that would otherwise appear valid. This would allow them to essentially hide themselves from the network when they needed to and re-appear to the network as valid data. There are a myriad of use cases for this attack because it allows a user to have more control over the data they present.
+There is little incentive for a malicious user to conduct a Stealth Attack on the \Gls{xyo-network}. The network aims to provide certainty that something exists in a given location, not prove \textit{everywhere} it has been. This is an important distinction, as the protocol-level data can be inaccurate as nodes are not trusted.
+
+Even so, an offending user could strategically turn on and off the location services of their phone or beacon to create bad chain data that would otherwise appear valid. This would allow them to essentially hide themselves from the network when they do not wish to report data and re-appear to the network when it is advantageous to them.
 
 \subsection{Technical Analysis}
-In this attack the technical approach can be as easy as turning off a device. If you needed a more complicated approach you could build a Faraday cage that hid you, or a specific beacon, from the network. This approach could also be persisted through Denial of Service attacks. 
+A Stealth Attack could be achieved by turning off a device on the network. A more complicated approach could be to employ a Faraday cage that hides a device from the network. A non-physical approach to this type of attack could be persisted through Denial of Service attacks. 
 
 \subsection{Protocol Mitigation Strategies}
-Mitigation for this attack can be complex due to the nature of beacons and other Bluetooth devices being easy to disconnect from the networks. The main strategy to alleviate this potential would be a strong software layer that will penalize sentinels and \gls{bridge}s that broadcast broken chain data. These capabilities will grow over time as the algorithm gets better at understanding the subtle differences between valid and invalid data. 
-inherent
+Action against Stealth Attacks can be complex due to the ability of Bluetooth and other devices to be easily disconnected from the network. The main strategy to alleviate this vulnerability is the implementation and usage of a strong software layer that penalizes \Glspl{sentinel} and \Glspl{bridge} that broadcast broken chain data. Detection capabilities will learn and grow over time as the algorithm gets better at understanding the subtle differences between valid and invalid data.
+
 \subsection{XYO Network Mitigation Strategies}
-There is little incentive for a malicious user to conduct a Stealth Attack on the XYO Network. The network aims to prove that something exists in a location, not prove everywhere it has been. This is an important distinction, as the protocol level data can be inaccurate as nodes are not trusted. Furthermore, in use cases that require a continuous proof of location, a gap in a node's history will be immediately suspicious. Beginning from an Archivist level, data undergoes a pruning and filtration process. This is the key to providing the most accurate location despite messy data that is inherent in the physical world. 
+A gap in a node's history will be immediately suspicious in use cases that require a continuous Proof of Location on the \Gls{xyo-network}. When data reaches the \Glspl{archivist}, it undergoes a rigorous pruning and filtration process that can detect these gaps and punish inconsistencies. This primary feature of the XYO Network allows it to provide the most accurate location despite messy data that is inherent of the physical world. 
 
 \subsection{Conclusion}
-A Stealth Attack is economically inviable given the use-cases present on the XYO Network.
+A Stealth Attack is economically inviable given the use cases for the XYO Network.
+
+\begin{center}
+\line(1,0){50}
+\end{center}
 
 \section{Denial of Service Attacks}
 %Andrew
-A Denial of Service Attack (DoS) is when a malicious or dysfunctional actor causes a local, regional, or system wide outage. 
+A Denial of Service Attack (DoS) occurs when a malicious or dysfunctional actor causes a local, regional, or system wide outage. 
 
 \subsection{Motivation}
 
-An attacker may seek to disrupt the XYO Network in order to prevent it from being used for Proof of Location.
+An attacker may seek to disrupt the \Gls{xyo-network} in order to prevent it from being able to verify Proof of Location.
 
 \subsection{Technical Analysis}
-Due to the nature of the Bluetooth protocol the beacons can only connect to one device at a time. This means any device that accepts unauthenticated commands can easily be knocked off the network. This can be achieved as simply as a mobile phone app. This opens up the ability to have one device that broadcasts Bluetooth commands out continually with relative ease. By sending hex values to the device for given parameters, such as the "play sound" parameter on most beacons, it will create a connection with that device. If this connection is established it blocks any other device from communicating with it. This could be multiplied by the use of Software Defined Radio that could run scripts to continually broadcast out various hex values to any beacon in range. 
+
+Due to the nature of the Bluetooth protocol, Bluetooth beacons can only connect to one device at a time. This means any device that accepts unauthenticated commands can easily be knocked off the network. This could be achieved by utilizing a mobile phone application, which would allow one device that broadcasts Bluetooth commands to do so continually with relative ease. Sending hex values to the device for given parameters, such as the ``play sound'' parameter on most beacons, creates a connection with that device. If this connection is established, it blocks any other device from communicating with it. This could be amplified by the use of Software Defined Radio that could run scripts to continually broadcast various hex values to any network beacon in range. 
 
 \subsection{Protocol Mitigation Strategies}
-In order to mitigate this risk, the Bluetooth device should only accept authenticated commands or utilize a MAC address white-list. Reducing the number of write authenticated commands will minimize the footprint of this attack vector. 
+Bluetooth devices on the \Gls{xyo-network} should only accept authenticated commands or utilize a MAC address white-list. Reducing the number of write-authenticated commands minimizes access to this attack vector. 
 
 \subsection{XYO Network Mitigation Strategies}
-The Network is comprised of users who run Archivist and Diviner servers. Both of these components share information and validation with their peers. This allows a query to select from any "stack" of components to retrieve an answer. While it is possible to deny a small portion of the network service from the protocol level, the breadth of the network makes it economically inviable. 
+The \Gls{xyo-network} is comprised of users who run \Gls{archivist} and \Gls{diviner} servers. Both of these components share information and validation with their peers. This allows a query to select from any ``stack'' of components to retrieve an answer. While it is possible to deny a small portion of the network service at the protocol level, the breadth and scale of the network makes this economically inviable. 
 
 \subsection{Conclusion}
-Due to the distributed nature of the XYO Network, the Network remains functional despite an attempted Denial of Service attack. As it requires computer power and physical access to attack an entire stack via DoS, even targeting a small portion of the XYO Network is expensive.
+Due to the distributed nature of the \Gls{xyo-network}, the network remains functional despite an attempted Denial of Service Attack. As a DoS requires heavy computing power and physical access to attack an entire stack, targeting even a small portion of the XYO Network is expensive and economically illogical.
+
+\begin{center}
+\line(1,0){50}
+\end{center}
+
+\section {Acknowledgements}
+This red paper is a security corollary to the \Gls{xyo-network} white paper and XYO Network green paper. We thank Christine Sako for her attention to detail and application of best-practices in her review of this work.
 
 \begin{thebibliography}{9}
 
-\bibitem{gps1}
-Ali Jafarnia-Jahromi, Ali Broumandan, John Nielsen, and Gerard Lachapelle.
+
+\bibitem{jafarina-gps}
+Jafarnia-Jahromi, Ali. Ali Broumandan, John Nielsen, and Gerard Lachapelle.
 \textit{GPS Vulnerability to Spoofing Threats and a Review of Antispoofing Techniques}.
-International Journal of Navigation and Observation, vol. 2012.
-\textit{Hindawai.com}.
 \\\texttt{https://www.hindawi.com/journals/ijno/2012/127072/cta/}
+International Journal of Navigation and Observation, Alberta, Canada, May 2012.
 
-\bibitem{bluetooth1}
-John Padgette John Bahr Mayank Batra Marcel Holtmann Rhonda Smithbey Lily Chen Karen Scarfone
+\bibitem{padgette-bluetooth}
+Padgette, John, John Bahr, Mayank Batra, Marcel Holtmann, Rhonda Smithbey, Lily Chen, and Karen Scarfone.
 \textit{Guide to Bluetooth Security}.
-NIST 2017.
-\textit{NIST Special Publication}.
 \\\texttt{http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-121r2.pdf}
+U.S. Department of Commerce, National Institute of Standards and Technology, May 2017.
 
-\bibitem{bluetooth2}
-JP Dunning
+\bibitem{dunning-bluetooth}
+Dunning, JP.
 \textit{Breaking Bluetooth by being bored}.
-DefCon 2010.
-\textit{Defcon Presentation}.
 \\\texttt{https://www.defcon.org/images/defcon-18/dc-18-presentations\-/Dunning/DEFCON-18-Dunning-Breaking-Bluetooth.pdf}
+DefCon, August 2010.
 
-\bibitem{bluetooth3}
-haxf4rall
+\bibitem{haxf4rall-bluetooth}
+haxf4rall.
 \textit{Spoofing a Bluetooth device}.
 \\\texttt{http://haxf4rall.com/2016/05/11/spoofing-a-bluetooth-device/}
+May 11, 2016.
 
-\bibitem{fcc1}
-FCC.
+\bibitem{chief-fcc}
+Chief, Enforcement Bureau.
 \textit{FCC Enforcement Advisory}.
-FCC 2014.
-\textit{FCC.gov}.
 \\\texttt{https://apps.fcc.gov/edocs\_public/attachmatch/DA-14-1785A1.pdf}
-
+FCC.gov, December 8, 2014.
 
 \end{thebibliography}
 \printglossaries
