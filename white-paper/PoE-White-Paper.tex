@@ -1,0 +1,109 @@
+% Preamble
+% ---
+\documentclass{article}
+
+% Packages
+% ---
+\usepackage{amsmath} % Advanced math typesetting
+\usepackage[utf8]{inputenc} % Unicode support (Umlauts etc.)
+\usepackage{hyperref} % Add a link to your document
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,
+    citecolor=blue,
+    urlcolor=blue,
+}
+\usepackage{graphicx} % Add pictures to your document
+\usepackage{listings} % Source code formatting and highlighting
+\usepackage{framed} % Source code formatting and highlighting
+\usepackage{appendix} % Source code formatting and highlighting
+\usepackage{csquotes} % Pretty quotes
+\usepackage[automake]{glossaries}
+\usepackage[letterpaper, portrait, margin=1.5in]{geometry}
+
+\graphicspath{ {images/} }
+
+\makeglossary
+
+%*******************************
+%**** Begin Glossary Section *****
+%*******************************
+
+\newglossaryentry{candidate}
+{
+    name={Candidate},
+    description={An wallet address that is being considered for a transaction.}
+}
+
+\newacronym{poe}{PoE}{Proof of Eligibility}
+
+\newacronym{xyo}{XYO}{XY Oracle Network}
+
+\title {The XY Oracle Network: The Proof-of-Eligibility}
+
+\author{
+    Arie Trouw
+        \thanks{XYO Network, \texttt{arie.trouw@xyo.network}}
+}
+
+\date{March 2018}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\line(1,0){50}
+\end{center}
+
+%Abstract Section
+\begin{abstract}
+Some smart contracts require that only certain people or entities are allowed to transact with them, but they are often exposed to cost base attacks because the process of validating the eligibility of the caller has cost.  In most cases, if determining eligibility prior to allowing the contract to complete, the risk is on the contract holder to absorb the cost of the check, and the caller burdens no risk.  XYO's Proof of Eligibility (PoE) solves this problem by allowing the user to transact first and then validate eligibility afterwards, but prior to receiving the benefit of the transaction.
+
+\begin{center}
+\line(1,0){50}
+\end{center}
+\end{abstract}
+
+%Introduction
+\section{Introduction}
+Reducing the time to transaction for smart contracts is very important for customers and companies.  PoE addresses this with a few benefits.  Preserves order of transaction by having the initiation of the transaction be instant so that any verification delay does not report the transactions.  Confirms to the user that they did not miss out in the case where the contract is temporal or has a limited capacity.  Commits the user to the transaction, preventing cost based attacks.
+
+%Architecture
+\section{Architecture}
+
+%Process Order
+\section{Process Order}
+
+For this illustration, we will use the payment for a Token with Ether as an example.
+
+1. Customer sends payment to the smart contract
+2. The smart contract records the transaction by adding the incoming address to a list and associates it to the number of Tokens that are due to the customer.  The Ether is added to the value of the contract.
+3. The customer completes the verification process
+4. An authorized wallet calls the contract to confirm that the customer has passed eligibility verification
+5. The smart contract transfers the tokens due to the customer address and the Ether to the company
+6. When the sale ends, all remaining unverified Ether is forfeit to the company. (Reason for this is to prevent free speculation attacks)
+
+\clearpage
+
+
+\section {Acknowledgements}
+This white paper is the product of an inspiring team effort that was made possible through the belief in our vision from the following individuals: We thank Christine Sako for her exceptional work ethic and attention to detail in her review of our work. The consistency in structure and best-practices observed in our white paper is the product of Christine's efforts. We thank Johnny Kolasinski for his research and compilation of applicable use cases. Last, we thank John Arana for his careful review and creative input.
+
+\begin{center}
+\line(1,0){50}
+\end{center}
+
+\begin{thebibliography}{9}
+
+\end{thebibliography}
+
+\clearpage
+
+\printglossaries
+
+%*******************************
+%**** End Glossary Section *****
+%*******************************
+
+\end{document}
