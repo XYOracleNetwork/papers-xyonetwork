@@ -246,7 +246,7 @@ In order to prevent attacks of this nature, white-listing MAC addresses can prev
 
 \subsection{Hardware}
 % For instance physically exploiting the device
-The devices on the \Gls{xyo-network} are physically dispersed in a wide range of locations throughout the globe. This means that there exists an ongoing potential to physically comprise a device. This is an integral reason for the XYO Network to be a completely \gls{trustless} network. The entirety of the system relies on complex algorithms that carefully and diligently parse the history and content of the data flowing into the system. Any data that doesn't pass as high-scoring, long-chain data will be disregarded and the offending devices will be penalized. 
+The devices on the \Gls{xyo-network} are physically dispersed in a wide range of locations throughout the globe. This means that there exists an ongoing potential to physically comprise a device. This is an integral reason for the XYO Network to be a completely \gls{trustless} network. The entirety of the system relies on complex algorithms that carefully and diligently parse the history and content of the data flowing into the system. Any data that doesn't pass as high-scoring, long-chain data is disregarded and the offending devices are penalized. 
 
 \begin{center}
 \line(1,0){50}
@@ -347,7 +347,7 @@ The \Gls{xyo-network}, by nature, can detect Multi-Chain attacks. Any long-term 
 
 \subsection{XYO Network Mitigation Strategies}
 
-Data is distributed throughout the \Glspl{archivist} that contain signed ledgers of communications between \Glspl{sentinel}. In practice, even slight (though valid) modifications of an existing chain will be detectable. If a Sentinel attempts to perform a Multi-Chain attack, other nodes with conflicting histories can broadcast the conflict to the network. As a result, the reputation of the rogue Sentinel will drop, forcing all its chains to be removed from the network.
+Data is distributed throughout the \Glspl{archivist} that contain signed ledgers of communications between \Glspl{sentinel}. In practice, even slight (though valid) modifications of an existing chain are detectable. If a Sentinel attempts to perform a Multi-Chain attack, other nodes with conflicting histories can broadcast the conflict to the network. As a result, the reputation of the rogue Sentinel will drop, forcing all its chains to be removed from the network.
 
 Thusly, \Gls{xyo-network} is designed to enable the cross-checking of these communications as a safeguard against these types of attacks.
 
