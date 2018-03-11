@@ -19,6 +19,7 @@
 \usepackage{framed} % Source code formatting and highlighting
 \usepackage{appendix} % Source code formatting and highlighting
 \usepackage{csquotes} % Pretty quotes
+\usepackage{pagecolor}
 \usepackage[automake]{glossaries}
 \usepackage[letterpaper, portrait, margin=1.5in]{geometry}
 
@@ -102,8 +103,8 @@
     name={XYO Network},
     description={XYO Network stands for ``XY Oracle Network.'' It is comprised of the entire system of XYO enabled components/nodes that include Sentinels, Bridges, Archivists, and Diviners. The primary function of the XYO Network is to act as a portal by which digital smart contracts can be executed through real world geo-location confirmations}
 }
-
-
+\definecolor{lightyellow}{rgb}{1,1,0.85}
+\pagecolor{lightyellow}
 
 \title {XYO Network: Network Implementation}
 
@@ -123,6 +124,17 @@
 \end{center}
 
 \section{Introduction}
+The XYO Network is a trustless system that is designed to take unreliable Internet of Things devices and provide a trustworthy location. In this document we will detail out the implementation of this system from a technical perspective. Modeled after a patent application, the goal is if you followed the document you could re-create the XYO Network. 
+
+\section{Network Overview}
+\includegraphics [width=\textwidth]{XYONetwork}
+When a Query is created it communicates with a network of Diviners. They instigate a request down the network querying devices for the given ID. When responses come back from the network it calculates the most trusted data point and returns it to the Querying party. 
+
+\section{Query Mechanics}
+\section{Diviner}
+\section{Archivist}
+\section{Bridge}
+\section{Sentinel}
 
 \begin{thebibliography}{9}
 
