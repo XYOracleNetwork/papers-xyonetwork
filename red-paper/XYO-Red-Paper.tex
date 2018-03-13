@@ -34,7 +34,7 @@
 \newglossaryentry{sentinel}
 {
     name={Sentinel},
-    description={A Sentinel is a heuristic witnesses. It observes heuristics and vouches for the certainty and accuracy of them by producing temporal ledgers. The most important aspect of a Sentinel is that it produces ledgers that Diviners can be certain came from the same source by adding Proof of Origin to them}
+    description={A Sentinel is a heuristic witness. It observes heuristics and vouches for the certainty and accuracy of them by producing temporal ledgers. The most important aspect of a Sentinel is that it produces ledgers that Diviners can be certain came from the same source by adding Proof of Origin to them}
 }
 
 \newglossaryentry{bridge}
@@ -241,7 +241,7 @@ In order to prevent attacks of this nature, white-listing MAC addresses can prev
 
 \subsection{Over the Air (OTA)}
 %OTA interception
-\Glspl{sentinel} need the ability to be perform ``Over the Air'' (OTA) updates. OTA updates allow for quick patches in order to improve the stability and security of the device. A downside of this feature is the possibility of an attack that spoofs this update and appends malicious code. 
+\Glspl{sentinel} need the ability to perform ``Over the Air'' (OTA) updates. OTA updates allow for quick patches in order to improve the stability and security of the device. A downside of this feature is the possibility of an attack that spoofs this update and appends malicious code. 
 
 
 \subsection{Hardware}
@@ -391,7 +391,7 @@ The \Gls{xyo-network}'s detection of Bluetooth signal strength coupled with its 
 
 \section{Force Field Attacks}
 %Jack
-A Force Field attack combines an Assassination with a traditional Sybil attack in order to provides false data to a network. The attack is twofold: an attacker feeds inconsistent information to legitimate nodes while simultaneously allowing the attacker's network of nodes to serve as a consistent network for outside observers.
+A Force Field attack combines an Assassination with a traditional Sybil attack in order to provide false data to a network. The attack is twofold: an attacker feeds inconsistent information to legitimate nodes while simultaneously allowing the attacker's network of nodes to serve as a consistent network for outside observers.
 
 \subsection{Motivation}
 
@@ -435,7 +435,7 @@ A Teleportation Attack occurs when an attacker is able to falsify their location
 This type of attack could also be achieved at the software level by an attacker sharing their private key with one or more individuals. If the network was employed to verify hotel reviews, it would only allow people to leave reviews that had trusted, on-chain history. A bad actor could remotely share their private key with an individual at the hotel and could appear as if they were located there without being in physical proximity of the area.
 
 \subsection{Technical Analysis}
-If the private key is provided to the user, it could be shared to create a spoofed device that appears as that users device. The utilization of Software Defined Radio would allow eligible parties to appear as any specific device on the network, provided it is associated with that device's private key. This would nullify attempts to validate a user's location. This could also affect data on the the blockchain, as it is theoretically difficult to discern legitimate device travel from a Teleportation Attack. 
+If the private key is provided to the user, it could be shared to create a spoofed device that appears as that users device. The utilization of Software Defined Radio would allow eligible parties to appear as any specific device on the network, provided it is associated with that device's private key. This would nullify attempts to validate a user's location. This could also affect data on the blockchain, as it is theoretically difficult to discern legitimate device travel from a Teleportation Attack. 
 
 \subsection{Protocol Mitigation Strategies}
 Detection strategies against this type of attack are complex due to the natural breaks in the chain. For example, if a phone is utilized as a \Gls{sentinel} and it is turned off, it is not in communication with the network until it is turned back on. Gaps in information being sent require a sophisticated algorithm to distinguish natural gaps from potentially bad data points that must be penalized. 
