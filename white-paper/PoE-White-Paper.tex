@@ -21,6 +21,7 @@
 \usepackage{csquotes} % Pretty quotes
 \usepackage[automake]{glossaries}
 \usepackage[letterpaper, portrait, margin=1.5in]{geometry}
+\usepackage{multicol}
 
 \graphicspath{ {images/} }
 
@@ -30,17 +31,229 @@
 %**** Begin Glossary Section *****
 %*******************************
 
+\newglossaryentry{sentinel}
+{
+    name={Sentinel},
+    description={A Sentinel is a heuristic witness. It observes heuristics and vouches for the certainty and accuracy of them by producing temporal ledgers. The most important aspect of a Sentinel is that it produces ledgers that Diviners can be certain came from the same source by adding Proof of Origin to them}
+}
+
+\newglossaryentry{bridge}
+{
+    name={Bridge},
+    description={A Bridge is a heuristic transcriber. It securely relays heuristic ledgers from Sentinels to Diviners. The most important aspect of a Bridge is that a Diviner can be sure that the heuristic ledgers that are received from a Bridge have not been altered in any way. The second most important aspect of a Bridge is that they add an additional Proof of Origin metadata}
+}
+
+\newglossaryentry{archivist}
+{
+    name={Archivist},
+    description={An Archivist stores heuristics as a part of the decentralized data set with the goal of having all historical ledgers stored, but without that requirement. Even if some data is lost or becomes temporarily unavailable, the system continues to function, just with reduced accuracy. Archivists also index ledgers so that they can return a string of ledger data if needed. Archivists store raw data only and get paid solely for retrieval of the data. Storage is always free}
+}
+
+\newglossaryentry{diviner}
+{
+    name={Diviner},
+    description={A Diviner answers a given query by analyzing historical data that has been stored by the XYO Network. Heuristics stored in the XYO Network must have a high level of Proof of Origin to determine the validity and accuracy of the heuristic. A Diviner obtains and delivers an answer by judging the witness based on its Proof of Origin. Given that the XYO Network is a trustless system, Diviners must be incentivized to provide honest analyses of heuristics. Unlike Sentinels and Bridges, Diviners use Proof of Work to add answers to the blockchain}
+}
+
+\newglossaryentry{webble}
+{
+    name={webble},
+    description={Everything in the world is defined spatially by its \textit{X,Y,Z,T} coordinate and nothing can leave that space. Objects are thus confined to ``webbubbles'', or what are referred to as \textit{webbles}.}
+}
+
+\newglossaryentry{gas}
+{
+    name={gas},
+    description={The cost of a transaction (i.e. query) in the form of XYO Tokens}
+}
+
+\newglossaryentry{proof-of-origin}
+{
+    name={Proof of Origin},
+    description={Proof of Origin is the key to verifying that ledgers flowing into the XYO Network are valid. A unique ID for source of data is not practical since it can be forged. Private key signing is not practical since most parts of the XYO Network are difficult or impossible to physically secure, thus the potential for a bad actor to steal a private key is too feasible. To solve this, XYO Network uses Transient Key Chaining. The benefit of this is that it is impossible to falsify the chain of origin for data. However, once the chain is broken, it is broken forever and cannot be continued, rendering it an island}
+}
+
+\newglossaryentry{proof-of-work}
+{
+    name={Proof of Work},
+    description={Proof of Work is a piece of data that satisfies certain requirements, is difficult to produce (i.e. costly, time-consuming), but easy for others to verify. Producing a Proof of Work can be a random process with a low probability of generation so that rigorous trial and error is required on average before a valid Proof of Work is created}
+}
+
+\newglossaryentry{bound-witness}
+{
+    name={Bound Witness},
+    description={Bound Witness is a concept achieved by the existence of a bidirectional heuristic. Given that an untrusted source of data for the use of digital contract resolution (an oracle) is not useful, there is a substantial increase in certainty of the data provided by the establishment of such a heuristic. The primary bidirectional heuristic is proximity since both parties can validate the occurrence and range of an interaction by cosigning the interaction. This allows for a zero-knowledge proof that the two nodes were in proximity of each other.}
+}
+
+\newglossaryentry{smart-contract}
+{
+    name={smart contract},
+    description={A protocol coined by Nick Szabo before Bitcoin, purportedly in 1994 (which is why some believe him to be Satoshi Nakamoto, the mystical and unknown inventor of Bitcoin). The idea behind smart contracts is to codify a legal agreement in a program and to have decentralized computers execute its terms, instead of humans having to interpret and act on contracts. Smart contracts collapse money (e.g. Ether) and contracts into the same concept. Being that smart contracts are deterministic (like computer programs) and fully transparent and readable, they serve as a powerful way to replace middle-men and brokers}
+}
+
+\newglossaryentry{cryptoeconomics}
+{
+    name={cryptoeconomics},
+    plural={cryptoeconomic},
+    description={A formal discipline that studies protocols that govern the production, distribution, and consumption of goods and services in a decentralized digital economy. Cryptoeconomics is a practical science that focuses on the design and characterization of these protocols}
+}
+
+\newglossaryentry{xyo-network}
+{
+    name={XYO Network},
+    description={XYO Network stands for ``XY Oracle Network.'' It is comprised of the entire system of XYO enabled components/nodes that include Sentinels, Bridges, Archivists, and Diviners. The primary function of the XYO Network is to act as a portal by which digital smart contracts can be executed through real world geo-location confirmations}
+}
+
+\newglossaryentry{certainty}
+{
+    name={certainty},
+    description={A measure of the likelihood that a data point or heuristic is free from corruption or tampering}
+}
+
+\newglossaryentry{accuracy}
+{
+    name={accuracy},
+    description={A measure of confidence that a data point or heuristic is within a specific margin of error}
+}
+
+\newglossaryentry{oracle}
+{
+    name={oracle},
+    description={A part of a DApp (decentralized application) system that is responsible for resolving a digital contract by providing an answer with accuracy and certainty. The term ``oracle'' originates from cryptography where it signifies a truly random source (e.g. of a random number). This provides the necessary gate from a crypto equation to the world beyond. Oracles feed smart contracts information from beyond the chain (the real world, or off-chain). Oracles are interfaces from the digital world to the real world. As a morbid example, consider a contract for a Last Will \& Testament. A Will's terms are executed upon confirmation that the testator is deceased. An oracle service could be built to trigger a Will by compiling and aggregating relevant data from official sources. The oracle could then be used as a feed or end-point for a smart contract to call out to in order to check whether or not the person is deceased}
+}
+
+\newglossaryentry{heuristic}
+{
+    name={heuristic},
+    description={A data point about the real world relative to the position of a Sentinel (proximity, temperature, light, motion, etc...)}
+}
+
+\newglossaryentry{transient-key-chain}
+{
+    name={Transient Key Chain},
+    description={A Transient Key Chain links a series of data packets using Transient Key Cryptography}
+}
+
+\newglossaryentry{best-answer}
+{
+    name={Best Answer},
+    description={We define the Best Answer as the single answer, amongst a list of Answer Candidates, that returns the highest validity score and has a higher accuracy score than the minimum required accuracy.}
+}
+
+\newglossaryentry{best-answer-score}
+{
+    name={Best Answer Score},
+    description={A score generated by a Best Answer Algorithm that ranks the quality of the score.  The higher the score, the better it is, per the algorithm.  This score is used to determine which answer is better given two analyzed answers}
+}
+
+\newglossaryentry{best-answer-algorithm}
+{
+    name={Best Answer Algorithm},
+    description={An algorithm used to generate Best Answer Scores when a Diviner chooses an answer.  The XYO Network permits the addition of specialized algorithms and allows the customer to specify which algorithm to use.  It is required that this algorithm will result in the same score when run on any Diviner given the same data set}
+}
+
+\newglossaryentry{origin-chain-score}
+{
+    name={Origin Chain Score},
+    description={The score assigned to an Origin Chain to determine its credibility. This assessment takes length, tangle, overlap, and redundancy into consideration}
+}
+
+\newglossaryentry{proof-of-origin-chain}
+{
+    name={Proof of Origin Chain},
+    description={A Transient Key Chain that links together a series of Bound Witness heuristic ledger entries}
+}
+
+\newglossaryentry{origin-tree}
+{
+    name={Origin Tree},
+    description={A data set of ledger entries taken from various Origin Chains to establish the origin of a heuristic ledger entry with a specified level of certainty}
+}
+
+\newglossaryentry{crypto-location}
+{
+    name={crypto-location},
+    description={The realm of cryptographic location technology}
+}
+
+\newglossaryentry{trustless}
+{
+    name={trustless},
+    description={A characteristic where all parties in a system can reach a consensus on what the canonical truth is. Power and trust is distributed (or shared) among the network’s stakeholders (e.g. developers, miners, and consumers), rather than concentrated in a single individual or entity (e.g. banks, governments, and financial institutions). This is a common term that can be easily misunderstood. Blockchains don’t actually eliminate trust. What they do is minimize the amount of trust required from any single actor in the system. They do this by distributing trust among different actors in the system via an economic game that incentivizes actors to cooperate with the rules defined by the protocol}
+}
+
+\newglossaryentry{xyomainchain}
+{
+    name={XYOMainChain},
+    description={An immutable blockchain in the XYO Network that stores query transactions along with data gathered from Diviners and their associated origin score}
+}
+
+\newglossaryentry{xyo-miner}
+{
+    name={XYO Miner},
+    description={Sentinels, Bridges, Archivists, and Deviners who take part in answering queries to the XYO Network in an XYO crypto-location mining pool}
+}
+
+\newglossaryentry{ideal-state}   
+{
+    name={ideal-state},
+    description={The location-verification standard in an XYO crypto-location mining pool. It can be voted on amongst other XYO miners in the XYO Network system votes to increase or decrease this standard}
+}
+
+\newglossaryentry{proof-of-eligibility}
+{
+	name={Proof of Eligibility},
+    description={Addresses the dilemma of eligibility verification and potential cost-based attacks through a reorganization of the steps required to complete the transaction}
+}
+
 \newglossaryentry{candidate}
 {
     name={Candidate},
-    description={An wallet address that is being considered for a transaction.}
+    description={A wallet address under consideration for a transaction}
 }
+
+\newglossaryentry{contract-caller}
+{
+    name={contract caller},
+    description={An entity that initiates a smart contract, on the receiving end of the contract holder's input}
+}
+
+\newglossaryentry{contract-holder}
+{
+	name={contract holder},
+    description={An entity that controls a smart contract, on the receiving end of the contract caller's input}
+}
+
+\newglossaryentry{cost-based-attack}
+{
+    name={cost-based attack},
+    description={A malicious attempt by one entity to increase incurred costs for another, often through high-volume data input for a costly process with little to no cost to the attacker}
+}
+
+\newglossaryentry{transaction}
+{
+	name={transaction},
+    description={The necessary requirements and entire process involved in the execution of a smart contract}
+}
+
+\newglossaryentry{transaction-architecture}
+{
+	name={transaction architecture},
+    description={The basic structure of a transaction, often a list of steps that result in an executed smart contract}
+}
+
+\newacronym{pow}{PoW}{Proof of Work}
+
+\newacronym{poo}{PoO}{Proof of Origin}
+
+\newacronym{xy-oracle-network}{XY Oracle Network}{XYO Network}
 
 \newacronym{poe}{PoE}{Proof of Eligibility}
 
 \newacronym{xyo}{XYO}{XY Oracle Network}
 
-\title {The XY Oracle Network: The Proof-of-Eligibility}
+\title {The XY Oracle Network: Proof of Eligibility Transactions and XYO Token Sale Logistics}
+
 
 \author{
     Arie Trouw
@@ -58,7 +271,8 @@
 
 %Abstract Section
 \begin{abstract}
-Some smart contracts require that only certain people or entities are allowed to transact with them, but they are often exposed to cost base attacks because the process of validating the eligibility of the caller has cost.  In most cases, if determining eligibility prior to allowing the contract to complete, the risk is on the contract holder to absorb the cost of the check, and the caller burdens no risk.  XYO's Proof of Eligibility (PoE) solves this problem by allowing the user to transact first and then validate eligibility afterwards, but prior to receiving the benefit of the transaction.
+Most \glspl{smart-contract} only allow certain entities to be eligible to engage in \glspl{transaction}. There is an incurred burden and expense with the eligibility validation process of the \gls{contract-caller} that can expose \glspl{contract-holder} to high drop-off rates and \glspl{cost-based-attack}. Traditionally, confirmation of eligibility verification is often saved only to external servers, not to the smart contracts themselves, leaving the potential for contract holders to incur future risks. The \Gls{xy-oracle-network} provides a solution to the risk assumed by contract holders by establishing the architecture for \textbf{\Gls{poe}} transactions. The implementation of \acrshort{poe} allows the contract caller to validate their eligibility \textit{after} initiating a smart contract, which confirms their position in contracts that are temporally sensitive and/or have limited availability. Additionally, transactions with Proof of Eligibility save affirmation of eligibility verification directly to the smart contract in order to prevent any further liability to the contract holder. The XYO Network employs Proof of Eligibility transactions to minimize liability and risk to Token buyers in its limited volume and variably priced XYO Token Sale. The XYO Network also adopts the Proof of Eligibility structure for all XYO Token Sale transactions due to its requirement for Token buyers to have KYC ("Know Your Customer") eligibility verification.
+%after initiating the contract, but prior to contract execution and receipt of the benefit of the transaction.
 
 \begin{center}
 \line(1,0){50}
@@ -67,43 +281,126 @@ Some smart contracts require that only certain people or entities are allowed to
 
 %Introduction
 \section{Introduction}
-Reducing the time to transaction for smart contracts is very important for customers and companies.  PoE addresses this with a few benefits.  Preserves order of transaction by having the initiation of the transaction be instant so that any verification delay does not report the transactions.  Confirms to the user that they did not miss out in the case where the contract is temporal or has a limited capacity.  Commits the user to the transaction, preventing cost based attacks.
+The verification for \Gls{smart-contract} eligibility is most frequently implemented to selectively permit transactions between \glspl{contract-holder} and eligible \glspl{contract-caller}. The requirement of contract caller eligibility verification ensures safety and control for contract holders, but results in higher costs for contract holders who must pay to invoke this process. Eligibility verification is burdensome and complex for contract callers, which can lead to their decreased commitment and higher drop-off rate. Finally, contract holders can also be hurt by \glspl{cost-based-attack}, where entities interested in increasing costs to contract holders continuously provide irrelevant or false data in order to initiate the process of eligibility verification, without the intent to complete a transaction. This type of attack incurs very little cost to the attacker, but high costs to the contract holder.
 
-%Architecture
-\section{Architecture}
+\Gls{proof-of-eligibility} mitigates the dilemma involved with historical implementations of eligibility verification and potential cost-based attacks through a reorganization of the steps required to complete a transaction. Traditional \gls{transaction-architecture} prioritizes the process of eligibility verification over the initiation of the transaction, which negatively impacts both the contract caller and the contract holder. Contract callers are deterred sooner in the transaction for two reasons: the eligibility verification process is complex and laborious, and the duration of the third-party eligibility verification procedure threatens their opportunity to execute the contract. Contract holders experience greater contract caller drop-off rates while exposing themselves to cost-based attacks due to the low cost for the contract caller to input data for verification. The \Gls{xyo-network}'s \acrshort{poe} model for transaction architecture prioritizes the \textit{initiation} of the smart contract over the overall \textit{process} of eligibility verification. Initiating a contract earlier in the overall transaction process both preserves the original transaction order in the blockchain and timestamps the initiation of the contract (which is particularly useful for contract callers in cases of smart contracts that are temporally sensitive and/or have limited availability). Additionally, initiation prior to verification increases the contract caller's commitment to the transaction earlier in the funnel, which decreases their drop-off rates and deters them from performing cost-based attacks.
 
-%Process Order
-\section{Process Order}
-
-For this illustration, we will use the payment for a Token with Ether as an example.
-
-1. Customer sends payment to the smart contract
-2. The smart contract records the transaction by adding the incoming address to a list and associates it to the number of Tokens that are due to the customer.  The Ether is added to the value of the contract.
-3. The customer completes the verification process
-4. An authorized wallet calls the contract to confirm that the customer has passed eligibility verification
-5. The smart contract transfers the tokens due to the customer address and the Ether to the company
-6. When the sale ends, all remaining unverified Ether is forfeit to the company. (Reason for this is to prevent free speculation attacks)
-
-\clearpage
-
-
-\section {Acknowledgements}
-This white paper is the product of an inspiring team effort that was made possible through the belief in our vision from the following individuals: We thank Christine Sako for her exceptional work ethic and attention to detail in her review of our work. The consistency in structure and best-practices observed in our white paper is the product of Christine's efforts. We thank Johnny Kolasinski for his research and compilation of applicable use cases. Last, we thank John Arana for his careful review and creative input.
+The usage of \Gls{proof-of-eligibility} in smart contract transactions provides the benefits of preservation of transaction order, confirmation of contract initiation, and increased contract caller commitment.
 
 \begin{center}
 \line(1,0){50}
 \end{center}
 
-\begin{thebibliography}{9}
+%Architecture
+\section{Historical and Modern Implementations of Transaction Architecture}
+Historical implementations of \gls{smart-contract} gls{transaction-architecture} prioritize eligibility verification prior to smart contract initialization and ultimately save the eligibility verification data to a server. This approach is susceptible to cost-based attacks, greater drop-off rates, and loss of data should the server be compromised. The \acrlong{poe} approach to transaction architecture prioritizes transaction initiation \textit{prior} to eligibility verification. Requiring the contract caller to first initiate the contract increases their commitment to the contract and disincentivizes them to abandon or attack the contract holder. Additionally, PoE transaction architecture saves verification data to the smart contract itself, which is more secure than a private server.
 
-\end{thebibliography}
+\subsection{Diagram and Comparison}
+The following diagram emphasizes the prioritization of eligibility verification and smart contract initiation between the two approaches, and also displays the number of steps involved for smart contract execution. The architecture of a PoE transaction is more complex, but mainly due to the separation of smart contract execution into initialization and completion in order to solidify contract caller commitment earlier in the structure. It is important to note that a PoE transaction saves verification data to the smart contract, and not to a server.
+
+\clearpage
+
+\begin{multicols}{2}
+
+\begin{center}
+\textbf{Historical Architecture Process}
+\end{center}
+\begin{enumerate}
+\item Contract caller-facing platform
+\item Begin eligibility verification
+\item Send caller to third-party for eligibility verification
+\item Store caller eligibility
+\item Return to customer-facing platform with eligibility verification
+\item \textbf{Execute contract}
+\item \textbf{Save verification data to server}
+\end{enumerate}
+
+\columnbreak
+
+\begin{center}
+\textbf{PoE Architecture Process}
+\end{center}
+\begin{enumerate}
+\item Contract caller-facing platform
+\item \textbf{Initiate transaction}
+\item Begin eligibility verification
+\item Send caller to third-party for eligibility verification
+\item Store caller eligibility
+\item Return to customer-facing platform with eligibility verification
+\item \textbf{Complete contract}
+\item \textbf{Save verification data to smart contract}
+\end{enumerate}
+
+\end{multicols}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{center}
+\includegraphics[width=100pt] {z_images/Old_Arch.png}\\
+\vspace{4mm}
+\vfill
+\textbf{Figure 1.}  Historical Architecture
+\end{center}
+
+\columnbreak
+
+\begin{center}
+\includegraphics[width=100pt] {z_images/New_Arch.png}\\
+\vspace{4mm}
+\vfill
+\textbf{Figure 1.} PoE Architecture
+\end{center}
+
+\end{multicols}
+
+\section {Example: XYO Token Purchase with Ether}
+An XYO Token purchase with Ether is a useful example for the benefits of \acrlong{poe} due to the complex pricing structure for Tokens. Token pricing is dependent on availability and a equation designed by \acrlong{xy-oracle-network}, which means confirmation of contract initiation and maintenance of order transaction are of great concern to both XYO Network and contract callers looking to purchase XYO Tokens with Ether. The \gls{transaction-architecture} presented in \acrlong{poe} becomes particularly applicable. During a Token sale, it is imperative for a contract caller to be able to verify their position in the order of transactions. Because the variability of Token price depends on the number of Tokens already sold, the longer a \gls{contract-caller} waits to purchase Tokens with Ether, the higher the price of the Token, unless Token price has already become fixed. Once the Ether price of the Token becomes fixed, contract callers will continue to worry about their position in the order of transactions in relation to other contract callers: if their contract initiation occurs later than another contract caller's, they may miss the opportunity to purchase Tokens before they are sold out.
+
+\vfill
+
+\begin{multicols}{2}
+\begin{center}
+\includegraphics[width=100pt] {z_images/PoE_Token_Arch.png}\\
+\vspace{4mm}
+\vfill
+\textbf{Figure 1.}  Contract Caller purchases XYO Tokens with Ether
+\end{center}
+
+\columnbreak
+
+\begin{center}
+\textbf{Process}
+\end{center}
+\begin{enumerate}
+\item Customer sends Ether payment for Token to the smart contract.
+\item The smart contract records the transaction by adding the incoming address to a list and associates it to the number of Tokens that are due to the customer.  The Ether is added to the value of the contract.
+\item The customer completes the verification process.
+\item An authorized wallet calls the contract to confirm that the customer has passed eligibility verification.
+\item The smart contract transfers the tokens due to the customer address and the Ether to the company. Eligibility verification is saved to smart contract
+\item When the sale ends, all remaining unverified Ether from unfinished contracts is forfeit to the company. (Speculation prevention, see Section 4.1-4.1.1)
+\end{enumerate}
+
+\end{multicols}
+
+%Earlier Commitment and Resulting Risks of PoE
+\section{Earlier Commitment and Resulting Risks of PoE}
+The transaction architecture described in \acrlong{poe} increases user commitment and solidifies it earlier in the transaction process. Earlier commitment is a huge benefit for contract holders, as it decreases drop-off rates and disincentivizes contract callers from attempting cost-based attacks. However, this earlier commitment also makes it difficult for smart contract callers to withdraw from the contract, should they change their mind during the transaction process. They may try to get around this loss of control by waiting to complete their eligibility verification after the contract has been initialized. In cases where the benefit of the contract changes in value after initialization, this practice can lead to speculation, particularly when circumstances have low initial costs for the contract caller or there is a return or transaction reversal opportunity after the eligibility verification process has occurred. Additionally, due to the prioritization of contract initialization in \acrshort{poe}, smart contract callers become more cautious with contract holders-- smart contract holders control the choice of the third-party eligibility verification provider, so the increased, earlier commitment of smart contract callers requires a great deal of trust between the contract caller and contract holder.
+
+\subsection{Speculation}
+When \glspl{smart-contract} involve elements that change over time in value, size, or other qualities, contract callers and holders often concerned about the speed of their contract. In the case of equity, coins, or tokens, contract callers are normally executing the contract in the hopes of future gain, but when the market value of the element experiences short term fluctuations, contract callers may engage in speculation. Instead of executing the contract for a long-term market or intrinsic value gain, these contract callers prolong the execution of the smart contract in order to examine and capitalize on short term fluctuations.
+
+Both historical and PoE transactions are susceptible to contract caller speculation-- contract callers can either wait to begin eligibility verification, or initiate the contract and \textit{then} prolong eligibility verification. Each approach to transaction architecture will need to find a way to solve for this possibility, dependent on the nuances of the elements of the contract, though \acrlong{xyo}'s approach with \acrlong{poe} transactions lessens the potential for speculation because contract callers are required to initiate the contract prior to eligibility verification. 
+
+\subsubsection{Potential for Speculation in XYO Token Sale}
+With regards to the XYO Token Sale, the PoE transaction approach allows contract callers to confirm their Token price at contract initiation, which is particularly important given the Token's variable pricing structure and limited availability. However, the PoE structure also permits contract callers to confirm their position, contribute Ether, and then purposely fail the eligibility verification or prolong the process. As a result, XYO Network has built step 6 in the Token Sale Process (See Section 3), which states that "all remaining unverified Ether from unfinished contracts is forfeit to the company." Any incomplete contracts may be a result of speculation or cost-based attacks, so the company has chosen to keep any unverified Ether. Additionally, \acrlong{xy-oracle-network} does not allow transaction reversal, and once the contract has been initiated, contract callers will have 1 year from initiation date to complete eligibility verification. The use of PoE transactions for the Token Sale will allow contract callers to confirm a position in the Sale, which is especially useful due to the Token's variable pricing structure. This eligibility verification completion time will extend past the end date of the sale, to allow for contract callers to initiate the contract during the Token Sale, but be able to execute the contract despite the Sale's end. Should a contract caller not complete the eligibility verification within the allotted time or fail to pass verification, the smart contract will not be executed and the Ether will be forfeit to the company.
+
+\subsection{Trust Between Contract Caller and Contract Holder}
+
+When a smart contract requires eligibility verification and there is no opportunity for transaction reversal, there must exist a great deal of trust between the contract caller and contract holder. In many circumstances, the contract holder has the power to choose a third-party to process eligibility verification, so the contract caller must trust the contract holder to not manipulate the process.
+
 
 \clearpage
 
 \printglossaries
-
-%*******************************
-%**** End Glossary Section *****
-%*******************************
-
 \end{document}
