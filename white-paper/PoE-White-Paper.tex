@@ -292,13 +292,11 @@ The usage of \Gls{proof-of-eligibility} in smart contract transactions provides 
 \end{center}
 
 %Architecture
-\section{Historical and Modern Implementations of Transaction Architecture}
-Historical implementations of \gls{smart-contract} gls{transaction-architecture} prioritize eligibility verification prior to smart contract initialization and ultimately save the eligibility verification data to a server. This approach is susceptible to cost-based attacks, greater drop-off rates, and loss of data should the server be compromised. The \acrlong{poe} approach to transaction architecture prioritizes transaction initiation \textit{prior} to eligibility verification. Requiring the contract caller to first initiate the contract increases their commitment to the contract and disincentivizes them to abandon or attack the contract holder. Additionally, PoE transaction architecture saves verification data to the smart contract itself, which is more secure than a private server.
+\section{Historical vs. XYO Network's Implementation of Transaction Architecture}
+Historical implementations of \gls{smart-contract} \gls{transaction-architecture} prioritize eligibility verification prior to smart contract initiation and ultimately save the eligibility verification data to a server. This approach is susceptible to \glspl{cost-based-attack}, higher drop-off rates, and loss of data (should the server be compromised). The \Gls{xyo-network}'s implementation of \Gls{proof-of-eligibility} restructures transaction architecture and prioritizes transaction initiation over the eligibility verification process. The requirement of the \gls{contract-caller} to initiate the contract \textit{before} the verification process increases their commitment to the contract and disincentivizes them to abandon or attack the \gls{contract-holder}. Additionally, PoE transaction architecture saves verification data directly to the smart contract itself, which is far more secure than a private server.
 
 \subsection{Diagram and Comparison}
-The following diagram emphasizes the prioritization of eligibility verification and smart contract initiation between the two approaches, and also displays the number of steps involved for smart contract execution. The architecture of a PoE transaction is more complex, but mainly due to the separation of smart contract execution into initialization and completion in order to solidify contract caller commitment earlier in the structure. It is important to note that a PoE transaction saves verification data to the smart contract, and not to a server.
-
-\clearpage
+The following diagram emphasizes the prioritization of eligibility verification vs. smart contract initiation between the historical and \Gls{xyo-network}'s transation architecture. The steps in each process are outlined in order and reveal that while a \Gls{proof-of-eligibility} transaction is more complex, it benefits from the separation of the smart contract execution into an initialization step and a completion step.  This separation solidifies contract caller commitment earlier in the structure. For added security, a \acrshort{poe} transaction saves verification data directly to the smart contract instead of to a server.
 
 \begin{multicols}{2}
 
@@ -306,7 +304,7 @@ The following diagram emphasizes the prioritization of eligibility verification 
 \textbf{Historical Architecture Process}
 \end{center}
 \begin{enumerate}
-\item Contract caller-facing platform
+\item Introduce \Gls{contract-caller}-facing platform
 \item Begin eligibility verification
 \item Send caller to third-party for eligibility verification
 \item Store caller eligibility
@@ -321,7 +319,7 @@ The following diagram emphasizes the prioritization of eligibility verification 
 \textbf{PoE Architecture Process}
 \end{center}
 \begin{enumerate}
-\item Contract caller-facing platform
+\item Introduce \Gls{contract-caller}-facing platform
 \item \textbf{Initiate transaction}
 \item Begin eligibility verification
 \item Send caller to third-party for eligibility verification
@@ -333,12 +331,10 @@ The following diagram emphasizes the prioritization of eligibility verification 
 
 \end{multicols}
 
-\vfill
 
 \begin{multicols}{2}
 \begin{center}
-\includegraphics[width=100pt] {z_images/Old_Arch.png}\\
-\vspace{4mm}
+\includegraphics[width=100pt] {archHist.png}\\
 \vfill
 \textbf{Figure 1.}  Historical Architecture
 \end{center}
@@ -346,22 +342,27 @@ The following diagram emphasizes the prioritization of eligibility verification 
 \columnbreak
 
 \begin{center}
-\includegraphics[width=100pt] {z_images/New_Arch.png}\\
-\vspace{4mm}
+\includegraphics[width=100pt] {archPoE.png}\\
 \vfill
 \textbf{Figure 1.} PoE Architecture
 \end{center}
 
 \end{multicols}
 
+\begin{center}
+\line(1,0){50}
+\end{center}
+
 \section {Example: XYO Token Purchase with Ether}
-An XYO Token purchase with Ether is a useful example for the benefits of \acrlong{poe} due to the complex pricing structure for Tokens. Token pricing is dependent on availability and a equation designed by \acrlong{xy-oracle-network}, which means confirmation of contract initiation and maintenance of order transaction are of great concern to both XYO Network and contract callers looking to purchase XYO Tokens with Ether. The \gls{transaction-architecture} presented in \acrlong{poe} becomes particularly applicable. During a Token sale, it is imperative for a contract caller to be able to verify their position in the order of transactions. Because the variability of Token price depends on the number of Tokens already sold, the longer a \gls{contract-caller} waits to purchase Tokens with Ether, the higher the price of the Token, unless Token price has already become fixed. Once the Ether price of the Token becomes fixed, contract callers will continue to worry about their position in the order of transactions in relation to other contract callers: if their contract initiation occurs later than another contract caller's, they may miss the opportunity to purchase Tokens before they are sold out.
+A purchase of XYO Tokens with Ether exemplifies the benefits of a transaction utilizing \Gls{proof-of-eligibility} due to the complexity of the XYO Token Sale's pricing structure. The XYO Token Sale employs a pricing model that is calculated from a token availability-based equation designed by the \Gls{xyo-network}. This temporally sensitive and availability-based pricing makes a Proof of Eligibility-based \gls{transaction-architecture} particularly favorable to both the XYO Network and \glspl{contract-caller} who wish to contribute Ether to purchase XYO Tokens. The dependence of price on real-time token availability renders confirmation of contract initiation and maintenance of transaction order crucial.
+
+During any Token Sale that employs price variability and/or volume-sensitivity, it is imperative for a contract caller's position in the order of transactions to be maintained. When a Token price is contingent on the number of Tokens sold to-date, the longer a \gls{contract-caller} waits to purchase Tokens with Ether, the higher the Token price (unless the Token price became fixed at an earlier point). If the Token price in Ether becomes fixed, maintenance of transaction order in relation to others will still be important to contract callers, since a contract initiation that occurs after the final token is sold will result in a a zero-Token return.
 
 \vfill
 
 \begin{multicols}{2}
 \begin{center}
-\includegraphics[width=100pt] {z_images/PoE_Token_Arch.png}\\
+\includegraphics[width=100pt] {archXYOTokenSale.png}\\
 \vspace{4mm}
 \vfill
 \textbf{Figure 1.}  Contract Caller purchases XYO Tokens with Ether
@@ -373,34 +374,49 @@ An XYO Token purchase with Ether is a useful example for the benefits of \acrlon
 \textbf{Process}
 \end{center}
 \begin{enumerate}
-\item Customer sends Ether payment for Token to the smart contract.
-\item The smart contract records the transaction by adding the incoming address to a list and associates it to the number of Tokens that are due to the customer.  The Ether is added to the value of the contract.
-\item The customer completes the verification process.
+\item Customer sends Ether payment for XYO Tokens to the \gls{smart-contract}.
+\item The smart contract records the \gls{transaction} by adding the incoming address to a list and associates it with the number of XYO Tokens that are to be distributed to the customer.  The contributed Ether is added to the value of the contract.
+\item The customer completes the verification process (KYC and/or AML).
 \item An authorized wallet calls the contract to confirm that the customer has passed eligibility verification.
-\item The smart contract transfers the tokens due to the customer address and the Ether to the company. Eligibility verification is saved to smart contract
-\item When the sale ends, all remaining unverified Ether from unfinished contracts is forfeit to the company. (Speculation prevention, see Section 4.1-4.1.1)
+\item The smart contract transfers the XYO Tokens due to the customer to their associated wallet address and the Ether that was given is sent to the company. Eligibility verification is saved directly to the smart contract.
+\item At the conclusion of the XYO Token Sale, all remaining unverified Ether from unfinished contracts is forfeited to the company. (See Section 4.1-4.1.1 for mitigation to speculation)
 \end{enumerate}
 
 \end{multicols}
 
+\begin{center}
+\line(1,0){50}
+\end{center}
+
 %Earlier Commitment and Resulting Risks of PoE
-\section{Earlier Commitment and Resulting Risks of PoE}
-The transaction architecture described in \acrlong{poe} increases user commitment and solidifies it earlier in the transaction process. Earlier commitment is a huge benefit for contract holders, as it decreases drop-off rates and disincentivizes contract callers from attempting cost-based attacks. However, this earlier commitment also makes it difficult for smart contract callers to withdraw from the contract, should they change their mind during the transaction process. They may try to get around this loss of control by waiting to complete their eligibility verification after the contract has been initialized. In cases where the benefit of the contract changes in value after initialization, this practice can lead to speculation, particularly when circumstances have low initial costs for the contract caller or there is a return or transaction reversal opportunity after the eligibility verification process has occurred. Additionally, due to the prioritization of contract initialization in \acrshort{poe}, smart contract callers become more cautious with contract holders-- smart contract holders control the choice of the third-party eligibility verification provider, so the increased, earlier commitment of smart contract callers requires a great deal of trust between the contract caller and contract holder.
+\section{Early Commitment and Resulting Risks of PoE}
+The \gls{transaction-architecture} established by \Gls{proof-of-eligibility} strengthens and solidifies user commitment earlier in the transaction process than in historical implementations. Earlier user commitment carries a significant benefit for \glspl{contract-holder}, as it reduces user drop-off rates and disincentivizes \glspl{contract-caller} from attempting \glspl{cost-based-attack}. While earlier commitment make the benefits to contract holders near absolute, this feature also makes it difficult for smart contract callers to withdraw from a contract, should they wish to withdraw at a later point in the transaction process. Contract callers may try to get around this loss of control by waiting to complete their eligibility verification after the contract has been initialized, maybe indefinitely. In cases where the output of an executed contract changes in value after initialization, this practice can lead to speculation. This is particularly relevant in transactions that have low initial costs to the contract caller or circumstances where there is an opportunity for return or transaction reversal after the eligibility verification process has occurred. The importance of contract initialization prioritization in \acrshort{poe} means smart contract callers are more dependent on contract holders, as smart contract holders control the implementation of any third-party eligibility verification provider. Thusly, increased and earlier commitment of smart contract callers requires a great deal of trust between the contract caller and contract holder.
 
-\subsection{Speculation}
-When \glspl{smart-contract} involve elements that change over time in value, size, or other qualities, contract callers and holders often concerned about the speed of their contract. In the case of equity, coins, or tokens, contract callers are normally executing the contract in the hopes of future gain, but when the market value of the element experiences short term fluctuations, contract callers may engage in speculation. Instead of executing the contract for a long-term market or intrinsic value gain, these contract callers prolong the execution of the smart contract in order to examine and capitalize on short term fluctuations.
+\subsection{Speculation in Future-Based Transactions}
+When \glspl{smart-contract} involve elements that change in value, size, or other qualities over time, \glspl{contract-caller} and \glspl{contract-holder} are often concerned about the speed of their contract execution. In cases involving tokens, coins, or equity, contract callers traditionally wish to execute a contract with the hopes of a future gain. However, when the market value of the element experiences short term fluctuations, contract callers may engage in speculation. Instead of executing a contract for a long-term market or intrinsic value gain, these contract callers may prolong the execution of the smart contract in order to examine and capitalize on short term fluctuations.
 
-Both historical and PoE transactions are susceptible to contract caller speculation-- contract callers can either wait to begin eligibility verification, or initiate the contract and \textit{then} prolong eligibility verification. Each approach to transaction architecture will need to find a way to solve for this possibility, dependent on the nuances of the elements of the contract, though \acrlong{xyo}'s approach with \acrlong{poe} transactions lessens the potential for speculation because contract callers are required to initiate the contract prior to eligibility verification. 
+Both historical and PoE \glspl{transaction} are susceptible to contract caller speculation, as contract callers can either wait to begin eligibility verification (maybe indefinitely), or initiate the contract and \textit{then} prolong eligibility verification. Every implementation of \gls{transaction-architecture} will need to find a way to mitigate this possibility, each dependent on the individual nuances of the elements pertaining to the contract. The \Gls{xyo-network}'s approach with \Gls{proof-of-eligibility} transactions lessens the potential for this speculation since contract callers are required to initiate a contract prior to eligibility verification. 
 
-\subsubsection{Potential for Speculation in XYO Token Sale}
-With regards to the XYO Token Sale, the PoE transaction approach allows contract callers to confirm their Token price at contract initiation, which is particularly important given the Token's variable pricing structure and limited availability. However, the PoE structure also permits contract callers to confirm their position, contribute Ether, and then purposely fail the eligibility verification or prolong the process. As a result, XYO Network has built step 6 in the Token Sale Process (See Section 3), which states that "all remaining unverified Ether from unfinished contracts is forfeit to the company." Any incomplete contracts may be a result of speculation or cost-based attacks, so the company has chosen to keep any unverified Ether. Additionally, \acrlong{xy-oracle-network} does not allow transaction reversal, and once the contract has been initiated, contract callers will have 1 year from initiation date to complete eligibility verification. The use of PoE transactions for the Token Sale will allow contract callers to confirm a position in the Sale, which is especially useful due to the Token's variable pricing structure. This eligibility verification completion time will extend past the end date of the sale, to allow for contract callers to initiate the contract during the Token Sale, but be able to execute the contract despite the Sale's end. Should a contract caller not complete the eligibility verification within the allotted time or fail to pass verification, the smart contract will not be executed and the Ether will be forfeit to the company.
+\subsubsection{Speculation Mitigation in XYO Token Sale}
+In the XYO Token Sale, \Gls{proof-of-origin}-based transactions allow \glspl{contract-caller} to confirm their Token price at contract initiation, which is particularly alluring given the XYO Token's variable pricing structure and limited availability. However, the PoE structure also allows for the possibility of a contract caller to confirm their initiation position, contribute Ether, and then deliberately fail, prolong, or discontinue the eligibility verification process. To mitigate this possibility, the \Gls{xyo-network} has built step 6 in the XYO Token Sale Process (See Section 3), which states that, "all remaining unverified Ether from unfinished contracts is forfeited to the company." The XYO Network acknowledges that any incomplete contracts may be a result of speculation or cost-based attacks, so the the decision to keep any unverified Ether aims to deter this type of activity. Additionally, the XYO Network does not allow transaction reversal: once a contract has been initiated, contract callers will have 1 year from initiation date to complete eligibility verification.
+
+The use of PoE transactions for the XYO Token Sale allows contract callers to establish and confirm their position relative to other Token purchasers, which is especially relevant due to the XYO Token's variable pricing structure and limited availability. To alleviate pressure on contract-callers, the eligibility verification completion window will extend past the date of conclusion of the the XYO Token Sale.  This allows contract callers to initiate a contract during the XYO Token Sale, and be able to execute the contract after the Token Sale's end shall their eligibility verification process take longer than expected. Should a contract caller not complete their eligibility verification within the allotted 1 year window of time or fail to pass verification completely, the \gls{smart-contract} will not be executed and the Ether will be forfeited to the XYO Network.
 
 \subsection{Trust Between Contract Caller and Contract Holder}
 
-When a smart contract requires eligibility verification and there is no opportunity for transaction reversal, there must exist a great deal of trust between the contract caller and contract holder. In many circumstances, the contract holder has the power to choose a third-party to process eligibility verification, so the contract caller must trust the contract holder to not manipulate the process.
+In situations where \glspl{smart-contract} require eligibility verification and there is no opportunity for transaction reversal, there must exist a great deal of trust between both the \gls{contract-caller} and \gls{contract-holder}. In many circumstances, the contract holder has the power to control the implementation of a third-party to process eligibility verification, so the contract caller must trust that the contract holder has no intent to manipulate the process.
+
+\begin{center}
+\line(1,0){50}
+\end{center}
+
+\section {Acknowledgements}
+This white paper for \Gls{proof-of-eligibility} is a corollary to the \Gls{xyo-network} white paper. We thank Jordan Trouw for her data sourcing and collaboration in her contributions to this paper. We also thank Christine Sako for her review and application of best-practices in her review of this work.
 
 
-\clearpage
+\begin{center}
+\line(1,0){50}
+\end{center}
 
 \printglossaries
 \end{document}
