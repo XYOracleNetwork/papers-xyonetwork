@@ -26,3 +26,5 @@ whitepaper/XYOBusinessPrimer.glg
 whitepaper/XYOBusinessPrimer.gls
 whitepaper/XYOBusinessPrimer.glsdefs
 red-paper/XYO-Red-Paper.pdf
+*.fls
+*.fdb_latexmk
