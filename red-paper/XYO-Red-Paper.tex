@@ -325,6 +325,7 @@ The establishment of a reputation system allows Sentinels to enforce each other'
 
 \section{Deception Attacks}
 %Jack
+\subsection{Summary}
 A Deception Attack occurs when a malicious actor tries to pass off incorrect, yet valid data to be used in the system for personal gain.
 
 One form of a Deception Attack occurs by Multi-Chain Forging, where an attacker maintains multiple versions of their own chain that could essentially exist in multiple places at once.
@@ -361,6 +362,7 @@ The data redundancy in the \Gls{xyo-network} deters attempts to broadcast incons
 
 \section{Same-Machine Sybil Attack}
 %Jack
+\subsection{Summary}
 A Same-Machine Sybil Attack occurs when a malicious actor creates multiple nodes from a single machine. Since devices on the \Gls{xyo-network} aren't assigned unique IDs, this is easily achievable. The malicious actor reinforces reputation by signing packets between the simulated nodes to portray the nodes as organic and pure. The attacker then lets the nodes each communicate with different groups of nearby nodes such that each simulated node keeps different information in their \Glspl{proof-of-origin-chain}. This results in all simulated nodes acquiring high \Glspl{origin-chain-score}. This attack allows malicious actors to inexpensively mass-produce nodes that can be used to conduct Sybil attacks on a local or even global network. 
 
 \subsection{Motivation}
@@ -391,6 +393,7 @@ The \Gls{xyo-network}'s detection of Bluetooth signal strength coupled with its 
 
 \section{Force Field Attacks}
 %Jack
+\subsection{Summary}
 A Force Field attack combines an Assassination with a traditional Sybil attack in order to provide false data to a network. The attack is twofold: an attacker feeds inconsistent information to legitimate nodes while simultaneously allowing the attacker's network of nodes to serve as a consistent network for outside observers.
 
 \subsection{Motivation}
@@ -429,10 +432,11 @@ The resulting cost to a \Gls{sentinel}'s reputation in a Force Field Attack on t
 
 \section{Teleportation Attack}
 %Andrew
-\subsection{Motivation}
+\subsection{Summary}
 A Teleportation Attack occurs when an attacker is able to falsify their location by ``teleporting'' to another location through the network. If a smart phone or Bluetooth beacon is utilized as the \Gls{sentinel} that provides an attacker's location data, an attacker could falsify their location by sending their Sentinel with someone else. If the network were utilized to establish an alibi, a bad actor could swap their Sentinel with someone else in order to falsify their reported location. 
 
-This type of attack could also be achieved at the software level by an attacker sharing their private key with one or more individuals. If the network was employed to verify hotel reviews, it would only allow people to leave reviews that had trusted, on-chain history. A bad actor could remotely share their private key with an individual at the hotel and could appear as if they were located there without being in physical proximity of the area.
+\subsection{Motivation}
+A Teleportation Attack could also be achieved at the software level by an attacker sharing their private key with one or more individuals. If the network was employed to verify hotel reviews, it would only allow people to leave reviews that had trusted, on-chain history. A bad actor could remotely share their private key with an individual at the hotel and could appear as if they were located there without being in physical proximity of the area.
 
 \subsection{Technical Analysis}
 If the private key is provided to the user, it could be shared to create a spoofed device that appears as that users device. The utilization of Software Defined Radio would allow eligible parties to appear as any specific device on the network, provided it is associated with that device's private key. This would nullify attempts to validate a user's location. This could also affect data on the blockchain, as it is theoretically difficult to discern legitimate device travel from a Teleportation Attack. 
@@ -452,6 +456,7 @@ While a Teleportation Attack is difficult to determine at the protocol-level, hi
 
 \section{Stealth Attack}
 %Andrew
+\subsection{Summary}
 A Stealth Attack is defined by a device masking itself from the network. Various use cases of the \Gls{xyo-network} require the devices on the network to have a solid chain history. 
 
 \subsection{Motivation}
@@ -477,6 +482,8 @@ A Stealth Attack is economically inviable given the use cases for the XYO Networ
 
 \section{Denial of Service Attacks}
 %Andrew
+
+\subsection{Summary}
 A Denial of Service Attack (DoS) occurs when a malicious or dysfunctional actor causes a local, regional, or system wide outage. 
 
 \subsection{Motivation}
