@@ -12,6 +12,8 @@
 whitepaper/original/.DS_Store
 *.DS_Store
 .DS_Store
+lime-paper/*
+lime-paper
 usecases/.DS_Store
 whitepaper/.DS_Store
 whitepaper/original/.DS_Store
