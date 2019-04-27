@@ -37,7 +37,7 @@
     Scott Scheper\\
 }
 
-\date{April 2019 \\ Version 1.0.3\\ \texttt{STATUS: DRAFT}}
+\date{April 2019 \\ Version 1.0.4\\ \texttt{STATUS: DRAFT}}
 
 
 
@@ -169,9 +169,25 @@ This results in increased reward multiples whenever one pays for the bound witne
 
 The minimum Network Stake Period is 12 months, although we recommend staking for much longer than that if you plan to hold XYO for the long-term.\\
 
-Below is the Comparison of Reward Values for Network Staking: (Green is 5 years)
+The Network Stake Period can be selected when initially staking XYO. The longer the Network Stake Period, the greater its compounding interest will be. The amount of stake you have determines the proportion of the mining pool one can obtain daily.\\
 
-\includegraphics[width=\textwidth]{staking-time}
+Below is a comparison of the value of stakes for two examples of an initial 1,000 XYO staked for 10 years.\\
+
+\includegraphics[width=\textwidth]{StakingAlgorithm.pdf}\\\\
+
+The blue line represents a staking period of 1 year, repeatedly staked 10 times, thus allowing the owner to redeem their XYO 10 different times.\\
+
+The green line represents a single Network Stake Period of 10 years, not allowing the owner to redeem it until the end of the 10 years.\\
+
+It is clear that the longer one initially commits to the length of their stake, the more valuable it will become.\\
+
+This is generated from the equation below:
+\begin{align}
+    Value &= stake(1+r)^{t/365}\\
+    r &= \frac{\sqrt{N}}{\alpha}
+\end{align}
+where $t$ is the amount of time the stake has been locked in, $N$ is the Network Staking Period, and $\alpha$ is an adjustable scaling constant ($\alpha = 25$ in the plot above).
+
 
 
 
@@ -222,13 +238,11 @@ Using this model, we plan to track the Data Flow Index on a weekly basis. We int
 
 The term \textit{Data Flow} encompasses the collection, storing, transfer, processing and paying for data. 
 
-The reason we prefer the term Data Flow is because we as humans overvalue our capacity to determine good data is. The one exception is \textit{redundant data}. Redundant data is not good or valuable. However, as a species, homo sapiens are not the ones that should determine the value of non-redundant data \cite{homo-deus-narrative}. 
+The reason we prefer the term Data Flow (opposed to Data Value) is because the \textit{value of data is not for a species to decide}. Rather, it's for nature to decide. The one exception is \textit{redundant data}. Redundant data is not good or valuable. Therefore, as a species, homo sapiens should not be the ones determining the value of data \cite{homo-deus-narrative}. 
 
-Therefore, we should focus on systems that increase data collection, storage, transfer and processing. In other words, systems that increase Data Flow. 
+One should focus on systems that increase data collection, storage, transfer and processing. In other words, systems that increase Data Flow. 
 
-
-
-That’s essentially the flow of data. 
+That is why we prefer the term Data Flow Index.
 
 
 \begin{center}
