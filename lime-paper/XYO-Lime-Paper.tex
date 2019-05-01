@@ -37,7 +37,7 @@
     Scott Scheper\\
 }
 
-\date{April 2019 \\ Version 1.0.4\\ \texttt{STATUS: DRAFT}}
+\date{April 2019 \\ Version 1.0.3\\ \texttt{STATUS: DRAFT}}
 
 
 
@@ -165,21 +165,14 @@ The first type of staking is called \textit{Network Staking}. This comprises the
 
 Once you execute a Network Stake, you lock your XYO in the XYO Network ecosystem and can transfer the XYO between your own XYO nodes at any time. However, you cannot withdraw your XYO until the Network Stake Period has ended.\\
 
-This results in increased reward multiples whenever one pays for the bound witness data you generate.\\
+The Network Stake Period can be selected when initially staking your XYO tokens. This longer this the Network Stake Period, the greater it's compounding interest will be. The amount of stake you have determines the proportion of the mining pool you obtain daily.\\
 
-The minimum Network Stake Period is 12 months, although we recommend staking for much longer than that if you plan to hold XYO for the long-term.\\
 
-The Network Stake Period can be selected when initially staking XYO. The longer the Network Stake Period, the greater its compounding interest will be. The amount of stake you have determines the proportion of the mining pool one can obtain daily.\\
 
-Below is a comparison of the value of stakes for two examples of an initial 1,000 XYO staked for 10 years.\\
+Below is the comparison of the value of stakes for two examples of an initial 1000 XYO staked for 10 years. The blue line represents a staking period of 1 year, repeatedly staked 10 times, thus allowing the owner to redeem their XYO 10 different times. The green line represents a single Network Stake Period of 10 years, not allowing the owner to redeem it until the end of the 10 years. It is clear that the longer one initially commits to the length of their stake, the more valuable it will become.
 
-\includegraphics[width=\textwidth]{StakingAlgorithm.pdf}\\\\
-
-The blue line represents a staking period of 1 year, repeatedly staked 10 times, thus allowing the owner to redeem their XYO 10 different times.\\
-
-The green line represents a single Network Stake Period of 10 years, not allowing the owner to redeem it until the end of the 10 years.\\
-
-It is clear that the longer one initially commits to the length of their stake, the more valuable it will become.\\
+\includegraphics[width=\textwidth]{StakingAlgorithm.pdf}
+\\\\
 
 This is generated from the equation below:
 \begin{align}
@@ -187,9 +180,6 @@ This is generated from the equation below:
     r &= \frac{\sqrt{N}}{\alpha}
 \end{align}
 where $t$ is the amount of time the stake has been locked in, $N$ is the Network Staking Period, and $\alpha$ is an adjustable scaling constant ($\alpha = 25$ in the plot above).
-
-
-
 
 \subsubsection{Node Staking}
 
@@ -238,13 +228,24 @@ Using this model, we plan to track the Data Flow Index on a weekly basis. We int
 
 The term \textit{Data Flow} encompasses the collection, storing, transfer, processing and paying for data. 
 
-The reason we prefer the term Data Flow (opposed to Data Value) is because the \textit{value of data is not for a species to decide}. Rather, it's for nature to decide. The one exception is \textit{redundant data}. Redundant data is not good or valuable. Therefore, as a species, homo sapiens should not be the ones determining the value of data \cite{homo-deus-narrative}. 
+The reason we prefer the term Data Flow is because we as humans overvalue our capacity to determine good data is. The one exception is \textit{redundant data}. Redundant data is not good or valuable. However, as a species, homo sapiens are not the ones that should determine the value of non-redundant data \cite{homo-deus-narrative}. 
 
-One should focus on systems that increase data collection, storage, transfer and processing. In other words, systems that increase Data Flow. 
-
-That is why we prefer the term Data Flow Index.
+Therefore, we should focus on systems that increase data collection, storage, transfer and processing. In other words, systems that increase Data Flow. 
 
 
+
+That’s essentially the flow of data. 
+
+
+
+\subsubsection{Can I stake devices even if they are not mine?}
+Yes! It is highly encouraged that you stake devices that you believe will earn more rewards. However, keep in mind that the more people that stake a device, the more the pot of rewards will be split. So it may not be in your best interest to stake only the most popular devices since their rewards will be heavily split. Rather, you may want to stake devices you specifically know will house your data.
+
+\subsubsection{Is everyone staking the same devices?}
+Theoretically, everyone could stake the same devices. But, as mentioned in the answer above, it would not be in peoples' best interest to all stake the same device. But theoretically, yes, everyone that stakes a specific archivist, for example, is waging for the validity of that archivist.
+
+\subsubsection{What are the pros and cons of living in rural/urban areas?}
+If you live in an urban area, there will of course be more devices to boundwitness with. This will lead to more generation of data, and more chance to get rewarded. However, it will also lead to more competition. If you live in a rural area, there will most certainly be less data generated, but also less competition. So if one were to query for data in the rural area, they are very likely to use your data, and you are very likely to get the reward, and said reward will likely be not split amongst many people.
 \begin{center}
 \line(1,0){50}
 \end{center}
