@@ -54,7 +54,8 @@ version 3 - see the LICENSE.md file for details
 
 ## Questions
 
-If you have any questions or concerns, please contact XYO Network at **developer@xyo.network**. Please feel free to visit our ongoing projects at github.com/XYOracleNetwork.
+If you have any questions or concerns, please go to our developer portal at [**developers.xyo.network**](<https://developers.xyo.network/>
+). Please feel free to visit our ongoing projects at github.com/XYOracleNetwork.
 
 ## Credits
 
