@@ -21,7 +21,7 @@
 \definecolor{limegreen}{HTML}{bbe963}
 
 
-\title {XYO Cryptoeconomics 2.0: GAMMA Token Pool, FHR, Cryptoeconomic Packages \& Tethering a Cryptoasset to a Data Flow Index}
+\title {XYO Cryptoeconomics}
 
 \author{
     Aaron Malone \thanks{Commonly known as "PizzaMind"}\\
@@ -37,7 +37,7 @@
     Scott Scheper\\
 }
 
-\date{April 2019 \\ Version 1.0.3\\ \texttt{STATUS: DRAFT}}
+\date{May 2019 \\ Version 2.0.0 (Dracarys)\\ \texttt{STATUS: DRAFT}}
 
 
 
@@ -53,7 +53,7 @@
 \end{center}
 
 \begin{abstract}
-This document outlines the XYO Cryptoeconomics plan and sets forth an intriguing idea of tethering a cryptoasset to \textit{data flow}. First, we provide supporting background knowledge of XYO's Cryptoeconomics. Then we lay forth the plan to grow XYO's network through finalizing the allocation of the GAMMA XYO Token Pool. Finally, we lay forth an intriguing idea of tethering XYO to the amount of valuable \textit{data flow} in the network.
+This document outlines the XYO Cryptoeconomic plan and sets forth an intriguing idea of tethering a cryptoasset to \textit{data flow}. First, we provide supporting background knowledge of XYO's Cryptoeconomics. Then we lay forth the plan to grow XYO's network through finalizing the allocation of the GAMMA XYO Token Pool. Finally, we lay forth an intriguing idea of tethering XYO to the amount of valuable \textit{data flow} in the network.
 \end{abstract}
 
 \section{Background}
@@ -106,11 +106,14 @@ First, we will be distributing XYO to those in the Founding HODL'er Registry as 
 
 \begin{enumerate}
 \item 340,144,773.44 XYO will be distributed to those on the FHR. 
-\item The XYO will be staked in the XYO Network with an un-staking period of 5 years. 	
-\item At the end of the period, the XYO can be withdrawn by the FHR Wallet Address. 
-\item The XYO will be distributed on a pro-rata basis, meaning the amount of XYO you receive is based on the amount of XYO you originally purchased.
+\item When distributed, the XYO can be withdrawn by the FHR Wallet Address.
+\item The XYO will be distributed on a pro-rata basis, meaning the amount of XYO you receive is based on the amount of XYO you originally purchased \textit{and still hold}.
+\item The XYO of The FHR will put in a separate wallet address and will be distributed to the FHR so that the community can monitor it.
 \end{enumerate}
 
+\subsection{Timeline of FHR Distribution}
+
+On or before December 1, 2019, the XYO will begin being distributed to the FHR members on a regular basis (i.e. monthly) for a period of 5 years.
 \subsubsection{FHR Members}
 
 If you are an XYO Founding HODL'er:
@@ -135,25 +138,21 @@ The remaining 4,000,000,000 in XYO from the GAMMA Token Pool will be allocated t
 
 \subsection{XYO Cryptoeconomic Packages}
 
-The XYO Cryptoeconomic Packages will contain the following items:
+Here is a sample of the products that the XYO Cryptoeconomic Packages will include:
 
 \begin{enumerate}
-  \item XYO Tokens
+  \item XYO
   \item XYO Geominers (SentinelX's, XYO Bridges, Geomining Kits)
   \item Geohacker Summit Ticket(s) - Hosted Monthly in San Diego, CA (Hands-on training and teaching one how to set up and operate XYO nodes)
   \item Dedicated VIP Concierge Phone Support and Training
-  \item Cryptocurrency for gas and transfer fees when using the Matrix
   \item There will be additional items, as well
 \end{enumerate}
-
-\subsubsection{Limited to One Package Per Customer}
-In order to move towards network diversification (see the Cryptoeconomic Reserve section above), we are limiting each package to be purchased by customers on a one-time only basis.
 
 \subsubsection{XYO Sold via Cryptoeconomic Packages Includes Network Staking}
 
 Every XYO Sold in Cryptoeconomic Packages use \textit{Network Staking}.\\
 
-This means, every XYO sold through the Cryptoeconomic Reserve has a staking period of 12 months minimum.\\
+This means, every XYO sold through the Cryptoeconomic Reserve has a staking period of 180 days minimum.\\
 
 In the XYO Network, there are two types of staking, which we will cover next.
 
@@ -212,17 +211,7 @@ where $\sum^{n}_{0}{S_d}$ is the sum of the stakes of all of the devices that ha
 This equation makes Data Flow Index a dimensionless quantity, with units of XYO (staked) in the numerator, and XYO (paid) in the denominator. Intuitively, as the number of nodes in the network increases, and as more devices are staked $S_d$ will increase. As the number of queries increases, both $U$ and $R$ will increase. However, with positive network growth, the Data Flow Index will exponentially grow since the increase in the numerator will be exponential compared to the increase in rewards paid out.\\
 Since nodes are paid out in proportion to their stake, as the network grows the amount of XYO paid out to each device will, on average, decrease. This is simply because there will be more nodes on the network, but the same amount (or less) XYO circulating. However, the value behaves inversely to the payout; although devices are being paid less per amount of stake they have over time, the value of XYO per stake will be exponentially increasing. This can be thought of as our network contains and utilizes more data, the XYO Cryptoasset is backed by more value (i.e. the value of the network).
 
-\subsubsection{Price of XYO}
-
-Using this model, we plan to track the Data Flow Index on a weekly basis. We intend to monitor it closely and adjust the model as needed.
-
-\begin{itemize}
-  \item The starting point will be 10\% higher than the all-time-high price point of XYO sold during the GAMMA Platform Sale, which was \$0.00942. Thus, for the XYO Cryptoeconomic Packages, the starting price of XYO will be \$0.01 per XYO.
-  \item Pricing will be adjusted according to the network growth, the XYO Data Flow Index, as well as other factors which we will determine over time.
-  \item When we determine the Data Flow Index is mature, we plan to create an Ethereum smart contract, which tracks the Data Flow Index and tethers the price of XYO distributed through the Cryptoeconomic Reserve to the Data Flow Index.
-\end{itemize}
-
-\subsection{Q\&A}
+\subsection{Staking and Data Flow Index Q\&A}
 
 \subsubsection{Why is it called Data Flow Index and not Data Value Index?}
 
@@ -232,11 +221,7 @@ The reason we prefer the term Data Flow is because we as humans overvalue our ca
 
 Therefore, we should focus on systems that increase data collection, storage, transfer and processing. In other words, systems that increase Data Flow. 
 
-
-
 That’s essentially the flow of data. 
-
-
 
 \subsubsection{Can I stake devices even if they are not mine?}
 Yes! It is highly encouraged that you stake devices that you believe will earn more rewards. However, keep in mind that the more people that stake a device, the more the pot of rewards will be split. So it may not be in your best interest to stake only the most popular devices since their rewards will be heavily split. Rather, you may want to stake devices you specifically know will house your data.
@@ -244,8 +229,31 @@ Yes! It is highly encouraged that you stake devices that you believe will earn m
 \subsubsection{Is everyone staking the same devices?}
 Theoretically, everyone could stake the same devices. But, as mentioned in the answer above, it would not be in peoples' best interest to all stake the same device. But theoretically, yes, everyone that stakes a specific archivist, for example, is waging for the validity of that archivist.
 
-\subsubsection{What are the pros and cons of living in rural/urban areas?}
-If you live in an urban area, there will of course be more devices to boundwitness with. This will lead to more generation of data, and more chance to get rewarded. However, it will also lead to more competition. If you live in a rural area, there will most certainly be less data generated, but also less competition. So if one were to query for data in the rural area, they are very likely to use your data, and you are very likely to get the reward, and said reward will likely be not split amongst many people.
+Using this model, we plan to track the Data Flow Index on a weekly basis. We intend to monitor it closely and adjust the model as needed.
+
+\subsection{Price of XYO From Cryptoeconomic Reserve}
+
+\begin{itemize}
+  \item The price of the XYO will be sold at market price. Because the XYO sold from the Cryptoeconomic Reserve will be burned on a 1:1 basis (see below), the price of the XYO will be sold at the market price at time of purchase.
+  \item Pricing will be adjusted according to the network growth, the XYO Data Flow Index, as well as other factors which we will determine over time.
+  \item When we determine the Data Flow Index is mature, we plan to create an Ethereum smart contract, which tracks the Data Flow Index and tethers the price of XYO distributed through the Cryptoeconomic Reserve to the Data Flow Index.
+\end{itemize}
+
+\subsubsection{Dracarys: XYO Token Burn on 1:1 Basis}
+
+\begin{itemize}
+	\item For every 1 XYO Sold, there will be 1 XYO from the Cryptoeconomic reserve which will be burned. This will proceed until 50\% of the Cryptoeconomic Reserve is burned (up to 3,250,034,273.430 XYO).
+	\item Burning will take place either monthly or quarterly depending on how much we can streamline the process. We will know after our first XYO Token Burn. We're targeting the first burn to be end of June 2019 or first week of July 2019. We will put out a news release and update before the first burn.
+	\item The XYO burned will be sent into an Ethereum Wallet Address (the "Dracarys Address"). We'll provide this address once created so that the community can monitor it and celebrate the burn event when it's sent to a smart contract and burned.
+\end{itemize}  
+
+\subsubsection{Repurchasing XYO}
+\begin{itemize}
+	\item Each week between 5 and 15\% of XYO Product Packages sold from the Cryptoeconomic Reserve will be used to purchase XYO on exchanges.
+	\item We'll be providing the Ethereum Wallet Address of the pool of ETH, which will be used to purchase XYO on exchanges so that the community can monitor this. 
+	\item The ETH will be deployed and purchased on a regular basis (meaning daily).
+\end{itemize}
+
 \begin{center}
 \line(1,0){50}
 \end{center}
