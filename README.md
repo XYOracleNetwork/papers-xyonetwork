@@ -4,6 +4,8 @@
 
 # XYO Papers
 
+> The XYO Foundation provides this source documentation available in our efforts to advance the understanding of the XYO Procotol and its possible uses. We continue to maintain this software in the interest of developer education. Usage of this source code is not intended for production.
+
 ## Table of Contents
 
 -   [Sections](#sections)
