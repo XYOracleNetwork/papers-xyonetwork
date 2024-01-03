@@ -176,10 +176,22 @@ The initial version of the XYO 2.0 Platform has been developed using TypeScript.
 WebAssembly is used for various high performance cryptographic algorithms since WebAssembly can be seamlessly interacted with from Javascript.  Over time, it is possible that more TypeScript based code could be replaced with WebAssembly, but that will be done with care since there are costs of doing this when it comes to understandability of code and debugging.
 
 \subsection{Payload Encoding}
+Payloads are encoded as JSON objects for easy use in TypeScript/Javascript and universal use in other languages.  This decision does however required various considerations which are outlined in other sections below. Meta fields in the data object are fields that are not included in the hash.  All meta fields have their names prefixed with an underscore character.
 
 \subsection{BoundWitness Encoding}
+A BoundWitness object is a specialized payload that conforms to all the rules of a payload when it comes to encoding and hashing along with these additional requirements.
+
+1. The list of addresses that are partaking in the binding are listed in an array under the field name 'addresses'.  These conform to the address encoding rules and have a fixed order that is required for matching to the signatures provided by them.
+
+2. The list of signatures are listed under the field name of 'signatures' prefixed with an underscore character.  This causes this field to be considered meta data and is excluded from the hash.  The order of the signatures must match the order of the address that are listed in the 'addresses' field and there must be a signature for each address for the object to be considered valid.
 
 \subsection{Hashing}
+For consistent hashing a specific procedure must be followed when generating the hash.
+
+1. Sort the object by field name.  This is a recursive operation, where each sub object also has its fields sorted by name.
+2. Remove meta fields by removing all fields that are prefixed with an underscore character.
+3. Stringify the JSON object without whitespace using utf-8 encoding.
+4. Generate a SHA256 hash on the resulting string.
 
 \subsection{Addresses}
 
