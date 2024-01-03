@@ -175,9 +175,52 @@ The initial version of the XYO 2.0 Platform has been developed using TypeScript.
 
 WebAssembly is used for various high performance cryptographic algorithms since WebAssembly can be seamlessly interacted with from Javascript.  Over time, it is possible that more TypeScript based code could be replaced with WebAssembly, but that will be done with care since there are costs of doing this when it comes to understandability of code and debugging.
 
-\subsection{Module System}
+\subsection{Payload Encoding}
 
-\subsection{User Interface}
+\subsection{BoundWitness Encoding}
+
+\subsection{Hashing}
+
+\subsection{Addresses}
+
+\subsection{Signing}
+
+\subsection{Big Numbers}
+
+\section{Module System}
+
+\subsection{Manifests}
+
+\subsection{Addressing}
+
+\subsection{Discovery}
+
+\subsection{Eventing}
+
+\section{Component System}
+We chose React as the framework to create user-interface components for the XYO 2.0 Platform.  This does not preclude using other frameworks and in the cases where native user-interfaces are required, alternative frameworks will be required.  In all these cases, the paradigm which we embrace in our React implementation should be followed.
+
+\subsection{Renderers}
+A Renderer is a component that takes a working set of payloads and renders them.  In many cases, the renderer is so simple that it only has the ability to render a single payload of a specific type.  The most basic of renderers simply renders a payload's raw data, which usually is a JSON object.  In most cases, a dApp strives to have much friendlier renderers than the basic renderer.  Currently, the only way to make custom renderers is to create a new React component usually based on an existing renderer such as the basic raw renderer.  We have a future goal to produce a codeless system to producing renderers.   
+
+\subsection{Hooks}
+
+Hooks are a specific system used in React, but as a paradigm, exists in most user-interface frameworks.  The purpose of hooks to to separate the acquisition/manipulation of data from the rendering of that data.  In most cases, the provided generic hooks that provide access to XYO modules are sufficient to gather the data in a user interface for a dApp.
+
+\section {Codeless Development}
+A primary goal of the XYO 2.0 Platform is to allow users to fully customize nodes through Codeless Development using the module system with manifests, configurations, and parameters. The only reason to create custom modules using TypeScript directly should be for performance reasons, not because what is being created is not possible via the Codeless Development paradigm supported by the platform.
+
+\section {Security}
+Security concerns in the XYO Platform follows that of the XYO Protocol exclusively using cryptographic mechanisms to provide security.  This includes hashes, addresses, and cryptographic signing of data.  As for individual security on specific modules, it is left up to that module to mange access either through lists of allowed/disallowed addresses, crypto-economic incentives, or a combination of the two.
+
+\section {Privacy}
+Privacy itself is not addressed in the core XYO Protocol, however, the ability to optionally keep payloads private is accommodated by the protocol.  There are two primary paradigms that we utilize in the XYO 2.0 Platform.
+
+\subsection{Just-In-Time Privacy}
+Just-In-time Privacy (JITP) for XYO is the paradigm where a node shares hashes of payloads without sharing the actual payloads. This allows sovereign Bound Witnesses to be created, establishing provenance and maintaining immutable permanence, while maintaining privacy of the originating payload.  JITP can be used to create sovereign games, where multiple parties can lock in moves without exposing what those moves are, and then only exposing those moves when declaring victory.
+
+\subsection{Subnet Privacy}
+Subnet Privacy is the ability to run a private XYO Subnet.  This is accomplished by running one or more nodes that are networked together, allowing each other to have access that is not available to nodes outside of that network.  This is similar to a traditional intranet.  The security concerns are also very similar to intranets in that there will be nodes that have access to both the private XYO Subnet and to external networks such as other private subnets or the public XYO Network.  Since those nodes are on multiple networks at the same time, it is possible for them to intentionally or accidentally leak private data from the private subnet to the external network, so great care must be taken when allowing nodes to connect to a private subnet.
 
 % Acknowledgements
 \section {Acknowledgements}
