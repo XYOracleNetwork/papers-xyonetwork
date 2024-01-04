@@ -127,6 +127,8 @@
 
 \newacronym{xy-oracle-network}{XY Oracle Network}{XYO Network}
 
+\newacronym{xy-operating-system}{XYOS}{XY Operating System}
+
 \title {XY0 2.0 Platform: The Sovereign Internet Platform based on the XYO Protocol}
 
 \author{
@@ -167,21 +169,13 @@ Second, the performance of shared ledger technology has been and will always be 
 This implementation of the XYO 2.0 Platform combined with the core concepts of the XYO Protocol strives to provide full decentralization with nodes that are 100 percent sovereign while using cryptographic technologies and concepts to deliver a trustless network that has performance at scale comparable or better than the performance of an equivalent Web 2 system and orders of magnitude better than equivalent Web 3 systems.  This combination not only delivers on the goals of Web 3 visionaries, but also delivers on the goals set forth by the original founders of the internet. The current Web 2 implementation of the internet is completely devoid of sovereignty, provenance, and permanence and we must reverse that trend by delivering a solution that is the foundation for the Sovereign Internet by combining the core tenants of Web 2 and Web 3 combined with the concepts of the XYO Protocol as set out in the original XYO White Paper.
 
 \clearpage
-\section{Practical Decisions}
-In producing the XYO 2.0 Platform, various practical decisions have been made to facilitate interoperability and reduce ambiguity in the protocol.
+\section{Architecture}
+In producing the XYO 2.0 Platform, various practical decisions have been made for the architecture of the implementation to facilitate interoperability and reduce ambiguity in the protocol.
 
 \subsection{Programming Language}
 The initial version of the XYO 2.0 Platform has been developed using TypeScript.  We chose this due to the expansive tools that are available for developing with TypeScript and the compatibility that Javascript (the output of compiling TypeScript) allows for.  As a result, this implementation can be used on browsers and with the NodeJS runtime, both on desktop and on mobile devices.  The sacrifice of this decision is that running the technology stack on IoT devices, especially battery powered devices will be negatively impacted.  This can be addressed by creating limited native implementations of the Platform for those devices.
 
 WebAssembly is used for various high performance cryptographic algorithms since WebAssembly can be seamlessly interacted with from Javascript.  Over time, it is possible that more TypeScript based code could be replaced with WebAssembly, but that will be done with care since there are costs of doing this when it comes to understandability of code and debugging.
-
-\subsection{Hashing}
-For consistent hashing a specific procedure must be followed when generating the hash.
-
-1. Sort the object by field name.  This is a recursive operation, where each sub object also has its fields sorted by name.
-2. Remove meta fields by removing all fields that are prefixed with an underscore character.
-3. Stringify the JSON object without whitespace using utf-8 encoding.
-4. Generate a SHA256 hash on the resulting string.
 
 \subsection{Addresses}
 
@@ -225,18 +219,54 @@ Just-In-time Privacy (JITP) for XYO is the paradigm where a node shares hashes o
 Subnet Privacy is the ability to run a private XYO Subnet.  This is accomplished by running one or more nodes that are networked together, allowing each other to have access that is not available to nodes outside of that network.  This is similar to a traditional intranet.  The security concerns are also very similar to intranets in that there will be nodes that have access to both the private XYO Subnet and to external networks such as other private subnets or the public XYO Network.  Since those nodes are on multiple networks at the same time, it is possible for them to intentionally or accidentally leak private data from the private subnet to the external network, so great care must be taken when allowing nodes to connect to a private subnet.
 
 \clearpage
-\section{Payload}
-\subsection{Encoding}
+\section{Types}
+\subsection{Hash}
+All hashes in the XYO Platform are SHA256 hashes of a binary buffer.  See the Payload section about details on the rules for creating the source buffer for a payload from which the hash is calculated. 
+
+When representing hashes as a string, they are lowercase hex strings that ARE NOT prefixed with a 0x.
+
+\subsection{Address}
+All addresses in the XYO Platform are ECDSA/Secp256k1 addresses that are compatible with Ethereum.  This means that the address is the last 20 bytes of the Keccak-256 hash of the public key of the account.
+
+When representing hashes as a string, they are lowercase hex strings that ARE prefixed with a 0x.
+
+\subsection{Schema}
+A schema is a string that defines the mapping of a payload to a TypeScript type or JSON schema definition.  Schemas may include any lowercase alpha/numeric character and the period (.) character.  This format is similar the reverse domain pattern that is used by many package definitions to produce large to small conical names.
+
+Even though schemas can appear to represent derivation of types and efforts are and should be made to have that be true, there is no way to programmatically enforce this and thus it remains just a convention.
+
+\subsection{Payload}
+\subsubsection{Encoding}
 Payloads are encoded as JSON objects for easy use in TypeScript/Javascript and universal use in other languages.  This decision does however required various considerations which are outlined in other sections below. Meta fields in the data object are fields that are not included in the hash.  All meta fields have their names prefixed with an underscore character.
 
-\subsection{Validation}
+\subsubsection{Hash}
+For consistent hashing a specific procedure must be followed when generating the hash.
+
+\begin{enumerate}
+\item Sort the object by field name.  This is a recursive operation, where each sub object also has its fields sorted by name.
+\item Remove meta fields by removing all fields that are prefixed with an underscore character.
+\item Stringify the JSON object without whitespace using utf-8 encoding.
+\item Generate a SHA256 hash on the resulting string.
+\end{enumerate}
+
+\subsubsection{Validation}
 \subsubsection{Schema - non-conical}
 
-\subsection{Pointer}
-\subsection{Coat Check}
-\subsection{Meta Fields}
-\subsubsection{Dollar Sign}
-\subsubsection{Underscore}
+\subsubsection{Pointer}
+\subsubsection{Coat Check}
+\subsubsection{Hashed Meta Fields}
+Any fields whose names are prefixed by a dollar sign (\$) are considered meta fields, but are included in the overall hash of the payload.
+In the case that there are hashed meta fields, an additional field (\$hash) is created for the hash of the payload excluding the meta fields.
+In the cases where there are no hashed meta fields, the (\$hash) field is not added since it will be equal to the overall hash by definition.
+
+The purpose of hashed meta fields are to have the ability to add context to a payload where the data of the payload may be different because of context.  This allows two witness or diviner payloads to be generated at the same time, but in different contexts, specifically given different working sets, to both be valid despite having different values.
+
+\subsubsection{Unhashed Metafields}
+Any fields whose names are prefixed by an underscore (\_) are considered meta fields and are excluded from the overall hash of the payload.
+
+The purpose of unhashed meta fields is to allow for additional data to exist in a data store, usually an archivist.  Usually this data is used for optimization purposes, but since there is no signing or hashing of this data, it is considered unreliable and should never be included in payloads when passing them to other modules.  Furthermore, returning internal data like this usually is a security problem, so should be avoided.
+\clearpage
+
 
 \section{Bound Witness}
 \subsection{Encoding}
@@ -301,6 +331,7 @@ Diviners process existing data and do not gather new data
 \subsection{Protocol}
 \subsection{Hash}
 \subsection{Hints}
+
 
 % Acknowledgements
 \section {Acknowledgements}

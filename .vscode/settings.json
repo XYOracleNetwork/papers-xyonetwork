@@ -1,3 +1,8 @@
 {
-    "editor.wordWrap": "on"
+    "editor.wordWrap": "on",
+    "cSpell.words": [
+        "Keccak",
+        "Secp",
+        "unhashed"
+    ]
 }
