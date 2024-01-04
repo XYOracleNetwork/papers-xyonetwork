@@ -164,7 +164,7 @@ First, shared ledgers moves the control of a system from being fully centralized
 
 Second, the performance of shared ledger technology has been and will always be substantially (orders of magnitude) slower and more costly than their centralized equivalents.  By its very definition, a shared ledger must either has massive redundancy of data and validation, or lean on trusted systems to improve performance.
 
-This implementation of the XYO 2.0 Platform combined with the core concepts of the XYO Protocol strives to provide full decentralization with nodes that are 100 percent sovereign while using cryptographic technologies and concepts to deliver a trustless network that has performance at scale comparable or better than the performance of an equivalent Web 2 system and orders of magnitude better than equivalent Web 3 systems.  This combination not only delivers on the goals of Web 3 visionaries, but also delivers on the goals set forth by the original founders of the internet. The current Web 2 implementation of the internet is completely devoid of sovereignty, provenance, and permanence and we must reverse that trend by delivering a solution that is the foundation for the Sovereign Internet by combining the core tenants of Web 2 and Web 3 combined with the concepts of the XYO Protocol as set out in the original XYO White Paper.  
+This implementation of the XYO 2.0 Platform combined with the core concepts of the XYO Protocol strives to provide full decentralization with nodes that are 100 percent sovereign while using cryptographic technologies and concepts to deliver a trustless network that has performance at scale comparable or better than the performance of an equivalent Web 2 system and orders of magnitude better than equivalent Web 3 systems.  This combination not only delivers on the goals of Web 3 visionaries, but also delivers on the goals set forth by the original founders of the internet. The current Web 2 implementation of the internet is completely devoid of sovereignty, provenance, and permanence and we must reverse that trend by delivering a solution that is the foundation for the Sovereign Internet by combining the core tenants of Web 2 and Web 3 combined with the concepts of the XYO Protocol as set out in the original XYO White Paper.
 
 \clearpage
 \section{Practical Decisions}
@@ -174,16 +174,6 @@ In producing the XYO 2.0 Platform, various practical decisions have been made to
 The initial version of the XYO 2.0 Platform has been developed using TypeScript.  We chose this due to the expansive tools that are available for developing with TypeScript and the compatibility that Javascript (the output of compiling TypeScript) allows for.  As a result, this implementation can be used on browsers and with the NodeJS runtime, both on desktop and on mobile devices.  The sacrifice of this decision is that running the technology stack on IoT devices, especially battery powered devices will be negatively impacted.  This can be addressed by creating limited native implementations of the Platform for those devices.
 
 WebAssembly is used for various high performance cryptographic algorithms since WebAssembly can be seamlessly interacted with from Javascript.  Over time, it is possible that more TypeScript based code could be replaced with WebAssembly, but that will be done with care since there are costs of doing this when it comes to understandability of code and debugging.
-
-\subsection{Payload Encoding}
-Payloads are encoded as JSON objects for easy use in TypeScript/Javascript and universal use in other languages.  This decision does however required various considerations which are outlined in other sections below. Meta fields in the data object are fields that are not included in the hash.  All meta fields have their names prefixed with an underscore character.
-
-\subsection{BoundWitness Encoding}
-A BoundWitness object is a specialized payload that conforms to all the rules of a payload when it comes to encoding and hashing along with these additional requirements.
-
-1. The list of addresses that are partaking in the binding are listed in an array under the field name 'addresses'.  These conform to the address encoding rules and have a fixed order that is required for matching to the signatures provided by them.
-
-2. The list of signatures are listed under the field name of 'signatures' prefixed with an underscore character.  This causes this field to be considered meta data and is excluded from the hash.  The order of the signatures must match the order of the address that are listed in the 'addresses' field and there must be a signature for each address for the object to be considered valid.
 
 \subsection{Hashing}
 For consistent hashing a specific procedure must be followed when generating the hash.
@@ -233,6 +223,84 @@ Just-In-time Privacy (JITP) for XYO is the paradigm where a node shares hashes o
 
 \subsection{Subnet Privacy}
 Subnet Privacy is the ability to run a private XYO Subnet.  This is accomplished by running one or more nodes that are networked together, allowing each other to have access that is not available to nodes outside of that network.  This is similar to a traditional intranet.  The security concerns are also very similar to intranets in that there will be nodes that have access to both the private XYO Subnet and to external networks such as other private subnets or the public XYO Network.  Since those nodes are on multiple networks at the same time, it is possible for them to intentionally or accidentally leak private data from the private subnet to the external network, so great care must be taken when allowing nodes to connect to a private subnet.
+
+\clearpage
+\section{Payload}
+\subsection{Encoding}
+Payloads are encoded as JSON objects for easy use in TypeScript/Javascript and universal use in other languages.  This decision does however required various considerations which are outlined in other sections below. Meta fields in the data object are fields that are not included in the hash.  All meta fields have their names prefixed with an underscore character.
+
+\subsection{Validation}
+\subsubsection{Schema - non-conical}
+
+\subsection{Pointer}
+\subsection{Coat Check}
+\subsection{Meta Fields}
+\subsubsection{Dollar Sign}
+\subsubsection{Underscore}
+
+\section{Bound Witness}
+\subsection{Encoding}
+A BoundWitness object is a specialized payload that conforms to all the rules of a payload when it comes to encoding and hashing along with these additional requirements.
+
+\subsubsection{Addresses}
+The list of addresses that are partaking in the binding are listed in an array under the field name 'addresses'.  These conform to the address encoding rules and have a fixed order that is required for matching to the signatures provided by them.
+
+\subsubsection{Signatures}
+The list of signatures are listed under the field name of 'signatures' prefixed with an underscore character.  This causes this field to be considered meta data and is excluded from the hash.  The order of the signatures must match the order of the address that are listed in the 'addresses' field and there must be a signature for each address for the object to be considered valid.
+\subsection{Validation}
+\subsection{Query Field}
+\subsection{Tuple Results}
+[QueryBW, Payloads Array]
+
+
+\section{Address}
+Hex - Starts with 0x and all lowercase
+\section{Hash}
+Hex - Does not start with 0x and all lowercase
+
+\section{Module}
+\subsection{Address}
+\subsection{Name}
+\subsection{Config}
+\subsubsection{Permissions}
+\subsection{Params}
+\subsection{Lifecycle}
+\subsection{Queries}
+
+\section{Node}
+\subsection{Register}
+\subsection{Attach/Detach}
+\subsection{Events}
+
+\section{Resolver}
+\subsection{Simple}
+\subsection{Remote}
+\subsubsection{Network Drive}
+
+\section{Account}
+\section{Wallet}
+\section{Archivist}
+\subsection{Queries}
+\subsubsection{Get}
+\subsubsection{Insert}
+\subsubsection{Commit}
+\section{Bridge}
+\subsection{Proxy Module}
+\section{Diviner}
+\subsection{Queries}
+\subsubsection{Divine}
+\subsection{Anti-patterns}
+\subsubsection{Diviners calling Witnesses}
+Diviners process existing data and do not gather new data
+\section{Node}
+\section{Sentinel}
+\section{Wrappers}
+\subsection{Archivist Wrapper}
+\subsection{Diviner Wrapper}
+\section{Huri}
+\subsection{Protocol}
+\subsection{Hash}
+\subsection{Hints}
 
 % Acknowledgements
 \section {Acknowledgements}
