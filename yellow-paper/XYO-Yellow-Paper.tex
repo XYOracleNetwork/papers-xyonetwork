@@ -68,6 +68,18 @@
     description={TODO}
 }
 
+\newglossaryentry{xyo-platform}
+{
+    name={XYO Platform},
+    description={TODO}
+}
+
+\newglossaryentry{xyo-operation-system}
+{
+    name={XYO Operating System},
+    description={TODO}
+}
+
 \newglossaryentry{bound-witness}
 {
     name={Bound Witness},
@@ -177,45 +189,19 @@ The initial version of the XYO 2.0 Platform has been developed using TypeScript.
 
 WebAssembly is used for various high performance cryptographic algorithms since WebAssembly can be seamlessly interacted with from Javascript.  Over time, it is possible that more TypeScript based code could be replaced with WebAssembly, but that will be done with care since there are costs of doing this when it comes to understandability of code and debugging.
 
-\subsection{Addresses}
-
-\subsection{Signing}
-
-\subsection{Big Numbers}
-
-\section{Module System}
-
-\subsection{Manifests}
-
-\subsection{Addressing}
-
-\subsection{Discovery}
-
-\subsection{Eventing}
-
-\section{Component System}
-We chose React as the framework to create user-interface components for the XYO 2.0 Platform.  This does not preclude using other frameworks and in the cases where native user-interfaces are required, alternative frameworks will be required.  In all these cases, the paradigm which we embrace in our React implementation should be followed.
-
-\subsection{Renderers}
-A Renderer is a component that takes a working set of payloads and renders them.  In many cases, the renderer is so simple that it only has the ability to render a single payload of a specific type.  The most basic of renderers simply renders a payload's raw data, which usually is a JSON object.  In most cases, a dApp strives to have much friendlier renderers than the basic renderer.  Currently, the only way to make custom renderers is to create a new React component usually based on an existing renderer such as the basic raw renderer.  We have a future goal to produce a codeless system to producing renderers.   
-
-\subsection{Hooks}
-
-Hooks are a specific system used in React, but as a paradigm, exists in most user-interface frameworks.  The purpose of hooks to to separate the acquisition/manipulation of data from the rendering of that data.  In most cases, the provided generic hooks that provide access to XYO modules are sufficient to gather the data in a user interface for a dApp.
-
-\section {Codeless Development}
+\subsection {Codeless Development}
 A primary goal of the XYO 2.0 Platform is to allow users to fully customize nodes through Codeless Development using the module system with manifests, configurations, and parameters. The only reason to create custom modules using TypeScript directly should be for performance reasons, not because what is being created is not possible via the Codeless Development paradigm supported by the platform.
 
-\section {Security}
+\subsection {Security}
 Security concerns in the XYO Platform follows that of the XYO Protocol exclusively using cryptographic mechanisms to provide security.  This includes hashes, addresses, and cryptographic signing of data.  As for individual security on specific modules, it is left up to that module to mange access either through lists of allowed/disallowed addresses, crypto-economic incentives, or a combination of the two.
 
-\section {Privacy}
+\subsection {Privacy}
 Privacy itself is not addressed in the core XYO Protocol, however, the ability to optionally keep payloads private is accommodated by the protocol.  There are two primary paradigms that we utilize in the XYO 2.0 Platform.
 
-\subsection{Just-In-Time Privacy}
+\subsubsection{Just-In-Time Privacy}
 Just-In-time Privacy (JITP) for XYO is the paradigm where a node shares hashes of payloads without sharing the actual payloads. This allows sovereign Bound Witnesses to be created, establishing provenance and maintaining immutable permanence, while maintaining privacy of the originating payload.  JITP can be used to create sovereign games, where multiple parties can lock in moves without exposing what those moves are, and then only exposing those moves when declaring victory.
 
-\subsection{Subnet Privacy}
+\subsubsection{Subnet Privacy}
 Subnet Privacy is the ability to run a private XYO Subnet.  This is accomplished by running one or more nodes that are networked together, allowing each other to have access that is not available to nodes outside of that network.  This is similar to a traditional intranet.  The security concerns are also very similar to intranets in that there will be nodes that have access to both the private XYO Subnet and to external networks such as other private subnets or the public XYO Network.  Since those nodes are on multiple networks at the same time, it is possible for them to intentionally or accidentally leak private data from the private subnet to the external network, so great care must be taken when allowing nodes to connect to a private subnet.
 
 \clearpage
@@ -229,6 +215,11 @@ When representing hashes as a string, they are lowercase hex strings that ARE NO
 All addresses in the XYO Platform are ECDSA/Secp256k1 addresses that are compatible with Ethereum.  This means that the address is the last 20 bytes of the Keccak-256 hash of the public key of the account.
 
 When representing hashes as a string, they are lowercase hex strings that ARE prefixed with a 0x.
+
+\subsection{Account}
+TODO
+\subsection{Wallet}
+TODO
 
 \subsection{Schema}
 A schema is a string that defines the mapping of a payload to a TypeScript type or JSON schema definition.  Schemas may include any lowercase alpha/numeric character and the period (.) character.  This format is similar the reverse domain pattern that is used by many package definitions to produce large to small conical names.
@@ -249,11 +240,25 @@ For consistent hashing a specific procedure must be followed when generating the
 \item Generate a SHA256 hash on the resulting string.
 \end{enumerate}
 
-\subsubsection{Validation}
-\subsubsection{Schema - non-conical}
+\subsubsection{Schema}
+The schema field in a payload is used to communicate the structure of that payload.  The schema is used to map to Payload type definitions in TypeScript and JSON Schema definitions that can be used to validate the structure of the payloads.
+\subsubsection{Structure Validation}
+Validating the structure of a payload is done by validating the schema field for conformity to the Schema type.  Once it is determined that the schema field is valid, an JSON Schema can be loaded, if one exists, to fully validate the payload using AJV or a similar library. 
+
+In some cases, the JSON Schema to corresponds to a payload schema field are defined in importable packages for ease of use.
+
+The official definition however is retrievable from the xyo-config.json file on a web domain.  The registered domain name in reverse is the root of the items that are allowed to be defined by it, specifically hashes for the JSON schemas for Payloads.  For example, xyo.network is the authority for all schemas that start with network.xyo. 
+
+\subsubsection{Hash Validation}
+Generally the hash of a payload is not passed along with the payload, so no validation is required.  The hash can always be recalculated as needed.  A specific case when validation is required is when a service returns a payload based on a hash, such as an Archivist Get Query. The caller should always generate the hash of the payload after receiving a payload from a service rather than relying on service to return the correct payload.
+
+This is one of the fundamental aspects of XYO that makes data exchange sovereign and trustless.
 
 \subsubsection{Pointer}
-\subsubsection{Coat Check}
+A Payload Pointer is a payload that statically defines how to find a dynamic payload.  A simple example is a pointer that points to the most recent instance of a payload with a specific schema.  Substantially more complicated filter criteria can be used to define Payload Pointers.
+\subsubsection{Coat Check | Rename to Payload Promise?}
+A Coat Check payload is a specialized Payload Pointer.  It is used to facilitate a delayed response, similar to a promise in many languages.  The pointer is generated with the knowledge that initially it will not point to a result payload but will point to a result payload once the delayed processing is complete.
+
 \subsubsection{Hashed Meta Fields}
 Any fields whose names are prefixed by a dollar sign (\$) are considered meta fields, but are included in the overall hash of the payload.
 In the case that there are hashed meta fields, an additional field (\$hash) is created for the hash of the payload excluding the meta fields.
@@ -265,8 +270,16 @@ The purpose of hashed meta fields are to have the ability to add context to a pa
 Any fields whose names are prefixed by an underscore (\_) are considered meta fields and are excluded from the overall hash of the payload.
 
 The purpose of unhashed meta fields is to allow for additional data to exist in a data store, usually an archivist.  Usually this data is used for optimization purposes, but since there is no signing or hashing of this data, it is considered unreliable and should never be included in payloads when passing them to other modules.  Furthermore, returning internal data like this usually is a security problem, so should be avoided.
-\clearpage
 
+\subsubsection{Best Pracitices}
+Best practices are not currently enforced by the system, bu maybe enforced in the future.  To assure the best ongoing compatibility with the XYO Platform, it is highly recommended that payloads conform to the best practices.
+\begin{enumerate}
+    \item Field names should all be lowercase, optionally using underscore or hyphen to split words.  Mixed and Camel case should be avoided along with any other symbols.
+    \item schemas should be chosen in a conical pattern to allow for easy communication of logical hierarchy.
+    \item Treat conical schema hierarchy as derivation chain, making sure that longer (extended) schemas implement the same fields as their parent (shorter) conical base counterparts.
+\end{enumerate}
+
+\clearpage
 
 \section{Bound Witness}
 \subsection{Encoding}
@@ -277,48 +290,150 @@ The list of addresses that are partaking in the binding are listed in an array u
 
 \subsubsection{Signatures}
 The list of signatures are listed under the field name of 'signatures' prefixed with an underscore character.  This causes this field to be considered meta data and is excluded from the hash.  The order of the signatures must match the order of the address that are listed in the 'addresses' field and there must be a signature for each address for the object to be considered valid.
+
 \subsection{Validation}
-\subsection{Query Field}
-\subsection{Tuple Results}
-[QueryBW, Payloads Array]
+Validating a Bound Witness starts with validating it as a Payload since it is just a specialized Payload.  Once that is complete, the Bound Witness specific fields are validated as follows:
 
+\begin{enumerate}
+    \item Length of addresses array and \_signatures array must be equal.
+    \item Each entry in \_signature must be a valid signature or the hash of the Bound Witness by the corresponding entry in addresses, using position as the method to match the signature to the address.
+    \item Validate payloads entries: Validate that each entry is a valid hash and has a corresponding valid entry in schemas.
+    \item Additional validation can be done if the payloads that are bound are available to the validator.  In that case, full Payload validation can be performed on each entry along with validation of the hash and schema for each payload map to the actual payload.
+\end{enumerate}
 
-\section{Address}
-Hex - Starts with 0x and all lowercase
-\section{Hash}
-Hex - Does not start with 0x and all lowercase
+\subsection{Query Field | Rename to root?}
+Some Bound Witnesses contain a query field.  If this field is present, that Bound Witness is considered to be a Query Bound Witness.  
+
+\clearpage
+
+\section{Module System}
+The XYO Platform is implemented with a module system that defines the initialization, discovery, interaction, security, normalization and bundling of functionality.  There are 6 types of modules supported in the XYO Platform, Nodes, Archivists, Diviners, Sentinels, Witnesses, and Bridges, with the option for additional types in the future. Every modules shares core functionality, allowing it to be a module, that allows discovery and communication between modules.
+
+\subsection{Manifests}
+Manifests are JSON configurations of a Node or a dApp.
+XYO Platform initializes by loading a manifest or set of manifests.  If a manifest requires external module implementations, a Module Locator is also required.
+
+\subsection{Locators}
+Locators have the ability to 'locate' a module implementation that can satisfy the requirements defined in a manifest file.  A Locator also functions as the point where private or platform specific configuration can be provided for a module implementation.
+
+\subsubsection{Labels}
+Labels are used to identify differently parameterized versions of the same implementation of a module.  Usually labels clearly communicate the variance that the parameters provides to allow mapping in the manifest to the correctly parameterized module implementation.
+
+\subsection{Addressing}
+Every module has an address associated with it.  The address is used to uniquely identify and communicate with the module.  Each module must have the private key that generated its address so that it can also sign Bound Witnesses when needed.
+
+\subsection{Discovery}
+Modules are loaded as a tree with every module, except Node and Bridge Modules, restricted to being leaves.  Only Node Modules may be the root of the tree.
+
+\subsection{Resolvers}
+Resolvers provide the mapping between module addresses/names and the actual instances of those modules.  When resolving a module, a ModuleInstance is always returned, but it is possible that the object is a Proxy or a Wrapper that facilitates calling the module in a way that is similar to calling it directly.
+
+\subsection{Interfaces}
+Modules have interfaces that allow for direct calls to their functionality.  These entry points are only available to be called from another module that is running in the same memory space.  This is only provided for performance purposes and allows the module to be used as a trusted source.  Additionally, when directly calling a module, no Bound Witness is produced.  Interfaces do not support payment rails.
+
+\subsection{Queries}
+Modules are loaded as a tree with every module, except Node and Bridge Modules, restricted to being leaves.  Only Node Modules may be the root of the tree.  When calling a module through the query entry point, a Bound Witness is produced and authentication may be performed if required.  Payment rails are available only when calling a module via queries.
+
+\subsection{Eventing}
+Events are generated by modules when notification is required.  Events are currently only available through the direct interfaces of modules, which means that the listener of the events must be in the same memory space as the module.  This also means that the events are 'trusted' and thus should be validated and verified if full trust of the emitting module can not be established. 
 
 \section{Module}
-\subsection{Address}
+XYO Platform provides an abstract implementation of Module that implements the shared module interfaces, queries and events.
+\subsection{Account}
+A unique account for the module which produces the address that is used to communicate with the module and also to validate signatures produced by the module.
 \subsection{Name}
+Optional alias for the address of a module.  The XYO Platform enforces uniqueness of this name only is a single Node scope.  In the case that there are multiple modules with the same name that are discoverable, the modules that is logically closest to the discovering module will be found.
+
 \subsection{Config}
+At the point of creation, every module supports taking a config payload.  The contents of a config payload is usually specified in the manifest that is being loaded.  Since the Config is a Payload, only JSON serializable fields are allowed.
 \subsubsection{Permissions}
+TODO
 \subsection{Params}
+Params are similar to Configs in that they are used at the point of creation of an instance of a module.  Params are not Payloads and may convey objects that are not JSON serializable.  Secure data also is conveyed in Params, such as API keys.  Params are generally provided when a module is registered with a Locator resulting in every instance having the same Params and differing Config.
+
 \subsection{Lifecycle}
+Modules have three distinct states, creation, registration and attachment.
+
+\subsubsection{Creation}
+A created module exists in a vacuum and has limited use.  Creating a module processes the Params and Config objects to define the module instance.  Before a modules can be registered, it must be created.
+
+\subsubsection{Registration}
+Registration makes a module available to a containing Node Module.  A module should generally just be registered with one Node.  Registration can only be done from the same memory space as the Node module receiving the registration.  The module being registered also must be in the same memory space.  Registration can not be done remotely.
+
+Before a module can be attached, it must be registered.
+
+\subsubsection{Attachment}
+Attachment makes a module addressable, allowing both the module to communicate with other modules and other modules to communicate with it.
+
 \subsection{Queries}
+\subsubsection{Address}
+Retrieve information about the module's account including the current previous hash of the account.
+\subsubsection{Manifest}
+Generate a manifest that reflects the structure of the module.  This may be different than the actual manifest that was used to create it, since it is generated and also will exclude private modules that may have been specified in the creating manifest.
+\subsubsection{Subscribe}
+Subscribe to an Event. Not yet fully functional.
+
+\subsection{Events}
+\subsubsection{Busy}
+Emitted when the busy state of the module changes.
+\subsubsection{Error}
+Emitted when an error occurs.
+\subsubsection{Queried}
+Emitted when the module is invoked via the query interface, providing both the input and the output.
 
 \section{Node}
-\subsection{Register}
-\subsection{Attach/Detach}
+Module that contains other modules and facilitates discovery, resolution and communication between them.
+\subsection{Interface}
+\subsubsection{Register}
+Register a module
+\subsubsection{Unreegister}
+Unregister a module
+
+\subsection{Queries}
+\subsubsection{Registered}
+Retrieve list of all registered modules
+\subsubsection{Attach}
+Attach a registered module
+\subsubsection{Detach}
+Detach a registered module
+
 \subsection{Events}
+\subsubsection{Registered}
+A module was registered
+\subsubsection{Unregistered}
+A module was unregistered
+\subsubsection{Attached}
+A module was attached
+\subsubsection{Detached}
+A module was detached
 
-\section{Resolver}
-\subsection{Simple}
-\subsection{Remote}
-\subsubsection{Network Drive}
-
-\section{Account}
-\section{Wallet}
 \section{Archivist}
 \subsection{Queries}
 \subsubsection{Get}
+Get payloads by hash
 \subsubsection{Insert}
+Insert payloads
 \subsubsection{Commit}
+Insert all the payloads that are in the archivist into the archivist's parent(s)
 \section{Bridge}
 \subsection{Proxy Module}
 \section{Diviner}
 \subsection{Queries}
 \subsubsection{Divine}
+
+\section{Sentinel}
+\subsection{Queries}
+\subsubsection{Report}
+
+\section{Witness}
+\subsection{Queries}
+\subsubsection{Witness}
+
+
+\section{Resolver}
+\subsection{Simple}
+\subsection{Remote}
+\subsubsection{Network Drive}
 \subsection{Anti-patterns}
 \subsubsection{Diviners calling Witnesses}
 Diviners process existing data and do not gather new data
@@ -331,6 +446,16 @@ Diviners process existing data and do not gather new data
 \subsection{Protocol}
 \subsection{Hash}
 \subsection{Hints}
+
+\section{Component System}
+We chose React as the framework to create user-interface components for the XYO 2.0 Platform.  This does not preclude using other frameworks and in the cases where native user-interfaces are required, alternative frameworks will be required.  In all these cases, the paradigm which we embrace in our React implementation should be followed.
+
+\subsection{Renderers}
+A Renderer is a component that takes a working set of payloads and renders them.  In many cases, the renderer is so simple that it only has the ability to render a single payload of a specific type.  The most basic of renderers simply renders a payload's raw data, which usually is a JSON object.  In most cases, a dApp strives to have much friendlier renderers than the basic renderer.  Currently, the only way to make custom renderers is to create a new React component usually based on an existing renderer such as the basic raw renderer.  We have a future goal to produce a codeless system to producing renderers.   
+
+\subsection{Hooks}
+
+Hooks are a specific system used in React, but as a paradigm, exists in most user-interface frameworks.  The purpose of hooks to to separate the acquisition/manipulation of data from the rendering of that data.  In most cases, the provided generic hooks that provide access to XYO modules are sufficient to gather the data in a user interface for a dApp.
 
 
 % Acknowledgements
