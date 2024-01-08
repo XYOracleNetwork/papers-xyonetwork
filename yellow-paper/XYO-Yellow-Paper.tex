@@ -7,6 +7,7 @@
 \usepackage{amsmath} % Advanced math typesetting
 \usepackage[utf8]{inputenc} % Unicode support (Umlauts etc.)
 \usepackage{hyperref} % Add a link to your document
+\usepackage{tocbasic}
 \hypersetup{
     colorlinks=true,
     linkcolor=black,
@@ -170,6 +171,12 @@
     \end{center}
 \end{abstract}
 
+\clearpage
+
+\tableofcontents
+
+\clearpage
+
 %Introduction
 \section{Introduction}
 During the last decade, Web 3 development has been primarily focused on expanding the use of shared ledgers to create decentralized systems.  Even though there have been great strides on this front, the very core of this effort is flawed in two ways.
@@ -198,10 +205,10 @@ Security concerns in the XYO Platform follows that of the XYO Protocol exclusive
 \subsection {Privacy}
 Privacy itself is not addressed in the core XYO Protocol, however, the ability to optionally keep payloads private is accommodated by the protocol.  There are two primary paradigms that we utilize in the XYO 2.0 Platform.
 
-\subsubsection{Just-In-Time Privacy}
+\subsubsection{Just-In-Time}
 Just-In-time Privacy (JITP) for XYO is the paradigm where a node shares hashes of payloads without sharing the actual payloads. This allows sovereign Bound Witnesses to be created, establishing provenance and maintaining immutable permanence, while maintaining privacy of the originating payload.  JITP can be used to create sovereign games, where multiple parties can lock in moves without exposing what those moves are, and then only exposing those moves when declaring victory.
 
-\subsubsection{Subnet Privacy}
+\subsubsection{Subnet}
 Subnet Privacy is the ability to run a private XYO Subnet.  This is accomplished by running one or more nodes that are networked together, allowing each other to have access that is not available to nodes outside of that network.  This is similar to a traditional intranet.  The security concerns are also very similar to intranets in that there will be nodes that have access to both the private XYO Subnet and to external networks such as other private subnets or the public XYO Network.  Since those nodes are on multiple networks at the same time, it is possible for them to intentionally or accidentally leak private data from the private subnet to the external network, so great care must be taken when allowing nodes to connect to a private subnet.
 
 \clearpage
@@ -215,11 +222,6 @@ When representing hashes as a string, they are lowercase hex strings that ARE NO
 All addresses in the XYO Platform are ECDSA/Secp256k1 addresses that are compatible with Ethereum.  This means that the address is the last 20 bytes of the Keccak-256 hash of the public key of the account.
 
 When representing hashes as a string, they are lowercase hex strings that ARE prefixed with a 0x.
-
-\subsection{Account}
-TODO
-\subsection{Wallet}
-TODO
 
 \subsection{Schema}
 A schema is a string that defines the mapping of a payload to a TypeScript type or JSON schema definition.  Schemas may include any lowercase alpha/numeric character and the period (.) character.  This format is similar the reverse domain pattern that is used by many package definitions to produce large to small conical names.
@@ -279,10 +281,8 @@ Best practices are not currently enforced by the system, bu maybe enforced in th
     \item Treat conical schema hierarchy as derivation chain, making sure that longer (extended) schemas implement the same fields as their parent (shorter) conical base counterparts.
 \end{enumerate}
 
-\clearpage
-
-\section{Bound Witness}
-\subsection{Encoding}
+\subsection{Bound Witness}
+\subsubsection{Encoding}
 A BoundWitness object is a specialized payload that conforms to all the rules of a payload when it comes to encoding and hashing along with these additional requirements.
 
 \subsubsection{Addresses}
@@ -291,7 +291,7 @@ The list of addresses that are partaking in the binding are listed in an array u
 \subsubsection{Signatures}
 The list of signatures are listed under the field name of 'signatures' prefixed with an underscore character.  This causes this field to be considered meta data and is excluded from the hash.  The order of the signatures must match the order of the address that are listed in the 'addresses' field and there must be a signature for each address for the object to be considered valid.
 
-\subsection{Validation}
+\subsubsection{Validation}
 Validating a Bound Witness starts with validating it as a Payload since it is just a specialized Payload.  Once that is complete, the Bound Witness specific fields are validated as follows:
 
 \begin{enumerate}
@@ -301,8 +301,13 @@ Validating a Bound Witness starts with validating it as a Payload since it is ju
     \item Additional validation can be done if the payloads that are bound are available to the validator.  In that case, full Payload validation can be performed on each entry along with validation of the hash and schema for each payload map to the actual payload.
 \end{enumerate}
 
-\subsection{Query Field | Rename to root?}
+\subsubsection{Query Field | Rename to root?}
 Some Bound Witnesses contain a query field.  If this field is present, that Bound Witness is considered to be a Query Bound Witness.  
+
+\subsection{Account}
+Account is an object that is defined by a 32 bytes private key and has the ability to generate the public key, and address.  Accounts also have the ability to sign data with the private key and validate a signature of data, returning the address of the signer.
+\subsection{Wallet}
+Wallet is defined by a mnemonic phrase.  A root account for that phrase can be generated, which is the account that is used if a Wallet is passed to something that expects an Account.  Additionally, a Wallet can derive additional wallets/accounts by providing a path for derivation. 
 
 \clearpage
 
@@ -386,7 +391,7 @@ Module that contains other modules and facilitates discovery, resolution and com
 \subsection{Interface}
 \subsubsection{Register}
 Register a module
-\subsubsection{Unreegister}
+\subsubsection{Unregister}
 Unregister a module
 
 \subsection{Queries}
@@ -408,6 +413,7 @@ A module was attached
 A module was detached
 
 \section{Archivist}
+Provides storage of payloads.
 \subsection{Queries}
 \subsubsection{Get}
 Get payloads by hash
@@ -416,33 +422,42 @@ Insert payloads
 \subsubsection{Commit}
 Insert all the payloads that are in the archivist into the archivist's parent(s)
 \section{Bridge}
+A Bridge model connects to a remote module via a predefined transport such as HTTP or Bluetooth.
 \subsection{Proxy Module}
+Proxy Modules represent remote modules that are reachable via a Bridge.  Similar to a wrapper, a Proxy Module presents the remote module as if it exists in the same memory space as the calling module.
 \section{Diviner}
+Transforms one or more input payloads into zero or more output payloads.  Diviners should be pure, not calling other modules behind the scenes.
 \subsection{Queries}
 \subsubsection{Divine}
+Perform the divination as prescribed by the module, taking n inputs and returning m outputs.
 
 \section{Sentinel}
+Orchestrate a series of modules, usually witnesses, diviners, and sentinels to perform a more complicated set of logic.  Supports various triggering mechanisms, including direct invocation, interval and event.
 \subsection{Queries}
 \subsubsection{Report}
+Initiate the prescribed series as defined in the sentinel's configuration, taking an input payload working set and producing an output payload working set.
 
 \section{Witness}
+Onboard data from an external source including but not limited to API calls, sensor readings and system reflection.
 \subsection{Queries}
-\subsubsection{Witness}
-
+\subsubsection{Observe}
+Initiate an observation using the implementation of the witness.
 
 \section{Resolver}
-\subsection{Simple}
+Resolves an address or name of a module by locating it and returning a ModuleInstance that can be used to access the module.
+\subsection{Local}
+Resolves an address or name by finding and returning the actual instance of the module and returning a reference to it.
 \subsection{Remote}
-\subsubsection{Network Drive}
-\subsection{Anti-patterns}
-\subsubsection{Diviners calling Witnesses}
-Diviners process existing data and do not gather new data
-\section{Node}
-\section{Sentinel}
+Uses a Bridge to discover remote modules and then provides a reference to a Proxy Module that exposes the requested module indirectly.
+\subsection{Composite}
+Resolver that in a local resolver but also can be configured to have child resolvers, local or remote, that also will be inspected to locate the requested module.
+
+
 \section{Wrappers}
-\subsection{Archivist Wrapper}
-\subsection{Diviner Wrapper}
+Object that wraps a module instance, removing direct access to the wrapped instance's interface and only allowing access to it through query calls.  The wrapper provides a replacement interface that mimics the wrapped module instance interface, converting the calls into query calls.
+
 \section{Huri}
+A Huri is a form of URI that references a payload via its hash.
 \subsection{Protocol}
 \subsection{Hash}
 \subsection{Hints}
