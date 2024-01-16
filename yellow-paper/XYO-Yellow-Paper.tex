@@ -229,6 +229,7 @@ A schema is a string that defines the mapping of a payload to a TypeScript type 
 Even though schemas can appear to represent derivation of types and efforts are and should be made to have that be true, there is no way to programmatically enforce this and thus it remains just a convention.
 
 \subsection{Payload}
+Payloads are the data building blocks of the XYO Protocol.  Payloads must store data without variance and be able to produce a repeatable hash of that data.  Even though it is impossible to accomplish complete invariance of structure, we strive to minimize the formats in which the same data can be stored to prevent multiple hashes for the same data.
 \subsubsection{Encoding}
 Payloads are encoded as JSON objects for easy use in TypeScript/Javascript and universal use in other languages.  This decision does however required various considerations which are outlined in other sections below. Meta fields in the data object are fields that are not included in the hash.  All meta fields have their names prefixed with an underscore character.
 
@@ -282,6 +283,7 @@ Best practices are not currently enforced by the system, bu maybe enforced in th
 \end{enumerate}
 
 \subsection{Bound Witness}
+Bound Witness payloads are the key to Proof-of-Origin chains.  They provide a mechanism to record and validate provenance and permanence, leading to the ability to have interoperable sovereign data.
 \subsubsection{Encoding}
 A BoundWitness object is a specialized payload that conforms to all the rules of a payload when it comes to encoding and hashing along with these additional requirements.
 
@@ -352,7 +354,7 @@ Optional alias for the address of a module.  The XYO Platform enforces uniquenes
 \subsection{Config}
 At the point of creation, every module supports taking a config payload.  The contents of a config payload is usually specified in the manifest that is being loaded.  Since the Config is a Payload, only JSON serializable fields are allowed.
 \subsubsection{Permissions}
-TODO
+Permissions are primarily handled by allowing/disallowing addresses from creating queries.
 \subsection{Params}
 Params are similar to Configs in that they are used at the point of creation of an instance of a module.  Params are not Payloads and may convey objects that are not JSON serializable.  Secure data also is conveyed in Params, such as API keys.  Params are generally provided when a module is registered with a Locator resulting in every instance having the same Params and differing Config.
 
@@ -371,6 +373,7 @@ Before a module can be attached, it must be registered.
 Attachment makes a module addressable, allowing both the module to communicate with other modules and other modules to communicate with it.
 
 \subsection{Queries}
+Queries can be sent to modules in two ways, either directly or indirectly.  Sending a direct query is done by calling the query entry point on a module, providing it with the query payload and other payloads that may be required to complete the task (Push model).  Sending an indirect query is done by creating a query payload and storing it to an archivist which is publicly accessible to, and monitored by, the module (Pull model).
 \subsubsection{Address}
 Retrieve information about the module's account including the current previous hash of the account.
 \subsubsection{Manifest}
@@ -389,18 +392,18 @@ Emitted when the module is invoked via the query interface, providing both the i
 \section{Node}
 Module that contains other modules and facilitates discovery, resolution and communication between them.
 \subsection{Interface}
-\subsubsection{Register}
-Register a module
+The interface of a module is the collection of functions that can be called by external code.  Fundamentally, only the query function is required by most modules, but there are usually additional helper functions.  When calling a module interface through a wrapper or bridge, the helper functions marshal the calls through the query function.
+Register a module by providing a module instance.  The address that the instance exposes will be used to address the module after the registration.
 \subsubsection{Unregister}
-Unregister a module
+Unregister a module by providing the address of the module to unregister.
 
 \subsection{Queries}
 \subsubsection{Registered}
 Retrieve list of all registered modules
 \subsubsection{Attach}
-Attach a registered module
+Attach a registered module, making it available to discovery and resolution by the node.
 \subsubsection{Detach}
-Detach a registered module
+Detach a registered module, making it unavailable to discovery and resolution by the node.
 
 \subsection{Events}
 \subsubsection{Registered}
@@ -459,7 +462,9 @@ Object that wraps a module instance, removing direct access to the wrapped insta
 \section{Huri}
 A Huri is a form of URI that references a payload via its hash.
 \subsection{Protocol}
+The protocol of a HURI is a combination of a Hash and Hints.
 \subsection{Hash}
+All HURIs must include a hash as the identifier of the payload to reference. The most basic HURI is a naked hash.
 \subsection{Hints}
 
 \section{Component System}
