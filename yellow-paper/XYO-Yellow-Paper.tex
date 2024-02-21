@@ -333,7 +333,24 @@ Every module has an address associated with it.  The address is used to uniquely
 Modules are loaded as a tree with every module, except Node and Bridge Modules, restricted to being leaves.  Only Node Modules may be the root of the tree.
 
 \subsection{Resolvers}
-Resolvers provide the mapping between module addresses/names and the actual instances of those modules.  When resolving a module, a ModuleInstance is always returned, but it is possible that the object is a Proxy or a Wrapper that facilitates calling the module in a way that is similar to calling it directly.
+Resolvers provide the mapping between module addresses/names and the actual instances of those modules.  When resolving a module, a ModuleInstance is always returned, but it is possible that the object is a Proxy or a Wrapper that facilitates calling the module in a way that is similar to calling it directly.  XNS addresses are an optional string that can be used to resolve a module.  If an XNS address is provided, the resolver will use the XNS system to resolve the module.
+
+\documentclass{article}
+\begin{document}
+
+Fully qualified XNS names are of the form:
+
+<xns>:<nameA>/<nameB>/<nameC>
+
+\end{document}
+
+
+\begin{itemize}
+  \item XNS & Names both resolve to addresses
+  \item XNS names can be used anywhere in the path as they're globally unique (with respect to a trusted nameserver)
+  \item Given a path, the algorithm is to walk resolution of each of the immediate child paths with respect to the resolved parent
+  \item You can omit path segments to maintain ambiguity of internal implementation
+\end{itemize}
 
 \subsection{Interfaces}
 Modules have interfaces that allow for direct calls to their functionality.  These entry points are only available to be called from another module that is running in the same memory space.  This is only provided for performance purposes and allows the module to be used as a trusted source.  Additionally, when directly calling a module, no Bound Witness is produced.  Interfaces do not support payment rails.
