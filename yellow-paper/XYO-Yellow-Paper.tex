@@ -338,16 +338,17 @@ Resolvers provide the mapping between module addresses/names and the actual inst
 \documentclass{article}
 \begin{document}
 
-Fully qualified XNS names are of the form:
+Fully qualified XNS paths are of the form:
 
-<xns>:<nameA>/<nameB>/<nameC>
+<xns|name>[:<xns|nameN>]
 
 \end{document}
 
 
 \begin{itemize}
   \item XNS & Names both resolve to addresses
-  \item XNS names can be used anywhere in the path as they're globally unique (with respect to a trusted nameserver)
+  \item XNS Names can be used anywhere in the path as they're globally unique (with respect to a trusted nameserver)
+  \item Names can can only be used nested under an address as they're not globally unique
   \item Given a path, the algorithm is to walk resolution of each of the immediate child paths with respect to the resolved parent
   \item You can omit path segments to maintain ambiguity of internal implementation
 \end{itemize}
